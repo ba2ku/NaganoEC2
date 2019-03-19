@@ -1,0 +1,56 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-1">
+		</div>
+		<div class="col-lg-10">
+			<h2>ユーザー編集画面</h2>
+			<p><%= link_to "ユーザー一覧画面へ",ad_users_path,method: :patch %></p>
+			<div class="form_for">
+				<%= form_for @user, url:ad_user_path(@user.id) do |f|%>
+				<p>名前(姓名)</p>
+				<div class="kanji_name">
+					<%=f.label :姓%>
+					<%=f.text_field :kanji_last%>
+					<%=f.label :名%>
+					<%=f.text_field :kanji_first%>
+				</div>
+				<div class="katakana_name">
+					<p>名前（カナ）</p>
+					<%=f.label :姓%>
+					<%=f.text_field :katakana_last%>
+					<%=f.label :名%>
+					<%=f.text_field :katakana_first%>
+				</div>
+				<div class="addresses">
+					<%= f.fields_for :address do |a| %>
+						<p>住所</p>
+						<%=a.label :郵便番号%>
+						<%=a.text_field :postcode%>
+						<%=a.label :県%><br>
+						<%=a.text_field :prefecture%><br>
+						<%=a.label :市区町村%><br>
+						<%=a.text_field :city%><br>
+						<%=a.label :番地%><br>
+						<%=a.text_field :street%><br>
+						<%=a.label :建物名%><br>
+						<%=a.text_field :building%>
+					<% end %>
+					<div class="phone_email">
+						<%= f.label :電話番号 %><br>
+						<%= f.text_field :phone_number %><br>
+						<%= f.label :メールアドレス %><br>
+						<%= f.text_field :email %><br>
+					</div>
+					<div class="notice">
+						<%= f.label :カスタマーセンターからのお知らせ %><br>
+						<%= f.text_area :notice %>
+					</div>
+					<%= f.submit "編集完了" %>
+				</div>
+				<% end %>
+			</div>
+		</div>
+		<div class="col-lg-1">
+		</div>
+	</div>
+</div>

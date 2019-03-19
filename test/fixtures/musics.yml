@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item_id: 1
+  cd_number: 1
+  music_name: MyString
+  music_order: 1
+  test_url: MyText
+
+two:
+  item_id: 1
+  cd_number: 1
+  music_name: MyString
+  music_order: 1
+  test_url: MyText

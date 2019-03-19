@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  address_history_id: 1
+  shopping_date: 2019-03-14 03:44:32
+  status: MyString
+
+two:
+  user_id: 1
+  address_history_id: 1
+  shopping_date: 2019-03-14 03:44:32
+  status: MyString

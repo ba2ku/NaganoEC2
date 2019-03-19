@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shopping_history_id: 1
+  postcode: MyString
+  prefecture: MyString
+  city: MyString
+  street: MyString
+  building: MyString
+
+two:
+  shopping_history_id: 1
+  postcode: MyString
+  prefecture: MyString
+  city: MyString
+  street: MyString
+  building: MyString

@@ -1,0 +1,40 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-1">
+		</div>
+		<div class="col-lg-10">
+			<% if flash[:notice] %>
+    			<%= flash[:notice] %>
+ 			<% end %>
+			<h2>ユーザー管理画面</h2>
+			<p><%= link_to "購入履歴一覧画面へ", ad_shopping_hists_path %></p>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>名前</th>
+						<th>メールアドレス</th>
+						<th>電話番号</th>
+						<th></th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @users.each do |user| %>
+					<tr>
+						<td><%= user.kanji_last %><%= user.kanji_first %></td>
+						<td><%= user.email%></td>
+						<td><%= user.phone_number%></td>
+						<td><%= link_to '購入履歴詳細', ad_shopping_hist_path(user.id)%></td>
+						<td><%= link_to '編集', edit_ad_user_path(user.id)%></td>
+						<td><%= link_to '削除', ad_user_path(user.id), method: :delete, data: {confirm: '削除してよろしいですか？'} %>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-lg-1">
+		</div>
+	</div>
+</div>

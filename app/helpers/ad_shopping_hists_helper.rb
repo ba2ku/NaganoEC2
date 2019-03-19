@@ -1,0 +1,2 @@
+module AdShoppingHistsHelper
+end

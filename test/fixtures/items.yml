@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  jacket: MyText
+  price: 1
+  details: MyText
+  stock: 1
+  release_day: 2019-03-14 03:01:30
+  display_flag: false
+
+two:
+  jacket: MyText
+  price: 1
+  details: MyText
+  stock: 1
+  release_day: 2019-03-14 03:01:30
+  display_flag: false

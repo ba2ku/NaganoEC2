@@ -1,0 +1,48 @@
+<div class="container">
+	<div class="row">
+		  <table>
+		  	<tbody>
+		  	   <tr>
+	             <td><h1>お知らせ管理画面</h1></td>
+	           </tr>
+	           <tr>
+	           	<td><%= link_to "Homeへ", top_path %></td>
+	           </tr>
+	         </tbody>
+	      </table>
+	</div>
+	<div class="row">
+				<h3>新規追加</h3>
+
+				<%= form_for(@infomation) do |f| %>
+				<h4>内容：</h4>
+				<%= f.text_area :body %>
+
+				<%= f.submit '追加' %>
+
+				<% end %>
+	</div>
+	<div class="row">
+		<h3> 編集</h3>
+		<table>
+			<thead>
+				<tr>
+					<th></th>></th>>id</th>
+					<th>投稿日時</th>
+					<th>内容</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</div>
+
+
