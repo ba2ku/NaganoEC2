@@ -1,6 +1,13 @@
 class InfosController < ApplicationController
+  def new
+    @infomation = Infomation.new
+  end
+
   def index
-  	@infomation = Infomation.new
+  	@infomation = Infomation.all
+  end
+
+  def edit
   end
 
   def create

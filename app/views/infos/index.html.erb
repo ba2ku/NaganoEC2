@@ -12,37 +12,27 @@
 	      </table>
 	</div>
 	<div class="row">
-				<h3>新規追加</h3>
-
-				<%= form_for(@infomation) do |f| %>
-				<h4>内容：</h4>
-				<%= f.text_area :body %>
-
-				<%= f.submit '追加' %>
-
-				<% end %>
-	</div>
-	<div class="row">
-		<h3> 編集</h3>
-		<table>
+		<table class="table">
 			<thead>
 				<tr>
-					<th></th>></th>>id</th>
+				   <th>id</th>
 					<th>投稿日時</th>
 					<th>内容</th>
+					<th></th>
 				</tr>
 			</thead>
+			<% @infomations.each do |infomation| %>
 			<tbody>
 				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					<td><%=infomation.id %></td>
+					<td><%= infomation.created_at %></td>
+					<td><%= infomation.infomation %></td>
+					<td><%= link_to "編集画面", edit_info_path(infomation.id) %></td>
 				</tr>
 			</tbody>
+			<% end %>
 		</table>
 	</div>
-
 </div>
 
 
