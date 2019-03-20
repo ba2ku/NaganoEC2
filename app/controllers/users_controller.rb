@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   def top
   end
 
+  def mypage
+    @user = User.find(current_user.id)
+  end
+
   def show
   end
 

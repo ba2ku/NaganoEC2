@@ -19,7 +19,25 @@
         aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
+      <% if user_signed_in? %>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item li_margin">
+            <%= link_to "ホーム", root_path, class: "btn btn-link nav_margin"%>
+          </li>
+          <li class="nav-item li_margin">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-link" %>
+          </li>
+          <li class="nav-item li_margin">
+            <%= link_to "マイページ", user_mypage_path(current_user), class: "btn btn-link" %>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
+        </form>
+      </div>
+      <% else %>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item li_margin">
@@ -37,6 +55,7 @@
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
         </form>
       </div>
+      <% end %>
     </nav>
   </header>
 

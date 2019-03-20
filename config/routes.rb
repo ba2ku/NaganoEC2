@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => {
+    :registrations => 'users/registrations'
+  }
+  resources :users do
+      get :mypage
+  end
   resources :ad_shopping_hists, only: [:index, :show, :update]
   resources :infos, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :ad_items

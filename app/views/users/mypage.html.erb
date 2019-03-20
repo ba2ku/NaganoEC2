@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <br>
+            <br>
+            <br>
+            <h3>MyPage</h3>
+            <p>※パスワードは定期的に更新されることをおすすめします。</p>
+            <br>
+            <br>
+            <h3>Infomation</h3>
+            <p>カスタマーデスクからのお知らせ。</p>
+            <%= @user.notice %>
+            <div class="border-bottom"></div>
+            <br>
+            <h3>発送情報</h3>
+            <p>購入された商品の発送ステータス</p>
+            <div class="border-bottom"></div>
+            <div><%= link_to "購入履歴" %></div>
+            <div><%= link_to "お客様基本情報確認" %></div>
+
+        </div>
+        <div class="col-1"></div>
+
+
+    </div>
+
+</div>
