@@ -4,19 +4,23 @@ class InfosController < ApplicationController
   end
 
   def index
-  	@infomation = Infomation.all
+  	@infomations = Infomation.all
   end
 
   def edit
+    @infomation = Infomation.find(params[:id])
   end
 
   def create
-  	infomation = Infomation.new(infomation_params)
+  	infomation = Infomation.new(info_params)
   	infomation.save
-  	redirect_to infomation_path
+  	redirect_to infos_path
   end
 
   def update
+    infomation = Infomation.find(params[:id])
+    infomation.update(info_params)
+    redirect_to infos_path
   end
 
   def destroy
@@ -24,6 +28,6 @@ class InfosController < ApplicationController
 
   private
   def info_params
-  	params.require(:infomation).permit(:body)
+  	params.require(:infomation).permit(:infomation)
   end
 end

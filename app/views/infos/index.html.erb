@@ -6,7 +6,7 @@
 	             <td><h1>お知らせ管理画面</h1></td>
 	           </tr>
 	           <tr>
-	           	<td><%= link_to "Homeへ", top_path %></td>
+	           	<td><%= link_to "Homeへ", ad_top_path %></td>
 	           </tr>
 	         </tbody>
 	      </table>
@@ -24,7 +24,7 @@
 			<% @infomations.each do |infomation| %>
 			<tbody>
 				<tr>
-					<td><%=infomation.id %></td>
+					<td><%= infomation.id %></td>
 					<td><%= infomation.created_at %></td>
 					<td><%= infomation.infomation %></td>
 					<td><%= link_to "編集画面", edit_info_path(infomation.id) %></td>

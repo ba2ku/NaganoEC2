@@ -1,0 +1,2017 @@
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to DeviseCreateUsers (20190313084118)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "confirmation_token" varchar, "confirmed_at" datetime, "confirmation_sent_at" datetime, "unconfirmed_email" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190313084118_devise_create_users.rb:5
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  ↳ db/migrate/20190313084118_devise_create_users.rb:32
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  ↳ db/migrate/20190313084118_devise_create_users.rb:33
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190313084118"]]
+  ↳ bin/rails:9
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateAddresses (20190314010332)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "addresses" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "postcode" varchar NOT NULL, "prefecture" varchar NOT NULL, "city" varchar NOT NULL, "street" varchar NOT NULL, "building" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190314010332_create_addresses.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190314010332"]]
+  ↳ bin/rails:9
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to AddDetailsToUsers (20190314014413)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (3.3ms)[0m  [1m[35mALTER TABLE "users" ADD "sign_in_count" integer DEFAULT 0 NOT NULL[0m
+  ↳ db/migrate/20190314014413_add_details_to_users.rb:4
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "current_sign_in_at" datetime[0m
+  ↳ db/migrate/20190314014413_add_details_to_users.rb:5
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "last_sign_in_at" datetime[0m
+  ↳ db/migrate/20190314014413_add_details_to_users.rb:6
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "current_sign_in_ip" varchar[0m
+  ↳ db/migrate/20190314014413_add_details_to_users.rb:7
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "last_sign_in_ip" varchar[0m
+  ↳ db/migrate/20190314014413_add_details_to_users.rb:8
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "phone_number" varchar DEFAULT '' NOT NULL[0m
+  ↳ db/migrate/20190314014413_add_details_to_users.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "registration" boolean DEFAULT 1 NOT NULL[0m
+  ↳ db/migrate/20190314014413_add_details_to_users.rb:10
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "kanji_last" varchar DEFAULT '' NOT NULL[0m
+  ↳ db/migrate/20190314014413_add_details_to_users.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "kanji_first" varchar DEFAULT '' NOT NULL[0m
+  ↳ db/migrate/20190314014413_add_details_to_users.rb:12
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "katakana_last" varchar DEFAULT '' NOT NULL[0m
+  ↳ db/migrate/20190314014413_add_details_to_users.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "katakana_first" varchar DEFAULT '' NOT NULL[0m
+  ↳ db/migrate/20190314014413_add_details_to_users.rb:14
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "admin_user" boolean DEFAULT 0 NOT NULL[0m
+  ↳ db/migrate/20190314014413_add_details_to_users.rb:15
+  [1m[36mActiveRecord::SchemaMigration Create (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190314014413"]]
+  ↳ bin/rails:9
+  [1m[35m (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateItems (20190314030130)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "items" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "jacket" text DEFAULT '' NOT NULL, "price" integer DEFAULT 0 NOT NULL, "details" text, "stock" integer DEFAULT 0 NOT NULL, "release_day" datetime DEFAULT CURRENT_TIMESTAMP, "display_flag" boolean DEFAULT 1 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190314030130_create_items.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190314030130"]]
+  ↳ bin/rails:9
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateLabels (20190314032056)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "labels" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "label" varchar DEFAULT 'unknown', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190314032056_create_labels.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190314032056"]]
+  ↳ bin/rails:9
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateGenres (20190314033143)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "genres" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "genre" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190314033143_create_genres.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190314033143"]]
+  ↳ bin/rails:9
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateMusics (20190314033619)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "musics" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "item_id" integer NOT NULL, "cd_number" integer NOT NULL, "music_name" varchar NOT NULL, "music_order" integer NOT NULL, "test_url" text DEFAULT '', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190314033619_create_musics.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190314033619"]]
+  ↳ bin/rails:9
+  [1m[35m (3.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateArtists (20190314033910)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "artists" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "artist_name" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190314033910_create_artists.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190314033910"]]
+  ↳ bin/rails:9
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateCarts (20190314034221)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "carts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "item_id" integer NOT NULL, "user_id" integer NOT NULL, "amount" integer DEFAULT 0 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190314034221_create_carts.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190314034221"]]
+  ↳ bin/rails:9
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateShoppingHistories (20190314034432)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "shopping_histories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "address_history_id" integer NOT NULL, "shopping_date" datetime NOT NULL, "status" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190314034432_create_shopping_histories.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190314034432"]]
+  ↳ bin/rails:9
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateAddressHistories (20190314034657)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "address_histories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "shopping_history_id" integer NOT NULL, "postcode" varchar NOT NULL, "prefecture" varchar NOT NULL, "city" varchar NOT NULL, "street" varchar NOT NULL, "building" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190314034657_create_address_histories.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190314034657"]]
+  ↳ bin/rails:9
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateOrderedItems (20190314034853)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "ordered_items" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "item_id" integer NOT NULL, "shopping_history_id" integer NOT NULL, "price" integer NOT NULL, "quantity" integer DEFAULT 1 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190314034853_create_ordered_items.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190314034853"]]
+  ↳ bin/rails:9
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateInfomations (20190314035400)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "infomations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "infomation" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190314035400_create_infomations.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190314035400"]]
+  ↳ bin/rails:9
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateProperties (20190314035628)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "properties" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "property" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190314035628_create_properties.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190314035628"]]
+  ↳ bin/rails:9
+  [1m[35m (3.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to Droptables (20190317061851)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[35mDROP TABLE "item_artists"[0m
+  ↳ db/migrate/20190317061851_droptables.rb:3
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to Droptables (20190317061851)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE "item_artists"[0m
+  ↳ db/migrate/20190317061851_droptables.rb:3
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to Droptables (20190317061851)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::SchemaMigration Create (2.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190317061851"]]
+  ↳ bin/rails:9
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to AddColumnToUser (20190317062552)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (3.1ms)[0m  [1m[35mALTER TABLE "users" ADD "notice" varchar[0m
+  ↳ db/migrate/20190317062552_add_column_to_user.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190317062552"]]
+  ↳ bin/rails:9
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to AddDetailsToUsers2 (20190318074808)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (5.2ms)[0m  [1m[35mALTER TABLE "users" ADD "address_id" integer[0m
+  ↳ db/migrate/20190318074808_add_details_to_users2.rb:3
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190318074808_add_details_to_users2.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aaddresses" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "postcode" varchar NOT NULL, "prefecture" varchar NOT NULL, "city" varchar NOT NULL, "street" varchar NOT NULL, "building" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190318074808_add_details_to_users2.rb:4
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "aaddresses" ("id","user_id","postcode","prefecture","city","street","building","created_at","updated_at")
+                     SELECT "id","user_id","postcode","prefecture","city","street","building","created_at","updated_at" FROM "addresses"[0m
+  ↳ db/migrate/20190318074808_add_details_to_users2.rb:4
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE "addresses"[0m
+  ↳ db/migrate/20190318074808_add_details_to_users2.rb:4
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "addresses" ("id" integer NOT NULL PRIMARY KEY, "postcode" varchar NOT NULL, "prefecture" varchar NOT NULL, "city" varchar NOT NULL, "street" varchar NOT NULL, "building" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190318074808_add_details_to_users2.rb:4
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "addresses" ("id","postcode","prefecture","city","street","building","created_at","updated_at")
+                     SELECT "id","postcode","prefecture","city","street","building","created_at","updated_at" FROM "aaddresses"[0m
+  ↳ db/migrate/20190318074808_add_details_to_users2.rb:4
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "aaddresses"[0m
+  ↳ db/migrate/20190318074808_add_details_to_users2.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190318074808"]]
+  ↳ bin/rails:9
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to AddcolumnUsers3 (20190318083218)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ausers" ("id" integer NOT NULL PRIMARY KEY, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar DEFAULT NULL, "reset_password_sent_at" datetime DEFAULT NULL, "remember_created_at" datetime DEFAULT NULL, "confirmation_token" varchar DEFAULT NULL, "confirmed_at" datetime DEFAULT NULL, "confirmation_sent_at" datetime DEFAULT NULL, "unconfirmed_email" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime DEFAULT NULL, "last_sign_in_at" datetime DEFAULT NULL, "current_sign_in_ip" varchar DEFAULT NULL, "last_sign_in_ip" varchar DEFAULT NULL, "phone_number" varchar DEFAULT '' NOT NULL, "registration" boolean DEFAULT 1 NOT NULL, "kanji_last" varchar DEFAULT '' NOT NULL, "kanji_first" varchar DEFAULT '' NOT NULL, "katakana_last" varchar DEFAULT '' NOT NULL, "katakana_first" varchar DEFAULT '' NOT NULL, "admin_user" boolean DEFAULT 0 NOT NULL, "notice" varchar DEFAULT NULL, "address_id" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20190318083218_addcolumn_users3.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_ausers_on_reset_password_token" ON "ausers" ("reset_password_token")[0m
+  ↳ db/migrate/20190318083218_addcolumn_users3.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_ausers_on_email" ON "ausers" ("email")[0m
+  ↳ db/migrate/20190318083218_addcolumn_users3.rb:3
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "ausers" ("id","email","encrypted_password","reset_password_token","reset_password_sent_at","remember_created_at","confirmation_token","confirmed_at","confirmation_sent_at","unconfirmed_email","created_at","updated_at","sign_in_count","current_sign_in_at","last_sign_in_at","current_sign_in_ip","last_sign_in_ip","phone_number","registration","kanji_last","kanji_first","katakana_last","katakana_first","admin_user","notice","address_id")
+                     SELECT "id","email","encrypted_password","reset_password_token","reset_password_sent_at","remember_created_at","confirmation_token","confirmed_at","confirmation_sent_at","unconfirmed_email","created_at","updated_at","sign_in_count","current_sign_in_at","last_sign_in_at","current_sign_in_ip","last_sign_in_ip","phone_number","registration","kanji_last","kanji_first","katakana_last","katakana_first","admin_user","notice","address_id" FROM "users"[0m
+  ↳ db/migrate/20190318083218_addcolumn_users3.rb:3
+  [1m[35m (4.0ms)[0m  [1m[35mDROP TABLE "users"[0m
+  ↳ db/migrate/20190318083218_addcolumn_users3.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer NOT NULL PRIMARY KEY, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar DEFAULT NULL, "reset_password_sent_at" datetime DEFAULT NULL, "remember_created_at" datetime DEFAULT NULL, "confirmation_token" varchar DEFAULT NULL, "confirmed_at" datetime DEFAULT NULL, "confirmation_sent_at" datetime DEFAULT NULL, "unconfirmed_email" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime DEFAULT NULL, "last_sign_in_at" datetime DEFAULT NULL, "current_sign_in_ip" varchar DEFAULT NULL, "last_sign_in_ip" varchar DEFAULT NULL, "phone_number" varchar DEFAULT '' NOT NULL, "registration" boolean DEFAULT 1 NOT NULL, "kanji_last" varchar DEFAULT '' NOT NULL, "kanji_first" varchar DEFAULT '' NOT NULL, "katakana_last" varchar DEFAULT '' NOT NULL, "katakana_first" varchar DEFAULT '' NOT NULL, "admin_user" boolean DEFAULT 0 NOT NULL, "notice" varchar DEFAULT NULL)[0m
+  ↳ db/migrate/20190318083218_addcolumn_users3.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  ↳ db/migrate/20190318083218_addcolumn_users3.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  ↳ db/migrate/20190318083218_addcolumn_users3.rb:3
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "users" ("id","email","encrypted_password","reset_password_token","reset_password_sent_at","remember_created_at","confirmation_token","confirmed_at","confirmation_sent_at","unconfirmed_email","created_at","updated_at","sign_in_count","current_sign_in_at","last_sign_in_at","current_sign_in_ip","last_sign_in_ip","phone_number","registration","kanji_last","kanji_first","katakana_last","katakana_first","admin_user","notice")
+                     SELECT "id","email","encrypted_password","reset_password_token","reset_password_sent_at","remember_created_at","confirmation_token","confirmed_at","confirmation_sent_at","unconfirmed_email","created_at","updated_at","sign_in_count","current_sign_in_at","last_sign_in_at","current_sign_in_ip","last_sign_in_ip","phone_number","registration","kanji_last","kanji_first","katakana_last","katakana_first","admin_user","notice" FROM "ausers"[0m
+  ↳ db/migrate/20190318083218_addcolumn_users3.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "ausers"[0m
+  ↳ db/migrate/20190318083218_addcolumn_users3.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "addresses" ADD "user_id" integer[0m
+  ↳ db/migrate/20190318083218_addcolumn_users3.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190318083218"]]
+  ↳ bin/rails:9
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to ChangeColumnNameInItems (20190319015313)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aitems" ("id" integer NOT NULL PRIMARY KEY, "jacket_id" text DEFAULT '' NOT NULL, "price" integer DEFAULT 0 NOT NULL, "details" text DEFAULT NULL, "stock" integer DEFAULT 0 NOT NULL, "release_day" datetime DEFAULT NULL, "display_flag" boolean DEFAULT 1 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190319015313_change_column_name_in_items.rb:3
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "aitems" ("id","jacket_id","price","details","stock","release_day","display_flag","created_at","updated_at")
+                     SELECT "id","jacket","price","details","stock","release_day","display_flag","created_at","updated_at" FROM "items"[0m
+  ↳ db/migrate/20190319015313_change_column_name_in_items.rb:3
+  [1m[35m (3.6ms)[0m  [1m[35mDROP TABLE "items"[0m
+  ↳ db/migrate/20190319015313_change_column_name_in_items.rb:3
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "items" ("id" integer NOT NULL PRIMARY KEY, "jacket_id" text DEFAULT '' NOT NULL, "price" integer DEFAULT 0 NOT NULL, "details" text DEFAULT NULL, "stock" integer DEFAULT 0 NOT NULL, "release_day" datetime DEFAULT NULL, "display_flag" boolean DEFAULT 1 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190319015313_change_column_name_in_items.rb:3
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "items" ("id","jacket_id","price","details","stock","release_day","display_flag","created_at","updated_at")
+                     SELECT "id","jacket_id","price","details","stock","release_day","display_flag","created_at","updated_at" FROM "aitems"[0m
+  ↳ db/migrate/20190319015313_change_column_name_in_items.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aitems"[0m
+  ↳ db/migrate/20190319015313_change_column_name_in_items.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190319015313"]]
+  ↳ bin/rails:9
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to Droptables2 (20190319030532)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (2.4ms)[0m  [1m[35mALTER TABLE "items" ADD "genre_id" intger[0m
+  ↳ db/migrate/20190319030532_droptables2.rb:5
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "items" ADD "property_id" intger[0m
+  ↳ db/migrate/20190319030532_droptables2.rb:6
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "items" ADD "label_id" intger[0m
+  ↳ db/migrate/20190319030532_droptables2.rb:7
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "items" ADD "artist_id" intger[0m
+  ↳ db/migrate/20190319030532_droptables2.rb:8
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190319030532"]]
+  ↳ bin/rails:9
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (2.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-03-19 07:23:39.423240"], ["updated_at", "2019-03-19 07:23:39.423240"]]
+  ↳ bin/rails:9
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mUser Create (3.3ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "created_at", "updated_at", "phone_number", "kanji_last", "kanji_first", "katakana_last", "katakana_first", "admin_user", "notice") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["email", "hoge@hoge.com"], ["encrypted_password", "test123"], ["created_at", "2019-03-19 07:23:48.482386"], ["updated_at", "2019-03-19 07:23:48.482386"], ["phone_number", "080-0000-0000"], ["kanji_last", "hoge"], ["kanji_first", "タロウ"], ["katakana_last", "ホゲ"], ["katakana_first", "タロウ"], ["admin_user", 1], ["notice", "お金払ってください"]]
+  ↳ bin/rails:9
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "created_at", "updated_at", "phone_number", "kanji_last", "kanji_first", "katakana_last", "katakana_first", "admin_user") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["id", 1], ["email", "admin@test.com"], ["encrypted_password", "test123"], ["created_at", "2019-03-19 07:23:48.488746"], ["updated_at", "2019-03-19 07:23:48.488746"], ["phone_number", "080-0000-0000"], ["kanji_last", "管理"], ["kanji_first", "使用者"], ["katakana_last", "カンリ"], ["katakana_first", "ユーザー"], ["admin_user", 1]]
+  ↳ bin/rails:9
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "created_at", "updated_at", "phone_number", "kanji_last", "kanji_first", "katakana_last", "katakana_first", "notice") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["id", 2], ["email", "user@test.com"], ["encrypted_password", "test123"], ["created_at", "2019-03-19 07:23:48.491551"], ["updated_at", "2019-03-19 07:23:48.491551"], ["phone_number", "080-0000-0001"], ["kanji_last", "一般"], ["kanji_first", "使用者"], ["katakana_last", "イッパン"], ["katakana_first", "ユーザー"], ["notice", "お金払ってください"]]
+  ↳ bin/rails:9
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mAddress Create (4.2ms)[0m  [1m[32mINSERT INTO "addresses" ("id", "postcode", "prefecture", "city", "street", "building", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["postcode", "277-0000"], ["prefecture", "千葉県"], ["city", "柏市"], ["street", "どっかしら0-0-1"], ["building", "なんとかアパートメント"], ["created_at", "2019-03-19 07:23:48.526408"], ["updated_at", "2019-03-19 07:23:48.526408"], ["user_id", 0]]
+  ↳ bin/rails:9
+  [1m[36mAddress Load (0.1ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mAddress Create (0.1ms)[0m  [1m[32mINSERT INTO "addresses" ("id", "postcode", "prefecture", "city", "street", "building", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["id", 1], ["postcode", "277-0000"], ["prefecture", "千葉県"], ["city", "柏市"], ["street", "どっかしら0-0-1"], ["building", "なんとかアパートメント"], ["created_at", "2019-03-19 07:23:48.533764"], ["updated_at", "2019-03-19 07:23:48.533764"], ["user_id", 1]]
+  ↳ bin/rails:9
+  [1m[36mAddress Load (0.0ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mAddress Create (0.2ms)[0m  [1m[32mINSERT INTO "addresses" ("id", "postcode", "prefecture", "city", "street", "building", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["id", 2], ["postcode", "277-0001"], ["prefecture", "千葉県"], ["city", "柏市"], ["street", "どっかしら0-0-2"], ["building", "なんとかアパートメント"], ["created_at", "2019-03-19 07:23:48.537001"], ["updated_at", "2019-03-19 07:23:48.537001"], ["user_id", 2]]
+  ↳ bin/rails:9
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mAddressHistory Load (0.2ms)[0m  [1m[34mSELECT  "address_histories".* FROM "address_histories" WHERE "address_histories"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mAddressHistory Create (1.9ms)[0m  [1m[32mINSERT INTO "address_histories" ("id", "shopping_history_id", "postcode", "prefecture", "city", "street", "building", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["shopping_history_id", 0], ["postcode", "277-0000"], ["prefecture", "千葉県"], ["city", "柏市"], ["street", "どっかしら0-0-1"], ["building", "なんとかアパートメント"], ["created_at", "2019-03-19 07:23:48.566031"], ["updated_at", "2019-03-19 07:23:48.566031"]]
+  ↳ bin/rails:9
+  [1m[36mAddressHistory Load (0.1ms)[0m  [1m[34mSELECT  "address_histories".* FROM "address_histories" WHERE "address_histories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mAddressHistory Create (0.1ms)[0m  [1m[32mINSERT INTO "address_histories" ("id", "shopping_history_id", "postcode", "prefecture", "city", "street", "building", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["id", 1], ["shopping_history_id", 1], ["postcode", "277-0000"], ["prefecture", "千葉県"], ["city", "柏市"], ["street", "どっかしら0-0-1"], ["building", "なんとかアパートメント"], ["created_at", "2019-03-19 07:23:48.572619"], ["updated_at", "2019-03-19 07:23:48.572619"]]
+  ↳ bin/rails:9
+  [1m[36mAddressHistory Load (0.2ms)[0m  [1m[34mSELECT  "address_histories".* FROM "address_histories" WHERE "address_histories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mAddressHistory Create (0.1ms)[0m  [1m[32mINSERT INTO "address_histories" ("id", "shopping_history_id", "postcode", "prefecture", "city", "street", "building", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["id", 2], ["shopping_history_id", 2], ["postcode", "277-0000"], ["prefecture", "千葉県"], ["city", "柏市"], ["street", "どっかしら0-0-1"], ["building", "なんとかアパートメント"], ["created_at", "2019-03-19 07:23:48.577525"], ["updated_at", "2019-03-19 07:23:48.577525"]]
+  ↳ bin/rails:9
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mItem Load (0.5ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mItem Create (2.8ms)[0m  [1m[32mINSERT INTO "items" ("id", "jacket_id", "price", "details", "stock", "release_day", "created_at", "updated_at", "genre_id", "property_id", "label_id", "artist_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["jacket_id", ""], ["price", 300], ["details", "hoe"], ["stock", 350], ["release_day", "2019-03-19 07:23:48.607133"], ["created_at", "2019-03-19 07:23:48.631158"], ["updated_at", "2019-03-19 07:23:48.631158"], ["genre_id", 0], ["property_id", 0], ["label_id", 0], ["artist_id", 0]]
+  ↳ bin/rails:9
+  [1m[36mItem Load (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mItem Create (0.1ms)[0m  [1m[32mINSERT INTO "items" ("id", "jacket_id", "price", "details", "stock", "release_day", "created_at", "updated_at", "genre_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["id", 1], ["jacket_id", ""], ["price", 54000], ["details", "hogehogeghoe"], ["stock", 7], ["release_day", "2019-03-19 07:23:48.635881"], ["created_at", "2019-03-19 07:23:48.638656"], ["updated_at", "2019-03-19 07:23:48.638656"], ["genre_id", 1]]
+  ↳ bin/rails:9
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mItem Create (0.1ms)[0m  [1m[32mINSERT INTO "items" ("id", "jacket_id", "price", "details", "stock", "release_day", "created_at", "updated_at", "genre_id", "property_id", "label_id", "artist_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["id", 2], ["jacket_id", ""], ["price", 1000], ["details", "hogehogeghoe"], ["stock", 50], ["release_day", "2019-03-19 07:23:48.639983"], ["created_at", "2019-03-19 07:23:48.642602"], ["updated_at", "2019-03-19 07:23:48.642602"], ["genre_id", 2], ["property_id", 2], ["label_id", 2], ["artist_id", 2]]
+  ↳ bin/rails:9
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mArtist Load (0.4ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mArtist Create (2.8ms)[0m  [1m[32mINSERT INTO "artists" ("id", "artist_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 0], ["artist_name", "光GENJI"], ["created_at", "2019-03-19 07:23:48.672764"], ["updated_at", "2019-03-19 07:23:48.672764"]]
+  ↳ bin/rails:9
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mArtist Create (0.1ms)[0m  [1m[32mINSERT INTO "artists" ("id", "artist_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 1], ["artist_name", "宇多田ヒカル"], ["created_at", "2019-03-19 07:23:48.682613"], ["updated_at", "2019-03-19 07:23:48.682613"]]
+  ↳ bin/rails:9
+  [1m[36mArtist Load (0.0ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mArtist Create (0.1ms)[0m  [1m[32mINSERT INTO "artists" ("id", "artist_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 2], ["artist_name", "初音ミク"], ["created_at", "2019-03-19 07:23:48.686693"], ["updated_at", "2019-03-19 07:23:48.686693"]]
+  ↳ bin/rails:9
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mGenre Load (0.2ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mGenre Create (5.0ms)[0m  [1m[32mINSERT INTO "genres" ("id", "genre", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 0], ["genre", "ロック"], ["created_at", "2019-03-19 07:23:48.725273"], ["updated_at", "2019-03-19 07:23:48.725273"]]
+  ↳ bin/rails:9
+  [1m[36mGenre Load (0.1ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mGenre Create (0.1ms)[0m  [1m[32mINSERT INTO "genres" ("id", "genre", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 1], ["genre", "演歌"], ["created_at", "2019-03-19 07:23:48.735387"], ["updated_at", "2019-03-19 07:23:48.735387"]]
+  ↳ bin/rails:9
+  [1m[36mGenre Load (0.0ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mGenre Create (0.1ms)[0m  [1m[32mINSERT INTO "genres" ("id", "genre", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 2], ["genre", "アニソン"], ["created_at", "2019-03-19 07:23:48.738434"], ["updated_at", "2019-03-19 07:23:48.738434"]]
+  ↳ bin/rails:9
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mLabel Load (0.2ms)[0m  [1m[34mSELECT  "labels".* FROM "labels" WHERE "labels"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mLabel Create (2.2ms)[0m  [1m[32mINSERT INTO "labels" ("id", "label", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 0], ["label", "HOGE"], ["created_at", "2019-03-19 07:23:48.785712"], ["updated_at", "2019-03-19 07:23:48.785712"]]
+  ↳ bin/rails:9
+  [1m[36mLabel Load (0.0ms)[0m  [1m[34mSELECT  "labels".* FROM "labels" WHERE "labels"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mLabel Create (0.1ms)[0m  [1m[32mINSERT INTO "labels" ("id", "label", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 1], ["label", "WBJ"], ["created_at", "2019-03-19 07:23:48.790354"], ["updated_at", "2019-03-19 07:23:48.790354"]]
+  ↳ bin/rails:9
+  [1m[36mLabel Load (0.0ms)[0m  [1m[34mSELECT  "labels".* FROM "labels" WHERE "labels"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mLabel Create (0.1ms)[0m  [1m[32mINSERT INTO "labels" ("id", "label", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 2], ["label", "SME"], ["created_at", "2019-03-19 07:23:48.792895"], ["updated_at", "2019-03-19 07:23:48.792895"]]
+  ↳ bin/rails:9
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mProperty Load (0.2ms)[0m  [1m[34mSELECT  "properties".* FROM "properties" WHERE "properties"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mProperty Create (4.2ms)[0m  [1m[32mINSERT INTO "properties" ("id", "property", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 0], ["property", "シングル"], ["created_at", "2019-03-19 07:23:48.825163"], ["updated_at", "2019-03-19 07:23:48.825163"]]
+  ↳ bin/rails:9
+  [1m[36mProperty Load (0.1ms)[0m  [1m[34mSELECT  "properties".* FROM "properties" WHERE "properties"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mProperty Create (0.1ms)[0m  [1m[32mINSERT INTO "properties" ("id", "property", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 1], ["property", "アルバム"], ["created_at", "2019-03-19 07:23:48.836319"], ["updated_at", "2019-03-19 07:23:48.836319"]]
+  ↳ bin/rails:9
+  [1m[36mProperty Load (0.0ms)[0m  [1m[34mSELECT  "properties".* FROM "properties" WHERE "properties"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mProperty Create (0.1ms)[0m  [1m[32mINSERT INTO "properties" ("id", "property", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 2], ["property", "限定盤"], ["created_at", "2019-03-19 07:23:48.839072"], ["updated_at", "2019-03-19 07:23:48.839072"]]
+  ↳ bin/rails:9
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mMusic Load (0.2ms)[0m  [1m[34mSELECT  "musics".* FROM "musics" WHERE "musics"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mMusic Create (3.9ms)[0m  [1m[32mINSERT INTO "musics" ("id", "item_id", "cd_number", "music_name", "music_order", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["item_id", 0], ["cd_number", 0], ["music_name", "Hogemusic"], ["music_order", 0], ["created_at", "2019-03-19 07:23:48.875939"], ["updated_at", "2019-03-19 07:23:48.875939"]]
+  ↳ bin/rails:9
+  [1m[36mMusic Load (0.1ms)[0m  [1m[34mSELECT  "musics".* FROM "musics" WHERE "musics"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mMusic Create (0.1ms)[0m  [1m[32mINSERT INTO "musics" ("id", "item_id", "cd_number", "music_name", "music_order", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["id", 1], ["item_id", 0], ["cd_number", 1], ["music_name", "Hogemusic2"], ["music_order", 1], ["created_at", "2019-03-19 07:23:48.886413"], ["updated_at", "2019-03-19 07:23:48.886413"]]
+  ↳ bin/rails:9
+  [1m[36mMusic Load (0.0ms)[0m  [1m[34mSELECT  "musics".* FROM "musics" WHERE "musics"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mMusic Create (0.1ms)[0m  [1m[32mINSERT INTO "musics" ("id", "item_id", "cd_number", "music_name", "music_order", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["id", 2], ["item_id", 0], ["cd_number", 0], ["music_name", "Hogemusic3"], ["music_order", 2], ["created_at", "2019-03-19 07:23:48.889561"], ["updated_at", "2019-03-19 07:23:48.889561"]]
+  ↳ bin/rails:9
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mShoppingHistory Load (0.5ms)[0m  [1m[34mSELECT  "shopping_histories".* FROM "shopping_histories" WHERE "shopping_histories"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mShoppingHistory Create (3.0ms)[0m  [1m[32mINSERT INTO "shopping_histories" ("id", "user_id", "address_history_id", "shopping_date", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["user_id", 0], ["address_history_id", 0], ["shopping_date", "2019-03-19 07:23:48.927679"], ["status", "入金待ち"], ["created_at", "2019-03-19 07:23:48.940440"], ["updated_at", "2019-03-19 07:23:48.940440"]]
+  ↳ bin/rails:9
+  [1m[36mShoppingHistory Load (0.1ms)[0m  [1m[34mSELECT  "shopping_histories".* FROM "shopping_histories" WHERE "shopping_histories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mShoppingHistory Create (0.1ms)[0m  [1m[32mINSERT INTO "shopping_histories" ("id", "user_id", "address_history_id", "shopping_date", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["id", 1], ["user_id", 0], ["address_history_id", 0], ["shopping_date", "2019-03-19 07:23:48.945909"], ["status", "出荷待ち"], ["created_at", "2019-03-19 07:23:48.947461"], ["updated_at", "2019-03-19 07:23:48.947461"]]
+  ↳ bin/rails:9
+  [1m[36mShoppingHistory Load (0.0ms)[0m  [1m[34mSELECT  "shopping_histories".* FROM "shopping_histories" WHERE "shopping_histories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mShoppingHistory Create (0.2ms)[0m  [1m[32mINSERT INTO "shopping_histories" ("id", "user_id", "address_history_id", "shopping_date", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["id", 2], ["user_id", 1], ["address_history_id", 1], ["shopping_date", "2019-03-19 07:23:48.948735"], ["status", "出荷済み"], ["created_at", "2019-03-19 07:23:48.950681"], ["updated_at", "2019-03-19 07:23:48.950681"]]
+  ↳ bin/rails:9
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mOrderedItem Load (2.0ms)[0m  [1m[34mSELECT  "ordered_items".* FROM "ordered_items" WHERE "ordered_items"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mOrderedItem Create (3.3ms)[0m  [1m[32mINSERT INTO "ordered_items" ("id", "item_id", "shopping_history_id", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["item_id", 0], ["shopping_history_id", 0], ["price", 300], ["created_at", "2019-03-19 07:23:49.022849"], ["updated_at", "2019-03-19 07:23:49.022849"]]
+  ↳ bin/rails:9
+  [1m[36mOrderedItem Load (0.7ms)[0m  [1m[34mSELECT  "ordered_items".* FROM "ordered_items" WHERE "ordered_items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mOrderedItem Create (0.1ms)[0m  [1m[32mINSERT INTO "ordered_items" ("id", "item_id", "shopping_history_id", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["id", 1], ["item_id", 1], ["shopping_history_id", 0], ["price", 5400], ["created_at", "2019-03-19 07:23:49.034689"], ["updated_at", "2019-03-19 07:23:49.034689"]]
+  ↳ bin/rails:9
+  [1m[36mOrderedItem Load (0.1ms)[0m  [1m[34mSELECT  "ordered_items".* FROM "ordered_items" WHERE "ordered_items"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mOrderedItem Create (0.1ms)[0m  [1m[32mINSERT INTO "ordered_items" ("id", "item_id", "shopping_history_id", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["id", 2], ["item_id", 0], ["shopping_history_id", 1], ["price", 300], ["created_at", "2019-03-19 07:23:49.037745"], ["updated_at", "2019-03-19 07:23:49.037745"]]
+  ↳ bin/rails:9
+  [1m[35m (3.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mInfomation Load (0.2ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mInfomation Create (2.0ms)[0m  [1m[32mINSERT INTO "infomations" ("id", "infomation", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 0], ["infomation", "お知らせお知らせお知らせ"], ["created_at", "2019-03-19 07:23:49.067297"], ["updated_at", "2019-03-19 07:23:49.067297"]]
+  ↳ bin/rails:9
+  [1m[36mInfomation Load (0.0ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mInfomation Create (0.1ms)[0m  [1m[32mINSERT INTO "infomations" ("id", "infomation", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 1], ["infomation", "お知らせお知らせお知らせ!"], ["created_at", "2019-03-19 07:23:49.071950"], ["updated_at", "2019-03-19 07:23:49.071950"]]
+  ↳ bin/rails:9
+  [1m[36mInfomation Load (0.0ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[36mInfomation Create (0.1ms)[0m  [1m[32mINSERT INTO "infomations" ("id", "infomation", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 2], ["infomation", "お知らせお知らせお知らせ"], ["created_at", "2019-03-19 07:23:49.074477"], ["updated_at", "2019-03-19 07:23:49.074477"]]
+  ↳ bin/rails:9
+  [1m[35m (6.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Started GET "/ad_items" for 10.0.2.2 at 2019-03-19 08:32:19 +0000
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by AdItemsController#index as HTML
+  Rendering ad_items/index.html.erb within layouts/application
+  [1m[36mItem Load (0.6ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ app/views/ad_items/index.html.erb:15
+Started GET "/ad_items" for 10.0.2.2 at 2019-03-19 08:32:26 +0000
+Processing by AdItemsController#index as HTML
+  Rendering ad_items/index.html.erb within layouts/application
+  [1m[36mItem Load (1.0ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ app/views/ad_items/index.html.erb:15
+Started GET "/ad_items" for 10.0.2.2 at 2019-03-19 08:32:26 +0000
+Processing by AdItemsController#index as HTML
+  Rendering ad_items/index.html.erb within layouts/application
+  [1m[36mItem Load (2.0ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ app/views/ad_items/index.html.erb:15
+Started GET "/ad_items" for 10.0.2.2 at 2019-03-19 08:32:26 +0000
+Processing by AdItemsController#index as HTML
+  Rendering ad_items/index.html.erb within layouts/application
+  [1m[36mItem Load (1.5ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ app/views/ad_items/index.html.erb:15
+Started GET "/ad_items" for 10.0.2.2 at 2019-03-19 08:32:27 +0000
+Processing by AdItemsController#index as HTML
+  Rendering ad_items/index.html.erb within layouts/application
+  [1m[36mItem Load (7.0ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ app/views/ad_items/index.html.erb:15
+  Rendered ad_items/index.html.erb within layouts/application (10844.2ms)
+  Rendered ad_items/index.html.erb within layouts/application (18223.6ms)
+  Rendered ad_items/index.html.erb within layouts/application (11811.7ms)
+  Rendered ad_items/index.html.erb within layouts/application (12827.4ms)
+Completed 200 OK in 12410ms (Views: 12332.7ms | ActiveRecord: 8.9ms)
+
+
+Started GET "/ad_items/new" for 10.0.2.2 at 2019-03-19 08:32:39 +0000
+Processing by AdItemsController#new as HTML
+Completed 200 OK in 13200ms (Views: 13164.4ms | ActiveRecord: 7.9ms)
+
+
+Completed 200 OK in 13735ms (Views: 13713.7ms | ActiveRecord: 2.7ms)
+
+
+Completed 200 OK in 19801ms (Views: 19773.7ms | ActiveRecord: 3.3ms)
+
+
+  Rendered ad_items/index.html.erb within layouts/application (12913.3ms)
+Completed 200 OK in 13348ms (Views: 13314.0ms | ActiveRecord: 3.2ms)
+
+
+  Rendering ad_items/new.html.erb within layouts/application
+  [1m[36mArtist Load (1.3ms)[0m  [1m[34mSELECT "artists".* FROM "artists"[0m
+  ↳ app/views/ad_items/new.html.erb:15
+  [1m[36mGenre Load (1.0ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  ↳ app/views/ad_items/new.html.erb:17
+  [1m[36mLabel Load (0.8ms)[0m  [1m[34mSELECT "labels".* FROM "labels"[0m
+  ↳ app/views/ad_items/new.html.erb:19
+  [1m[36mProperty Load (1.8ms)[0m  [1m[34mSELECT "properties".* FROM "properties"[0m
+  ↳ app/views/ad_items/new.html.erb:21
+  Rendered ad_items/new.html.erb within layouts/application (174.0ms)
+Completed 200 OK in 1025ms (Views: 464.4ms | ActiveRecord: 18.7ms)
+
+
+Started GET "/infos/new" for 10.0.2.2 at 2019-03-19 08:32:56 +0000
+Processing by InfosController#new as HTML
+  Rendering infos/new.html.erb within layouts/application
+  Rendered infos/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 350ms (Views: 318.4ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/infos/new" for 10.0.2.2 at 2019-03-19 08:34:03 +0000
+Processing by InfosController#new as HTML
+  Rendering infos/new.html.erb within layouts/application
+  Rendered infos/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 366ms (Views: 341.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/infos/new" for 10.0.2.2 at 2019-03-19 08:34:45 +0000
+Processing by InfosController#new as HTML
+  Rendering infos/new.html.erb within layouts/application
+  Rendered infos/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 390ms (Views: 367.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 10.0.2.2 at 2019-03-19 08:54:20 +0000
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#top as HTML
+  Rendering users/top.html.erb within layouts/application
+  Rendered users/top.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 1602ms (Views: 1576.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/info/routes" for 10.0.2.2 at 2019-03-19 08:54:37 +0000
+Processing by Rails::InfoController#routes as HTML
+  Rendering /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/railties-5.2.2.1/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [65 times] (28.9ms)
+  Rendered /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (18.2ms)
+  Rendered /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/railties-5.2.2.1/lib/rails/templates/rails/info/routes.html.erb within layouts/application (62.4ms)
+Completed 200 OK in 74ms (Views: 69.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/infos" for 10.0.2.2 at 2019-03-19 08:58:25 +0000
+Processing by InfosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kxP9q5FSJseGqp0V1QD6sbM9xIOflccWifXBLqMqJb0l/MXN0OlfHt8sL9gYdbeePGjHoSYAhVdmkn9S1EH0dA==", "infomation"=>{"infomation"=>""}, "commit"=>"新規追加"}
+Completed 500 Internal Server Error in 177ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `infomation_params' for #<InfosController:0x000055bca8b88688>
+Did you mean?  infomation):
+  
+app/controllers/infos_controller.rb:15:in `create'
+Started POST "/infos" for 10.0.2.2 at 2019-03-19 08:59:38 +0000
+Processing by InfosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kxP9q5FSJseGqp0V1QD6sbM9xIOflccWifXBLqMqJb0l/MXN0OlfHt8sL9gYdbeePGjHoSYAhVdmkn9S1EH0dA==", "infomation"=>{"infomation"=>""}, "commit"=>"新規追加"}
+Completed 500 Internal Server Error in 168ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `infomation_params' for #<InfosController:0x000055bcaa313c08>
+Did you mean?  infomation):
+  
+app/controllers/infos_controller.rb:15:in `create'
+Started POST "/infos" for 10.0.2.2 at 2019-03-19 09:01:03 +0000
+Processing by InfosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kxP9q5FSJseGqp0V1QD6sbM9xIOflccWifXBLqMqJb0l/MXN0OlfHt8sL9gYdbeePGjHoSYAhVdmkn9S1EH0dA==", "infomation"=>{"infomation"=>"aaaa"}, "commit"=>"新規追加"}
+Completed 500 Internal Server Error in 186ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `infomation_params' for #<InfosController:0x000055bcaa02f1e0>
+Did you mean?  infomation):
+  
+app/controllers/infos_controller.rb:15:in `create'
+Started GET "/infos/index" for 10.0.2.2 at 2019-03-19 09:01:15 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/infos/index"):
+  
+actionpack (5.2.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/infos" for 10.0.2.2 at 2019-03-19 09:01:23 +0000
+Processing by InfosController#index as HTML
+  Rendering infos/index.html.erb within layouts/application
+  [1m[36mInfomation Load (0.7ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Infomation Load (0.0ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Infomation Load (0.0ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Infomation Load (0.0ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Infomation Load (0.0ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Infomation Load (0.0ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Infomation Load (0.0ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Infomation Load (0.0ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+  Rendered infos/index.html.erb within layouts/application (339.7ms)
+Completed 500 Internal Server Error in 408ms (ActiveRecord: 3.9ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `top_path' for #<#<Class:0x00007f1ab8a2f6c8>:0x00007f1ab8a2dc60>):
+     6: 	             <td><h1>お知らせ管理画面</h1></td>
+     7: 	           </tr>
+     8: 	           <tr>
+     9: 	           	<td><%= link_to "Homeへ", top_path %></td>
+    10: 	           </tr>
+    11: 	         </tbody>
+    12: 	      </table>
+  
+app/views/infos/index.html.erb:9:in `_app_views_infos_index_html_erb__1133655285576113341_69876371783440'
+Started GET "/infos" for 10.0.2.2 at 2019-03-19 09:03:13 +0000
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by InfosController#index as HTML
+  Rendering infos/index.html.erb within layouts/application
+  Rendered infos/index.html.erb within layouts/application (16.8ms)
+Completed 500 Internal Server Error in 80ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    21: 					<th></th>
+    22: 				</tr>
+    23: 			</thead>
+    24: 			<% @infomations.each do |infomation| %>
+    25: 			<tbody>
+    26: 				<tr>
+    27: 					<td><%=infomation.id %></td>
+  
+app/views/infos/index.html.erb:24:in `_app_views_infos_index_html_erb__2062691139568856236_69885929481820'
+Started GET "/infos" for 10.0.2.2 at 2019-03-19 09:10:10 +0000
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by InfosController#index as HTML
+  Rendering infos/index.html.erb within layouts/application
+  Rendered infos/index.html.erb within layouts/application (17.9ms)
+Completed 500 Internal Server Error in 86ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    21: 					<th></th>
+    22: 				</tr>
+    23: 			</thead>
+    24: 			<% @infomations.each do |infomation| %>
+    25: 			<tbody>
+    26: 				<tr>
+    27: 					<td><%=infomation.id %></td>
+  
+app/views/infos/index.html.erb:24:in `_app_views_infos_index_html_erb__3325759261195730668_47211813747060'
+Started GET "/infos" for 10.0.2.2 at 2019-03-19 09:13:55 +0000
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by InfosController#index as HTML
+  Rendering infos/index.html.erb within layouts/application
+  [1m[36mInfomation Load (1.2ms)[0m  [1m[34mSELECT "infomations".* FROM "infomations"[0m
+  ↳ app/views/infos/index.html.erb:24
+  Rendered infos/index.html.erb within layouts/application (11.6ms)
+Completed 200 OK in 1445ms (Views: 1418.6ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/infos/0/edit" for 10.0.2.2 at 2019-03-19 09:14:19 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mInfomation Load (1.0ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 324ms (Views: 301.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/top" for 10.0.2.2 at 2019-03-19 09:15:31 +0000
+Processing by AdUsersController#top as HTML
+  Rendering ad_users/top.html.erb within layouts/application
+  Rendered ad_users/top.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 308ms (Views: 293.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/ad_users" for 10.0.2.2 at 2019-03-19 09:15:36 +0000
+Processing by AdUsersController#index as HTML
+  Rendering ad_users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/ad_users/index.html.erb:23
+  Rendered ad_users/index.html.erb within layouts/application (19.2ms)
+Completed 200 OK in 350ms (Views: 328.0ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/infos" for 10.0.2.2 at 2019-03-19 09:15:40 +0000
+Processing by InfosController#index as HTML
+  Rendering infos/index.html.erb within layouts/application
+  [1m[36mInfomation Load (1.2ms)[0m  [1m[34mSELECT "infomations".* FROM "infomations"[0m
+  ↳ app/views/infos/index.html.erb:24
+  Rendered infos/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 443ms (Views: 417.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/infos/new" for 10.0.2.2 at 2019-03-19 09:16:45 +0000
+Processing by InfosController#new as HTML
+  Rendering infos/new.html.erb within layouts/application
+  Rendered infos/new.html.erb within layouts/application (21.7ms)
+Completed 200 OK in 357ms (Views: 341.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/infos" for 10.0.2.2 at 2019-03-19 09:16:49 +0000
+Processing by InfosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"abzAnhgg6xHOfblHKHiQnElaAqEApGnMx38BoqESuMvfU/j4WZuSyJf7C4rlDd2zxg8Bg7kxK40oGL/e1nlpAg==", "infomation"=>{"infomation"=>"fff"}, "commit"=>"新規追加"}
+Completed 500 Internal Server Error in 177ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `infomation_params' for #<InfosController:0x00007ff68cf2be50>
+Did you mean?  infomation):
+  
+app/controllers/infos_controller.rb:15:in `create'
+Started POST "/infos" for 10.0.2.2 at 2019-03-19 09:17:21 +0000
+Processing by InfosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"abzAnhgg6xHOfblHKHiQnElaAqEApGnMx38BoqESuMvfU/j4WZuSyJf7C4rlDd2zxg8Bg7kxK40oGL/e1nlpAg==", "infomation"=>{"infomation"=>"fff"}, "commit"=>"新規追加"}
+Completed 500 Internal Server Error in 161ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `infomation_params' for #<InfosController:0x00007ff68d1e16e0>
+Did you mean?  infomation):
+  
+app/controllers/infos_controller.rb:15:in `create'
+Started POST "/infos" for 10.0.2.2 at 2019-03-19 09:18:32 +0000
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by InfosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"abzAnhgg6xHOfblHKHiQnElaAqEApGnMx38BoqESuMvfU/j4WZuSyJf7C4rlDd2zxg8Bg7kxK40oGL/e1nlpAg==", "infomation"=>{"infomation"=>"fff"}, "commit"=>"新規追加"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/infos_controller.rb:16
+  [1m[36mInfomation Create (2.9ms)[0m  [1m[32mINSERT INTO "infomations" ("infomation", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["infomation", "fff"], ["created_at", "2019-03-19 09:18:32.762260"], ["updated_at", "2019-03-19 09:18:32.762260"]]
+  ↳ app/controllers/infos_controller.rb:16
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/infos_controller.rb:16
+Completed 500 Internal Server Error in 208ms (ActiveRecord: 10.8ms)
+
+
+  
+NameError (undefined local variable or method `infomation_path' for #<InfosController:0x0000558f0686cc08>
+Did you mean?  infomation):
+  
+app/controllers/infos_controller.rb:17:in `create'
+Started GET "/infos/new" for 10.0.2.2 at 2019-03-19 09:19:02 +0000
+Processing by InfosController#new as HTML
+  Rendering infos/new.html.erb within layouts/application
+  Rendered infos/new.html.erb within layouts/application (20.1ms)
+Completed 200 OK in 1490ms (Views: 1467.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/infos" for 10.0.2.2 at 2019-03-19 09:19:08 +0000
+Processing by InfosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Q4Xq4Vtya1vgohflT3yssZElDfRX9vGDk6xBu5/E/xT1atKHGskSgrkkpSiCCeGeHnAO1u5js8J8y//H6K8u3Q==", "infomation"=>{"infomation"=>"aaa"}, "commit"=>"新規追加"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/infos_controller.rb:16
+  [1m[36mInfomation Create (3.8ms)[0m  [1m[32mINSERT INTO "infomations" ("infomation", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["infomation", "aaa"], ["created_at", "2019-03-19 09:19:08.567717"], ["updated_at", "2019-03-19 09:19:08.567717"]]
+  ↳ app/controllers/infos_controller.rb:16
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/infos_controller.rb:16
+Completed 500 Internal Server Error in 233ms (ActiveRecord: 8.8ms)
+
+
+  
+NameError (undefined local variable or method `infomation_path' for #<InfosController:0x00007ff27c01c888>
+Did you mean?  infomation):
+  
+app/controllers/infos_controller.rb:17:in `create'
+Started POST "/infos" for 10.0.2.2 at 2019-03-19 09:20:52 +0000
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by InfosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Q4Xq4Vtya1vgohflT3yssZElDfRX9vGDk6xBu5/E/xT1atKHGskSgrkkpSiCCeGeHnAO1u5js8J8y//H6K8u3Q==", "infomation"=>{"infomation"=>"aaa"}, "commit"=>"新規追加"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/infos_controller.rb:16
+  [1m[36mInfomation Create (4.6ms)[0m  [1m[32mINSERT INTO "infomations" ("infomation", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["infomation", "aaa"], ["created_at", "2019-03-19 09:20:52.724826"], ["updated_at", "2019-03-19 09:20:52.724826"]]
+  ↳ app/controllers/infos_controller.rb:16
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/infos_controller.rb:16
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 16.3ms)
+
+
+  
+ActionController::UrlGenerationError (No route matches {:action=>"update", :controller=>"infos"}, missing required keys: [:id]):
+  
+app/controllers/infos_controller.rb:17:in `create'
+Started POST "/infos" for 10.0.2.2 at 2019-03-19 09:21:48 +0000
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by InfosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Q4Xq4Vtya1vgohflT3yssZElDfRX9vGDk6xBu5/E/xT1atKHGskSgrkkpSiCCeGeHnAO1u5js8J8y//H6K8u3Q==", "infomation"=>{"infomation"=>"aaa"}, "commit"=>"新規追加"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/infos_controller.rb:16
+  [1m[36mInfomation Create (3.4ms)[0m  [1m[32mINSERT INTO "infomations" ("infomation", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["infomation", "aaa"], ["created_at", "2019-03-19 09:21:48.511148"], ["updated_at", "2019-03-19 09:21:48.511148"]]
+  ↳ app/controllers/infos_controller.rb:16
+  [1m[35m (3.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/infos_controller.rb:16
+Redirected to http://localhost:3000/infos
+Completed 302 Found in 26ms (ActiveRecord: 10.5ms)
+
+
+Started GET "/infos" for 10.0.2.2 at 2019-03-19 09:21:48 +0000
+Processing by InfosController#index as HTML
+  Rendering infos/index.html.erb within layouts/application
+  [1m[36mInfomation Load (0.8ms)[0m  [1m[34mSELECT "infomations".* FROM "infomations"[0m
+  ↳ app/views/infos/index.html.erb:24
+  Rendered infos/index.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 1481ms (Views: 1458.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/infos/4/edit" for 10.0.2.2 at 2019-03-19 09:40:24 +0000
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mInfomation Load (0.8ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (147.4ms)
+Completed 500 Internal Server Error in 225ms (ActiveRecord: 4.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `infomation_path' for #<#<Class:0x000056440e8f91e0>:0x000056440e8fe1b8>
+Did you mean?  info_path):
+     9: 					<th></th>
+    10: 				</tr>
+    11: 			</thead>
+    12: 			<%= form_for(@infomation) do |f| %>
+    13: 			<tbody>
+    14: 				<tr>
+    15: 					<td><%=infomation.id %></td>
+  
+app/views/infos/edit.html.erb:12:in `_app_views_infos_edit_html_erb__3781581277387003181_47425151029800'
+Started GET "/infos/4/edit" for 10.0.2.2 at 2019-03-19 09:41:28 +0000
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mInfomation Load (0.9ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (146.5ms)
+Completed 500 Internal Server Error in 240ms (ActiveRecord: 7.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `infomation_path' for #<#<Class:0x0000559a2e09f8a8>:0x0000559a2e09c8d8>
+Did you mean?  info_path):
+     9: 					<th></th>
+    10: 				</tr>
+    11: 			</thead>
+    12: 			<%= form_for(@infomation) do |f| %>
+    13: 			<tbody>
+    14: 				<tr>
+    15: 					<td><%=infomation.id %></td>
+  
+app/views/infos/edit.html.erb:12:in `_app_views_infos_edit_html_erb___3884487685788637284_47060342850640'
+Started GET "/infos/4/edit" for 10.0.2.2 at 2019-03-19 09:41:53 +0000
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mInfomation Load (0.7ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (179.8ms)
+Completed 500 Internal Server Error in 283ms (ActiveRecord: 10.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `infomation_path' for #<#<Class:0x0000557ffd955150>:0x0000557ffd9658c0>
+Did you mean?  info_path):
+     9: 					<th></th>
+    10: 				</tr>
+    11: 			</thead>
+    12: 			<%= form_for(@infomation) do |f| %>
+    13: 			<tbody>
+    14: 				<tr>
+    15: 					<td><%=infomation.id %></td>
+  
+app/views/infos/edit.html.erb:12:in `_app_views_infos_edit_html_erb__983645852270183187_47004101816320'
+Started GET "/infos/4/edit" for 10.0.2.2 at 2019-03-19 09:47:34 +0000
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mInfomation Load (1.0ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (258.5ms)
+Completed 500 Internal Server Error in 332ms (ActiveRecord: 6.1ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `infomation' for #<#<Class:0x0000557e149538e0>:0x0000557e149505c8>
+Did you mean?  @infomation):
+    12: 			<%= form_for @infomation, url:edit_info_path, method: :info_path do |f| %>
+    13: 			<tbody>
+    14: 				<tr>
+    15: 					<td><%=infomation.id %></td>
+    16: 					<td><%= infomation.created_at %></td>
+    17: 					<td><%= f.text_area :infomation %></td>
+    18: 					<td><%= f.submit '編集完了' %></td>
+  
+app/views/infos/edit.html.erb:15:in `block in _app_views_infos_edit_html_erb__129031432833096945_46999999751920'
+app/views/infos/edit.html.erb:12:in `_app_views_infos_edit_html_erb__129031432833096945_46999999751920'
+Started GET "/infos/4/edit" for 10.0.2.2 at 2019-03-19 09:48:47 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mInfomation Load (1.3ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (247.3ms)
+Completed 500 Internal Server Error in 336ms (ActiveRecord: 1.3ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `infomation' for #<#<Class:0x0000557e149538e0>:0x0000557e14d96fd8>
+Did you mean?  @infomation):
+    12: 			<%= form_for @infomation, url:edit_info_path, method: :info_path do |f| %>
+    13: 			<tbody>
+    14: 				<tr>
+    15: 					<td><%= infomation.id %></td>
+    16: 					<td><%= infomation.created_at %></td>
+    17: 					<td><%= f.text_area :infomation %></td>
+    18: 					<td><%= f.submit '編集完了' %></td>
+  
+app/views/infos/edit.html.erb:15:in `block in _app_views_infos_edit_html_erb__129031432833096945_47000002018800'
+app/views/infos/edit.html.erb:12:in `_app_views_infos_edit_html_erb__129031432833096945_47000002018800'
+Started GET "/infos/4/edit" for 10.0.2.2 at 2019-03-19 09:50:37 +0000
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mInfomation Load (1.3ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 1618ms (Views: 1581.7ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/infos/4/edit" for 10.0.2.2 at 2019-03-19 09:51:10 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mInfomation Load (0.9ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (198.6ms)
+Completed 500 Internal Server Error in 264ms (ActiveRecord: 0.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for #<ActionView::Helpers::FormBuilder:0x00007f3acc99b818>):
+    12: 			<%= form_for @infomation, url:edit_info_path, method: :info_path do |f| %>
+    13: 			<tbody>
+    14: 				<tr>
+    15: 					<td><%= f.id %></td>
+    16: 					<td><%= f.created_at %></td>
+    17: 					<td><%= f.text_area :infomation %></td>
+    18: 					<td><%= f.submit '編集完了' %></td>
+  
+app/views/infos/edit.html.erb:15:in `block in _app_views_infos_edit_html_erb___2482141339294534444_69945256714420'
+app/views/infos/edit.html.erb:12:in `_app_views_infos_edit_html_erb___2482141339294534444_69945256714420'
+Started GET "/infos" for 10.0.2.2 at 2019-03-19 09:51:25 +0000
+Processing by InfosController#index as HTML
+  Rendering infos/index.html.erb within layouts/application
+  [1m[36mInfomation Load (0.7ms)[0m  [1m[34mSELECT "infomations".* FROM "infomations"[0m
+  ↳ app/views/infos/index.html.erb:24
+  Rendered infos/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 340ms (Views: 316.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/infos/0/edit" for 10.0.2.2 at 2019-03-19 09:51:27 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mInfomation Load (1.6ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 329ms (Views: 310.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/infos/4/edit" for 10.0.2.2 at 2019-03-19 09:51:37 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mInfomation Load (1.3ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 328ms (Views: 303.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/infos/4/edit" for 10.0.2.2 at 2019-03-19 09:53:20 +0000
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mInfomation Load (1.2ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 1693ms (Views: 1663.4ms | ActiveRecord: 3.7ms)
+
+
+Started POST "/infos/4/edit" for 10.0.2.2 at 2019-03-19 09:53:25 +0000
+  
+ActionController::RoutingError (No route matches [POST] "/infos/4/edit"):
+  
+actionpack (5.2.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/infos/4/edit" for 10.0.2.2 at 2019-03-19 10:01:52 +0000
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mInfomation Load (1.1ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 1404ms (Views: 1368.3ms | ActiveRecord: 7.1ms)
+
+
+Started PATCH "/infos/4/edit" for 10.0.2.2 at 2019-03-19 10:01:56 +0000
+  
+ActionController::RoutingError (No route matches [PATCH] "/infos/4/edit"):
+  
+actionpack (5.2.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started PATCH "/infos/4/edit" for 10.0.2.2 at 2019-03-19 10:03:27 +0000
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (No route matches [PATCH] "/infos/4/edit"):
+  
+actionpack (5.2.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/infos/4/edit" for 10.0.2.2 at 2019-03-19 10:03:51 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mInfomation Load (1.2ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 1657ms (Views: 1631.1ms | ActiveRecord: 5.0ms)
+
+
+Started POST "/infos/4/edit" for 10.0.2.2 at 2019-03-19 10:03:54 +0000
+  
+ActionController::RoutingError (No route matches [POST] "/infos/4/edit"):
+  
+actionpack (5.2.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started POST "/infos/4/edit" for 10.0.2.2 at 2019-03-19 10:07:08 +0000
+  
+ActionController::RoutingError (No route matches [POST] "/infos/4/edit"):
+  
+actionpack (5.2.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/infos/4/edit" for 10.0.2.2 at 2019-03-19 10:08:12 +0000
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mInfomation Load (1.3ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 1712ms (Views: 1680.8ms | ActiveRecord: 4.7ms)
+
+
+Started PATCH "/infos/4/edit" for 10.0.2.2 at 2019-03-19 10:08:18 +0000
+  
+ActionController::RoutingError (No route matches [PATCH] "/infos/4/edit"):
+  
+actionpack (5.2.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/infos" for 10.0.2.2 at 2019-03-19 10:09:23 +0000
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by InfosController#index as HTML
+  Rendering infos/index.html.erb within layouts/application
+  [1m[36mInfomation Load (1.6ms)[0m  [1m[34mSELECT "infomations".* FROM "infomations"[0m
+  ↳ app/views/infos/index.html.erb:24
+  Rendered infos/index.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 1873ms (Views: 1841.1ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/infos" for 10.0.2.2 at 2019-03-19 10:09:26 +0000
+Processing by InfosController#index as HTML
+  Rendering infos/index.html.erb within layouts/application
+  [1m[36mInfomation Load (1.0ms)[0m  [1m[34mSELECT "infomations".* FROM "infomations"[0m
+  ↳ app/views/infos/index.html.erb:24
+  Rendered infos/index.html.erb within layouts/application (8.1ms)
+Completed 200 OK in 405ms (Views: 387.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/infos/0/edit" for 10.0.2.2 at 2019-03-19 10:09:27 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mInfomation Load (2.0ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 370ms (Views: 345.2ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/infos/3/edit" for 10.0.2.2 at 2019-03-19 10:09:37 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mInfomation Load (1.5ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 345ms (Views: 325.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/infos/2/edit" for 10.0.2.2 at 2019-03-19 10:09:59 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mInfomation Load (1.7ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 293ms (Views: 273.8ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/infos/4/edit" for 10.0.2.2 at 2019-03-19 10:10:02 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mInfomation Load (2.1ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 332ms (Views: 308.2ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/infos/3/edit" for 10.0.2.2 at 2019-03-19 10:10:26 +0000
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mInfomation Load (0.8ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 1591ms (Views: 1555.4ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/infos/3/edit" for 10.0.2.2 at 2019-03-19 10:11:07 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mInfomation Load (1.8ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 345ms (Views: 317.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/infos/3/edit" for 10.0.2.2 at 2019-03-19 10:11:08 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mInfomation Load (1.5ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 294ms (Views: 269.5ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/infos/3/edit" for 10.0.2.2 at 2019-03-19 10:11:11 +0000
+  
+ActionController::RoutingError (No route matches [POST] "/infos/3/edit"):
+  
+actionpack (5.2.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/infos" for 10.0.2.2 at 2019-03-19 10:12:02 +0000
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by InfosController#index as HTML
+  Rendering infos/index.html.erb within layouts/application
+  [1m[36mInfomation Load (0.7ms)[0m  [1m[34mSELECT "infomations".* FROM "infomations"[0m
+  ↳ app/views/infos/index.html.erb:24
+  Rendered infos/index.html.erb within layouts/application (12.7ms)
+Completed 200 OK in 1537ms (Views: 1510.9ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/infos/4/edit" for 10.0.2.2 at 2019-03-19 10:12:05 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mInfomation Load (1.6ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 331ms (Views: 299.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/infos/4/edit" for 10.0.2.2 at 2019-03-19 10:12:43 +0000
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mInfomation Load (1.0ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 1568ms (Views: 1535.3ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/infos/4/edit" for 10.0.2.2 at 2019-03-19 10:13:27 +0000
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mInfomation Load (1.8ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 1800ms (Views: 1754.2ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/infos/3/edit" for 10.0.2.2 at 2019-03-19 10:13:57 +0000
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mInfomation Load (0.8ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 1629ms (Views: 1595.1ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/infos/3/edit" for 10.0.2.2 at 2019-03-19 10:14:54 +0000
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mInfomation Load (0.9ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (305.0ms)
+Completed 500 Internal Server Error in 408ms (ActiveRecord: 4.8ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `infomation' for #<#<Class:0x000055bac073a480>:0x000055bac074b3e8>
+Did you mean?  @infomation):
+     9: 					<th></th>
+    10: 				</tr>
+    11: 			</thead>
+    12: 			<%= form_for infomation, url:edit_info_path, method: :patch do |f| %>
+    13: 			<tbody>
+    14: 				<tr>
+    15: 					<td><%= @infomation.id %></td>
+  
+app/views/infos/edit.html.erb:12:in `_app_views_infos_edit_html_erb___1552428424489421222_47130290543260'
+Started GET "/infos/3/edit" for 10.0.2.2 at 2019-03-19 10:15:35 +0000
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mInfomation Load (1.3ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (310.9ms)
+Completed 500 Internal Server Error in 417ms (ActiveRecord: 8.4ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `infomation' for #<#<Class:0x000055c0a713dd10>:0x000055c0a7146578>
+Did you mean?  @infomation):
+     9: 					<th></th>
+    10: 				</tr>
+    11: 			</thead>
+    12: 			<%= form_for infomation, url:edit_info_path, method: :patch do |f| %>
+    13: 			<tbody>
+    14: 				<tr>
+    15: 					<td><%= infomation.id %></td>
+  
+app/views/infos/edit.html.erb:12:in `_app_views_infos_edit_html_erb__2945596723465753448_47142962591700'
+Started GET "/infos/3/edit" for 10.0.2.2 at 2019-03-19 10:15:38 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mInfomation Load (1.7ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (265.0ms)
+Completed 500 Internal Server Error in 322ms (ActiveRecord: 1.7ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `infomation' for #<#<Class:0x000055c0a713dd10>:0x00007febcc02af48>
+Did you mean?  @infomation):
+     9: 					<th></th>
+    10: 				</tr>
+    11: 			</thead>
+    12: 			<%= form_for infomation, url:edit_info_path, method: :patch do |f| %>
+    13: 			<tbody>
+    14: 				<tr>
+    15: 					<td><%= infomation.id %></td>
+  
+app/views/infos/edit.html.erb:12:in `_app_views_infos_edit_html_erb__2945596723465753448_70325358386120'
+Started GET "/infos/3/edit" for 10.0.2.2 at 2019-03-19 10:16:31 +0000
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mInfomation Load (0.8ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (15.2ms)
+Completed 200 OK in 1516ms (Views: 1459.6ms | ActiveRecord: 6.4ms)
+
+
+Started PATCH "/infos/3/edit" for 10.0.2.2 at 2019-03-19 10:16:38 +0000
+  
+ActionController::RoutingError (No route matches [PATCH] "/infos/3/edit"):
+  
+actionpack (5.2.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/infos/3/edit" for 10.0.2.2 at 2019-03-19 10:19:38 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mInfomation Load (1.2ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 316ms (Views: 295.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/infos/3/edit" for 10.0.2.2 at 2019-03-19 10:19:40 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mInfomation Load (2.4ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 340ms (Views: 313.6ms | ActiveRecord: 2.4ms)
+
+
+Started PATCH "/infos/3" for 10.0.2.2 at 2019-03-19 10:19:44 +0000
+Processing by InfosController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yNFT3Mjo9Uk36cMnxFMQqhHerwsTY9HTzk3OQae1G8jtilyBSZ3ecrH3gq/i3anpcaVC1Tay6O5R9Gk4ZlZPDw==", "infomation"=>{"infomation"=>"fffaaa"}, "commit"=>"編集完了", "id"=>"3"}
+  [1m[36mInfomation Load (1.5ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:21
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/infos_controller.rb:22
+  [1m[36mInfomation Update (4.4ms)[0m  [1m[33mUPDATE "infomations" SET "infomation" = ?, "updated_at" = ? WHERE "infomations"."id" = ?[0m  [["infomation", "fffaaa"], ["updated_at", "2019-03-19 10:19:44.992241"], ["id", 3]]
+  ↳ app/controllers/infos_controller.rb:22
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/infos_controller.rb:22
+Redirected to http://localhost:3000/infos
+Completed 302 Found in 23ms (ActiveRecord: 10.9ms)
+
+
+Started GET "/infos" for 10.0.2.2 at 2019-03-19 10:19:45 +0000
+Processing by InfosController#index as HTML
+  Rendering infos/index.html.erb within layouts/application
+  [1m[36mInfomation Load (1.2ms)[0m  [1m[34mSELECT "infomations".* FROM "infomations"[0m
+  ↳ app/views/infos/index.html.erb:24
+  Rendered infos/index.html.erb within layouts/application (21.3ms)
+Completed 200 OK in 361ms (Views: 346.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/infos/4/edit" for 10.0.2.2 at 2019-03-19 10:20:43 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mInfomation Load (2.6ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 303ms (Views: 279.6ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/infos/4/edit" for 10.0.2.2 at 2019-03-19 10:21:12 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mInfomation Load (2.6ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 297ms (Views: 273.9ms | ActiveRecord: 2.6ms)
+
+
+Started PATCH "/infos/4" for 10.0.2.2 at 2019-03-19 10:21:16 +0000
+Processing by InfosController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"G++Kb7wVDjFyzlV4nYHThi2SQj3BZ2RbART856gKsDI+6M4MnlU09O9wlJmRdT8+enW8sy+mdwnX449CkTSIYg==", "infomation"=>{"infomation"=>"aaazzz"}, "commit"=>"編集完了", "id"=>"4"}
+  [1m[36mInfomation Load (1.2ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:21
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/infos_controller.rb:22
+  [1m[36mInfomation Update (2.9ms)[0m  [1m[33mUPDATE "infomations" SET "infomation" = ?, "updated_at" = ? WHERE "infomations"."id" = ?[0m  [["infomation", "aaazzz"], ["updated_at", "2019-03-19 10:21:16.088293"], ["id", 4]]
+  ↳ app/controllers/infos_controller.rb:22
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/infos_controller.rb:22
+Redirected to http://localhost:3000/infos
+Completed 302 Found in 19ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/infos" for 10.0.2.2 at 2019-03-19 10:21:16 +0000
+Processing by InfosController#index as HTML
+  Rendering infos/index.html.erb within layouts/application
+  [1m[36mInfomation Load (1.7ms)[0m  [1m[34mSELECT "infomations".* FROM "infomations"[0m
+  ↳ app/views/infos/index.html.erb:24
+  Rendered infos/index.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 358ms (Views: 335.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/infos" for 10.0.2.2 at 2019-03-19 10:24:19 +0000
+Processing by InfosController#index as HTML
+  Rendering infos/index.html.erb within layouts/application
+  [1m[36mInfomation Load (1.2ms)[0m  [1m[34mSELECT "infomations".* FROM "infomations"[0m
+  ↳ app/views/infos/index.html.erb:24
+  Rendered infos/index.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 849ms (Views: 828.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/infos/4/edit" for 10.0.2.2 at 2019-03-19 10:24:24 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mInfomation Load (1.4ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 300ms (Views: 278.9ms | ActiveRecord: 1.4ms)
+
+
+Started PATCH "/infos/4" for 10.0.2.2 at 2019-03-19 10:24:27 +0000
+Processing by InfosController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MJ/iPyE/t2xzL+CrUiSf9rzSa2PmbvITzyLM1OtGHTIVmKZcA3+Nqe6RIUpe0HNO6zWV7Qiv4UEZ1b9x0nglYg==", "infomation"=>{"infomation"=>"aaazzzaaaa"}, "commit"=>"編集完了", "id"=>"4"}
+  [1m[36mInfomation Load (2.0ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:21
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/infos_controller.rb:22
+  [1m[36mInfomation Update (2.8ms)[0m  [1m[33mUPDATE "infomations" SET "infomation" = ?, "updated_at" = ? WHERE "infomations"."id" = ?[0m  [["infomation", "aaazzzaaaa"], ["updated_at", "2019-03-19 10:24:27.494809"], ["id", 4]]
+  ↳ app/controllers/infos_controller.rb:22
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/infos_controller.rb:22
+Redirected to http://localhost:3000/infos
+Completed 302 Found in 17ms (ActiveRecord: 9.5ms)
+
+
+Started GET "/infos" for 10.0.2.2 at 2019-03-19 10:24:27 +0000
+Processing by InfosController#index as HTML
+  Rendering infos/index.html.erb within layouts/application
+  [1m[36mInfomation Load (1.1ms)[0m  [1m[34mSELECT "infomations".* FROM "infomations"[0m
+  ↳ app/views/infos/index.html.erb:24
+  Rendered infos/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 348ms (Views: 330.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/top" for 10.0.2.2 at 2019-03-19 10:26:17 +0000
+Processing by AdUsersController#top as HTML
+  Rendering ad_users/top.html.erb within layouts/application
+  Rendered ad_users/top.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 327ms (Views: 313.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/top" for 10.0.2.2 at 2019-03-20 03:27:22 +0000
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by AdUsersController#top as HTML
+  Rendering ad_users/top.html.erb within layouts/application
+  Rendered ad_users/top.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 1818ms (Views: 1794.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/infos" for 10.0.2.2 at 2019-03-20 03:27:28 +0000
+Processing by InfosController#index as HTML
+  Rendering infos/index.html.erb within layouts/application
+  [1m[36mInfomation Load (1.9ms)[0m  [1m[34mSELECT "infomations".* FROM "infomations"[0m
+  ↳ app/views/infos/index.html.erb:24
+  Rendered infos/index.html.erb within layouts/application (27.6ms)
+Completed 200 OK in 417ms (Views: 387.3ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/infos/0/edit" for 10.0.2.2 at 2019-03-20 03:27:30 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mInfomation Load (1.0ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (14.8ms)
+Completed 200 OK in 362ms (Views: 328.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/infos/5/edit" for 10.0.2.2 at 2019-03-20 03:27:34 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mInfomation Load (1.0ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 369ms (Views: 350.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/infos/2/edit" for 10.0.2.2 at 2019-03-20 03:27:45 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mInfomation Load (0.8ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 332ms (Views: 309.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/infos/4/edit" for 10.0.2.2 at 2019-03-20 03:28:05 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mInfomation Load (1.2ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 273ms (Views: 252.9ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/infos/4/edit" for 10.0.2.2 at 2019-03-20 03:28:18 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mInfomation Load (1.7ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 378ms (Views: 357.8ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/infos" for 10.0.2.2 at 2019-03-20 03:33:15 +0000
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by InfosController#index as HTML
+  Rendering infos/index.html.erb within layouts/application
+  [1m[36mInfomation Load (0.7ms)[0m  [1m[34mSELECT "infomations".* FROM "infomations"[0m
+  ↳ app/views/infos/index.html.erb:24
+  Rendered infos/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 2353ms (Views: 2329.8ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/infos" for 10.0.2.2 at 2019-03-20 03:33:17 +0000
+Processing by InfosController#index as HTML
+  Rendering infos/index.html.erb within layouts/application
+  [1m[36mInfomation Load (0.7ms)[0m  [1m[34mSELECT "infomations".* FROM "infomations"[0m
+  ↳ app/views/infos/index.html.erb:24
+  Rendered infos/index.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 405ms (Views: 382.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/infos/5/edit" for 10.0.2.2 at 2019-03-20 03:33:22 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mInfomation Load (2.1ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 327ms (Views: 308.9ms | ActiveRecord: 2.1ms)
+
+
+Started PATCH "/infos/5" for 10.0.2.2 at 2019-03-20 03:33:31 +0000
+Processing by InfosController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"U/WkkxUtbRn+J2Y+tAJ65dzzlyXyE7ItrVLb4JJL2Mj4JV3JfrE8Wa28tj4WsmA17bZr2YDYzdesk+TWyuhFOA==", "infomation"=>{"infomation"=>"aaaazzz"}, "commit"=>"編集完了", "id"=>"5"}
+  [1m[36mInfomation Load (1.2ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:21
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/infos_controller.rb:22
+  [1m[36mInfomation Update (4.1ms)[0m  [1m[33mUPDATE "infomations" SET "infomation" = ?, "updated_at" = ? WHERE "infomations"."id" = ?[0m  [["infomation", "aaaazzz"], ["updated_at", "2019-03-20 03:33:31.631902"], ["id", 5]]
+  ↳ app/controllers/infos_controller.rb:22
+  [1m[35m (3.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/infos_controller.rb:22
+Redirected to http://localhost:3000/infos
+Completed 302 Found in 18ms (ActiveRecord: 8.9ms)
+
+
+Started GET "/infos" for 10.0.2.2 at 2019-03-20 03:33:31 +0000
+Processing by InfosController#index as HTML
+  Rendering infos/index.html.erb within layouts/application
+  [1m[36mInfomation Load (1.5ms)[0m  [1m[34mSELECT "infomations".* FROM "infomations"[0m
+  ↳ app/views/infos/index.html.erb:24
+  Rendered infos/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 350ms (Views: 332.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/top" for 10.0.2.2 at 2019-03-20 03:33:42 +0000
+Processing by AdUsersController#top as HTML
+  Rendering ad_users/top.html.erb within layouts/application
+  Rendered ad_users/top.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 310ms (Views: 297.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/infos" for 10.0.2.2 at 2019-03-20 03:33:47 +0000
+Processing by InfosController#index as HTML
+  Rendering infos/index.html.erb within layouts/application
+  [1m[36mInfomation Load (1.5ms)[0m  [1m[34mSELECT "infomations".* FROM "infomations"[0m
+  ↳ app/views/infos/index.html.erb:24
+  Rendered infos/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 302ms (Views: 283.9ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/infos/4/edit" for 10.0.2.2 at 2019-03-20 03:33:55 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mInfomation Load (1.0ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 308ms (Views: 290.4ms | ActiveRecord: 1.0ms)
+
+
+Started PATCH "/infos/4" for 10.0.2.2 at 2019-03-20 03:34:05 +0000
+Processing by InfosController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yqjmBxO+hd/DsfNrAg00Ymtq1f/XCedOT1JMCS6Ma5Nhe+6ZGyhrjHW59vf+VvpVQsxjDwMHIU+oKftyKkiOIA==", "infomation"=>{"infomation"=>"aaazzzaaaaaaololololo"}, "commit"=>"編集完了", "id"=>"4"}
+  [1m[36mInfomation Load (0.9ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:21
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/infos_controller.rb:22
+  [1m[36mInfomation Update (3.1ms)[0m  [1m[33mUPDATE "infomations" SET "infomation" = ?, "updated_at" = ? WHERE "infomations"."id" = ?[0m  [["infomation", "aaazzzaaaaaaololololo"], ["updated_at", "2019-03-20 03:34:05.876160"], ["id", 4]]
+  ↳ app/controllers/infos_controller.rb:22
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/infos_controller.rb:22
+Redirected to http://localhost:3000/infos
+Completed 302 Found in 33ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/infos" for 10.0.2.2 at 2019-03-20 03:34:05 +0000
+Processing by InfosController#index as HTML
+  Rendering infos/index.html.erb within layouts/application
+  [1m[36mInfomation Load (1.0ms)[0m  [1m[34mSELECT "infomations".* FROM "infomations"[0m
+  ↳ app/views/infos/index.html.erb:24
+  Rendered infos/index.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 329ms (Views: 297.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/infos/4/edit" for 10.0.2.2 at 2019-03-20 03:34:10 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mInfomation Load (1.1ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 292ms (Views: 273.9ms | ActiveRecord: 1.1ms)
+
+
+Started PATCH "/infos/4" for 10.0.2.2 at 2019-03-20 03:34:20 +0000
+Processing by InfosController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Uywuh4Vqyx4YZbNrMG8XByOETA5aI6WiCkjcOmvoLob4/yYZjfwlTa5ttvfMNNkwCiL6/o4tY6PtM2tBbyzLNQ==", "infomation"=>{"infomation"=>"aaazzzaaaaaaololololo99999999999999999999999999999999999999999999999999"}, "commit"=>"編集完了", "id"=>"4"}
+  [1m[36mInfomation Load (2.0ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:21
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/infos_controller.rb:22
+  [1m[36mInfomation Update (4.2ms)[0m  [1m[33mUPDATE "infomations" SET "infomation" = ?, "updated_at" = ? WHERE "infomations"."id" = ?[0m  [["infomation", "aaazzzaaaaaaololololo99999999999999999999999999999999999999999999999999"], ["updated_at", "2019-03-20 03:34:20.605805"], ["id", 4]]
+  ↳ app/controllers/infos_controller.rb:22
+  [1m[35m (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/infos_controller.rb:22
+Redirected to http://localhost:3000/infos
+Completed 302 Found in 17ms (ActiveRecord: 9.4ms)
+
+
+Started GET "/infos" for 10.0.2.2 at 2019-03-20 03:34:20 +0000
+Processing by InfosController#index as HTML
+  Rendering infos/index.html.erb within layouts/application
+  [1m[36mInfomation Load (1.4ms)[0m  [1m[34mSELECT "infomations".* FROM "infomations"[0m
+  ↳ app/views/infos/index.html.erb:24
+  Rendered infos/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 325ms (Views: 308.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/infos/4/edit" for 10.0.2.2 at 2019-03-20 03:34:26 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mInfomation Load (1.1ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 302ms (Views: 282.2ms | ActiveRecord: 1.1ms)
+
+
+Started PATCH "/infos/4" for 10.0.2.2 at 2019-03-20 03:34:33 +0000
+Processing by InfosController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2e68Vy9OEjGg8pGQ927r0h913WnNrOMuBJeres+LX0ZyPbTJJ9j8Yhb6lAwLNSXlNtNrmRmiJS/j7BwBy0+69Q==", "infomation"=>{"infomation"=>"aaazzzaaaaaaololololo"}, "commit"=>"編集完了", "id"=>"4"}
+  [1m[36mInfomation Load (1.9ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:21
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/infos_controller.rb:22
+  [1m[36mInfomation Update (3.6ms)[0m  [1m[33mUPDATE "infomations" SET "infomation" = ?, "updated_at" = ? WHERE "infomations"."id" = ?[0m  [["infomation", "aaazzzaaaaaaololololo"], ["updated_at", "2019-03-20 03:34:33.060672"], ["id", 4]]
+  ↳ app/controllers/infos_controller.rb:22
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/infos_controller.rb:22
+Redirected to http://localhost:3000/infos
+Completed 302 Found in 20ms (ActiveRecord: 9.6ms)
+
+
+Started GET "/infos" for 10.0.2.2 at 2019-03-20 03:34:33 +0000
+Processing by InfosController#index as HTML
+  Rendering infos/index.html.erb within layouts/application
+  [1m[36mInfomation Load (1.1ms)[0m  [1m[34mSELECT "infomations".* FROM "infomations"[0m
+  ↳ app/views/infos/index.html.erb:24
+  Rendered infos/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 356ms (Views: 340.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/infos/3/edit" for 10.0.2.2 at 2019-03-20 03:34:39 +0000
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mInfomation Load (1.5ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 300ms (Views: 282.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/infos/3/edit" for 10.0.2.2 at 2019-03-20 03:37:49 +0000
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by InfosController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mInfomation Load (1.4ms)[0m  [1m[34mSELECT  "infomations".* FROM "infomations" WHERE "infomations"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/infos_controller.rb:11
+  Rendering infos/edit.html.erb within layouts/application
+  Rendered infos/edit.html.erb within layouts/application (8.6ms)
+Completed 200 OK in 2163ms (Views: 2127.8ms | ActiveRecord: 6.5ms)
+
+

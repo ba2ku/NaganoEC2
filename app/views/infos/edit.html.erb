@@ -1,21 +1,23 @@
 <div class="row">
 		<h3> 編集</h3>
-		<table>
+		<table class="table">
 			<thead>
 				<tr>
-					<th></th>
 				   </th>id</th>
 					<th>投稿日時</th>
 					<th>内容</th>
+					<th></th>
 				</tr>
 			</thead>
+			<%= form_for @infomation, url:info_path, method: :patch do |f| %>
 			<tbody>
 				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					<td><%= @infomation.id %></td>
+					<td><%= @infomation.created_at %></td>
+					<td><%= f.text_area :infomation %></td>
+					<td><%= f.submit '編集完了' %></td>
 				</tr>
 			</tbody>
+			<% end %>
 		</table>
 	</div>
