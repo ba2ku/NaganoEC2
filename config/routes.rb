@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :ad_shopping_hists, only: [:index, :show, :update]
   resources :infos, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :ad_items
@@ -11,7 +12,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :update, :edit]
   get 'resign' => 'users#resign', as:'resign'
   get 'resign_cmp' => 'users#resign', as:'resign_cmp'
-  devise_for :users
   root to: 'users#top'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
