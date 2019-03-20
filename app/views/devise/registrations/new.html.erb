@@ -1,11 +1,11 @@
 <div class="container">
   <div class="form-group">
     <div class="row">
-      <div class="col-2">
-      </div>
-      <div class="col-8">
 
-        <h2 class="margin_top">新規作成</h2>
+      <div class="col-12">
+        <br>
+        <h2 class="margin_top login_left_1"><strong>新規作成</strong></h2>
+        <p class="login_left_1"><strong>会員情報を入力してください。</strong></p>
 
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
@@ -54,10 +54,6 @@
         <% end %>
 
         <%= render "devise/shared/links" %>
-
-        <div class="col-2">
-        </div>
-
       </div>
     </div>
   </div>

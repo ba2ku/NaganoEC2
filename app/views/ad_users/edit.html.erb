@@ -4,7 +4,7 @@
 		</div>
 		<div class="col-lg-10">
 			<h2>ユーザー編集画面</h2>
-			<p><%= link_to "ユーザー一覧画面へ",ad_users_path,method: :patch %></p>
+			<p><%= link_to "ユーザー一覧画面へ",ad_users_path %></p>
 			<div class="form_for">
 				<%= form_for @user, url:ad_user_path(@user.id) do |f|%>
 				<p>名前(姓名)</p>

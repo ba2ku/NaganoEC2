@@ -10,19 +10,19 @@
         <br>
         <div class="login_field margin_top">
 
-          <h3 class="margin_top"><strong>既に会員登録されている方</strong></h3>
-          <p>ログインIDとパスワードを入力して「ログイン」ボタンを押してください</p>
+          <h3 class="margin_top login_left_1 padding_top"><strong>既に会員登録されている方</strong></h3>
+          <p class="login_left_1">ログインIDとパスワードを入力して「ログイン」ボタンを押してください</p>
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="form-group row">
-            <label for="inputPassword" class="col-sm-2 col-form-label">ログインID</label>
+          <div class="form-group row padding_top">
+            <label for="inputPassword" class="col-sm-2 col-form-label login_left_1 text_center">ログインID</label>
             <div class="col-sm-8">
               <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "Eメールアドレス", class: "form-control"  %>
               <div class="col-sm-2"></div>
             </div>
           </div>
 
-          <div class="form-group row">
-            <label for="inputPassword" class="col-sm-2 col-form-label">パスワード</label>
+          <div class="form-group row padding_top1">
+            <label for="inputPassword" class="col-sm-2 col-form-label login_left_1 text_center">パスワード</label>
             <div class="col-sm-8">
               <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "パスワード"  %>
               <div class="col-sm-2"></div>
@@ -30,29 +30,25 @@
           </div>
 
           <% if devise_mapping.rememberable? %>
-          <div class="row">
-            <div class="col-2"></div>
-            <div class="field">
-              <%= f.check_box :remember_me %>
-              <%= f.label :remember_me %>
-            </div>
+
+          <div class="field login_left_1 text_center">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
           </div>
           <% end %>
-          <div class="row">
-            <div class="col-2"></div>
-            <div class="actions">
-              <%= f.submit "ログイン", class: "" %>
-            </div>
+
+          <div class="actions login_left_1 text_center">
+            <%= f.submit "         ログイン         ", class: "btn btn-info" %>
           </div>
-          <div class="row">
-            <div class="col-2"></div>
+          <div class="login_left_1 padding_top text_right">
             <%= render "devise/shared/links" %>
           </div>
         </div>
-
+<div class="height_1"></div>
 
         <% end %>
       </div>
     </div>
   </div>
+</div>
 </div>

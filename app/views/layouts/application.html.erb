@@ -8,6 +8,7 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script><script type="text/javascript" src="./footerFixed.js"></script>
 </head>
 
 <body>
@@ -23,17 +24,17 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item li_margin">
-            <%= link_to "ホーム", root_path, class: "btn btn-link nav_margin"%>
+            <%= link_to "ホーム", root_path, class: "btn nav_margin"%>
           </li>
           <li class="nav-item li_margin">
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-link" %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn" %>
           </li>
           <li class="nav-item li_margin">
-            <%= link_to "マイページ", user_mypage_path(current_user), class: "btn btn-link" %>
+            <%= link_to "マイページ", user_mypage_path(current_user), class: "btn" %>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="">
+          <input class="form-control mr-sm-2" type="search" placeholder="アーティスト名等">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
         </form>
       </div>
@@ -62,6 +63,8 @@
   <article>
     <%= yield %>
   </article>
+<%= render 'users/footer' %>
+
 </body>
 
 </html>
