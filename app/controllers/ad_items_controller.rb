@@ -14,9 +14,11 @@ class AdItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-    redirect_to ad_items_path
+      flash[:notice] = "新規商品の登録が正常に完了しました。"
+      redirect_to ad_items_path
     else
-    redirect_to root_path
+      flash[:notice] = "新規商品の登録ができませんでした。"
+      redirect_to new_ad_item_path
     end
   end
 
@@ -31,6 +33,7 @@ class AdItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:jacket_id,:artist_id,:genre_id,:label_id,:property_id,:price,:details,:stock,:release_day,:display_flag)
+    params.require(:item).permit(:jacket_id,:artist_id,:genre_id,:label_id,:property_id,:price,:details,:stock,:release_day,:display_flag,
+                                musics_attributes: [:id, :item_id,:cd_number,:music_name,:music_order,:test_url,:_destroy])
   end
 end
