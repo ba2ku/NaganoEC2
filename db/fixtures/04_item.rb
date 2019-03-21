@@ -1,29 +1,26 @@
 Item.seed do |s|
-    s.id = 0
-    s.name = "ほげまる"
+    s.name = "ガールズ＆パンツァー TV&OVA 5.1ch Blu-ray Disc BOX』テーマソング「Still a long way to go」"
     s.genre_id = 0
     s.artist_id = 0
     s.label_id = 0
-    s.property_id = 0
-    s.jacket = 'hoges'
-    s.price = 300
-    s.details = 'hoe'
-    s.stock = 350
+    s.property_id = 2
+    s.jacket = 'img/garupan0'
+    s.price = 1300
+    s.details = '※特典はなくなり次第終了となります。予めご了承ください。'
+    s.stock = 120
     s.release_day = Time.zone.now
     s.display_flag = true
 end
-
 Item.seed do |s|
-    s.id = 2
-    s.name = "ほげまる"
-    s.genre_id = 2
-    s.artist_id =2
-    s.label_id = 2
+s.name = "『ガールズ＆パンツァー 最終章』第1～3話 OP主題歌「Grand symphony」"
+    s.genre_id = 0
+    s.artist_id = 0
+    s.label_id = 0
     s.property_id = 2
-    s.jacket = 'hogehoge'
-    s.price = 1000
-    s.details = 'hogehogeghoe'
-    s.stock = 50
+    s.jacket = 'img/garupan1'
+    s.price = 1300
+    s.details = '※特典はなくなり次第終了となります。予めご了承ください。'
+    s.stock = 120
     s.release_day = Time.zone.now
     s.display_flag = true
 end

@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
         if current_user.admin_user?
             ad_top_path
         else
-            user_mypage_path
+            user_mypage_path(current_user.id)
         end
     end
 

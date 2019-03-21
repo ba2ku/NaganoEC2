@@ -1,36 +1,64 @@
 Address.seed do |s|
-    s.id = 0
     s.user_id = 0
-    s.postcode = "277-0000"
-    s.prefecture = "千葉県"
-    s.city = "柏市"
-    s.street = "どっかしら0-0-1"
-    s.building = "なんとかアパートメント"
+    s.postcode = "311-1304"
+    s.prefecture = "茨城県"
+    s.city = "東茨城郡大洗町和銅"
+    s.street = "1-2-3"
+    s.building = "大洗女子学園 学生寮"
 end
 Address.seed do |s|
-    s.id = 1
     s.user_id = 1
-    s.postcode = "277-0000"
-    s.prefecture = "千葉県"
-    s.city = "柏市"
-    s.street = "どっかしら0-0-1"
-    s.building = "なんとかアパートメント"
+    s.postcode = "311-1304"
+    s.prefecture = "茨城県"
+    s.city = "東茨城郡大洗町和銅"
+    s.street = "1-2-3"
+    s.building = "大洗女子学園 学生寮"
 end
 Address.seed do |s|
-    s.id = 2
     s.user_id = 2
-    s.postcode = "277-0001"
-    s.prefecture = "千葉県"
-    s.city = "柏市"
-    s.street = "どっかしら0-0-2"
-    s.building = "なんとかアパートメント"
+    s.postcode = "311-1304"
+    s.prefecture = "茨城県"
+    s.city = "東茨城郡大洗町和銅"
+    s.street = "1-2-3"
+    s.building = "大洗女子学園 学生寮"
 end
 Address.seed do |s|
-    s.id = 3
     s.user_id = 3
-    s.postcode = "277-0054"
-    s.prefecture = "千葉県"
-    s.city = "柏市南増尾"
-    s.street = "6-3-48"
-    s.building = "戸建"
+    s.postcode = "311-1304"
+    s.prefecture = "茨城県"
+    s.city = "東茨城郡大洗町和銅"
+    s.street = "1-2-3"
+    s.building = "大洗女子学園 学生寮"
+end
+Address.seed do |s|
+    s.user_id = 4
+    s.postcode = "311-1304"
+    s.prefecture = "茨城県"
+    s.city = "東茨城郡大洗町和銅"
+    s.street = "1-2-3"
+    s.building = "大洗女子学園 学生寮"
+end
+Address.seed do |s|
+    s.user_id = 5
+    s.postcode = "311-1304"
+    s.prefecture = "茨城県"
+    s.city = "東茨城郡大洗町和銅"
+    s.street = "1-2-3"
+    s.building = "大洗女子学園 学生寮"
+end
+Address.seed do |s|
+    s.user_id = 6
+    s.postcode = "311-1304"
+    s.prefecture = "茨城県"
+    s.city = "東茨城郡大洗町和銅"
+    s.street = "1-2-3"
+    s.building = "大洗女子学園 学生寮"
+end
+Address.seed do |s|
+    s.user_id = 7
+    s.postcode = "311-1304"
+    s.prefecture = "茨城県"
+    s.city = "東茨城郡大洗町和銅"
+    s.street = "1-2-3"
+    s.building = "大洗女子学園 学生寮"
 end
