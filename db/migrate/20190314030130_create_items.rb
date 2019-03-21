@@ -7,6 +7,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer :stock,null:false, default:0
       t.datetime :release_day, default: -> { 'CURRENT_TIMESTAMP' }
       t.boolean :display_flag,null:false, default:true
+      t.string :name, null:false
 
       t.timestamps
     end

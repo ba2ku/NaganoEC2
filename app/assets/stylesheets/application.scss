@@ -17,6 +17,17 @@
 @import "bootstrap";
 
 // グローバル
+
+* {
+    margin:0;
+    padding:0;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
 .clearfix::after {
     content: "";
     display: block;
@@ -41,14 +52,12 @@ body,
 }
 
 footer {
-    margin-top: auto;
     font-size: 14px;
     background-color: black;
     color: white;
     height: 100px;
     width: 100%;
     text-align: center;
-    bottom: 0;
 }
 
 .f_margin {
@@ -77,6 +86,10 @@ footer {
 }
 
 // テキスト配置オプション
+
+.margin_0 {
+    margin: 0 auto;
+}
 
 .padding_top {
     padding-top: 30px;
@@ -120,7 +133,7 @@ footer {
 
 .mypage_field3 {
     width: 100%;
-    height: 45px;
+    height: 48px;
     background-color: rgb(221, 221, 221);
 }
 
@@ -137,6 +150,14 @@ footer {
 }
 
 .notice_user {
-    font-size: 30px;
+    font-size: 25px;
     color: red;
+}
+
+.color_white {
+    color: white;
+}
+
+.margin_right_footer {
+    margin-right: 20px;
 }

@@ -1,2 +1,54 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="container">
+    <div class="row">
+        <div class="col-12"><br><br>
+            <h3 class="margin_top"><strong>お客様情報編集画面</strong></h3><br>
+            <div class="row margin_top">
+                <%= form_for @user, method: :patch  do |f| %>
+                <p class=""><strong>お名前</strong></p>
+                <div class="">
+                    <%= f.text_field :kanji_last %><%= f.text_field :kanji_first %>
+                </div><br>
+                <p class=""><strong>フリガナ</strong></p>
+                <div class="">
+                    <%= f.text_field :katakana_last %><%= f.text_field :katakana_first %>
+                </div><br>
+                <p class=""><strong>電話番号</strong></p>
+                <div class="">
+                    <%= f.text_field :phone_number %>
+                </div><br>
+                <p class=""><strong>Eメールアドレス</strong></p>
+                <div class="">
+                    <%= f.text_field :email %>
+                </div><br>
+
+                <div class="addresses">
+                    <%= f.fields_for :address do |a| %>
+                    <p class=""><strong>登録住所</strong></p><br>
+                    <div class="">
+                        <%= a.text_field :postcode %>
+                    </div><br>
+                    <p class=""><strong>登録都道府県</strong></p>
+                    <div class="">
+                        <%= a.text_field :prefecture %>
+                    </div><br>
+                    <p class=""><strong>登録都道府県</strong></p>
+                    <div class="">
+                        <%= a.text_field :city %>
+                    </div><br>
+                    <p class=""><strong>登録都道府県</strong></p>
+                    <div class="">
+                        <%= a.text_field :street %>
+                    </div><br>
+                    <p class=""><strong>登録都道府県</strong></p>
+                    <div class="">
+                        <%= a.text_field :building %>
+                    </div><br>
+                    <% end %>
+                </div>
+                <%= f.submit "編集完了" %>
+
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

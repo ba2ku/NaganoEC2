@@ -6,6 +6,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
+    @user = User.new
+    @noadmin = User.where('admin_user = ?', true).empty?
     super
   end
 
@@ -25,7 +27,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # DELETE /resource
-  # def destroy
+  # 　def destroy
   #   super
   # end
 

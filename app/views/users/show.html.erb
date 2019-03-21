@@ -1,2 +1,47 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-9"><br><br>
+            <h3 class="margin_top"><strong>お客様情報確認画面</strong></h3><br>
+            <div class="row margin_top">
+                <p class="col-2"><strong>登録日時</strong></p>
+                <div class="col-10">
+                    <%= @user.created_at.strftime('%Y年%m月%d日 %H:%M') %>
+                </div>
+                <p class="col-2"><strong>お名前</strong></p>
+                <div class="col-10">
+                    <%= @user.kanji_last %><%= @user.kanji_first %>
+                </div>
+                <p class="col-2"><strong>電話番号</strong></p>
+                <div class="col-10">
+                    <%= @user.phone_number %>
+                </div>
+                <p class="col-2"><strong>Eメールアドレス</strong></p>
+                <div class="col-10">
+                    <%= @user.email %>
+                </div>
+                <p class="col-2"><strong>登録住所</strong></p>
+                <div class="col-10">
+                    <%= @user.address.postcode %>
+                </div>
+                <p class="col-2"><strong>登録都道府県</strong></p>
+                <div class="col-10">
+                    <%= @user.address.prefecture %>
+                </div>
+                <p class="col-2"><strong>登録都道府県</strong></p>
+                <div class="col-10">
+                    <%= @user.address.city %>
+                </div>
+                <p class="col-2"><strong>登録都道府県</strong></p>
+                <div class="col-10">
+                    <%= @user.address.street %>
+                </div>
+                <p class="col-2"><strong>登録都道府県</strong></p>
+                <div class="col-10">
+                    <%= @user.address.building %>
+                </div>
+                <%= link_to "　　　　　　編集　　　　　　",edit_user_path(current_user.id),class: "btn btn-info margin_0" %>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>

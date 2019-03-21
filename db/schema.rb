@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 2019_03_19_030532) do
     t.integer "stock", default: 0, null: false
     t.datetime "release_day"
     t.boolean "display_flag", default: true, null: false
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "genre_id"
@@ -125,6 +126,7 @@ ActiveRecord::Schema.define(version: 2019_03_19_030532) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.boolean "deleted", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "sign_in_count", default: 0, null: false

@@ -17,33 +17,33 @@
           <div class="form-group row padding_top kanji_name">
             <label for="inputPassword" class="col-sm-2 col-form-label login_left_1 text_right">名前</label>
             <div class="col-sm-8">
-              <%= f.text_field :kanji_last, autofocus: true , class: "form-control",placeholder: "性" %>
+              <%= f.text_field :kanji_last, autofocus: true , class: "form-control",placeholder: "例：山田" %>
             </div>
           </div>
 
           <div class="form-group row kanji_name">
             <label for="inputPassword" class="col-sm-2 col-form-label login_left_1 text_right"></label>
             <div class="col-sm-8">
-              <%= f.text_field :kanji_first, autofocus: true , class: "form-control", placeholder: "名" %>
+              <%= f.text_field :kanji_first, autofocus: true , class: "form-control", placeholder: "例：太郎" %>
             </div>
           </div>
 
           <div class="form-group row katakana_name">
             <label for="inputPassword" class="col-sm-2 col-form-label login_left_1 text_right">カナ</label>
             <div class="col-sm-8">
-              <%= f.text_field :katakana_last, autofocus: true , class: "form-control",placeholder: "セイ" %>
+              <%= f.text_field :katakana_last, autofocus: true , class: "form-control",placeholder: "例：ヤマダ" %>
             </div>
           </div>
 
           <div class="form-group row katakana_name">
             <label for="inputPassword" class="col-sm-2 col-form-label login_left_1 text_right"></label>
             <div class="col-sm-8">
-              <%= f.text_field :katakana_first, autofocus: true , class: "form-control", placeholder: "メイ" %>
+              <%= f.text_field :katakana_first, autofocus: true , class: "form-control", placeholder: "例：タロウ" %>
             </div>
           </div>
 
 
-          <div class="form-group row field padding_top">
+          <div class="form-group row field">
             <label for="inputPassword" class="col-sm-2 col-form-label login_left_1 text_right">電話番号</label>
             <div class="col-sm-8">
               <%= f.text_field :phone_number, autofocus: true, class: "form-control", placeholder: "例：080-1234-5678" %>
@@ -53,7 +53,7 @@
           <div class="form-group row field">
             <label for="inputPassword" class="col-sm-2 col-form-label login_left_1 text_right">Eメールアドレス</label>
             <div class="col-sm-8">
-              <%= f.text_field :phone_number, autofocus: true, class: "form-control", placeholder: "例：nagano@nagano.com" %>
+              <%= f.text_field :email, autofocus: true, class: "form-control", placeholder: "例：nagano@nagano.com" %>
             </div>
           </div>
 
@@ -73,6 +73,11 @@
               <%= f.text_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "入力されたパスワードを再度入力してください" %>
             </div>
           </div>
+
+          <% if @noadmin %>
+          <div><%= f.label :admin_user %><br />
+            <%= f.check_box :admin_user, { }, true, false %></div>
+          <% end %>
 
           <div class="actions text_center">
             <%= f.submit "         新規登録         ", class: "btn btn-info" %>
