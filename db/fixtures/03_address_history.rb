@@ -1,5 +1,5 @@
 AddressHistory.seed do |s|
-	s.shopping_history_id = 0
+	s.shopping_history_id = 1
     s.postcode = "311-1304"
     s.prefecture = "茨城県"
     s.city = "東茨城郡大洗町和銅"
