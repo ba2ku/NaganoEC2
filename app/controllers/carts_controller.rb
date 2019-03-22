@@ -1,25 +1,34 @@
 class CartsController < ApplicationController
   def index
-    @user = User.find(current_user.id)
+    if user_signed_in?
+      @user = User.find(current_user.id)
+    else
+
+    end
   end
 
   def create
-    @user = User.find(current_user.id)
   end
 
   def show
-    @user = User.find(current_user.id)
+    if user_signed_in?
+      @user = User.find(current_user.id)
+    else
+
+    end
   end
 
   def destroy
-    @user = User.find(current_user.id)
   end
 
   def update
-    @user = User.find(current_user.id)
   end
 
   def cart_cmp
-    @user = User.find(current_user.id)
+    if user_signed_in?
+      @user = User.find(current_user.id)
+    else
+
+    end
   end
 end
