@@ -23,8 +23,13 @@
       </button>
       <% if user_signed_in? %>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto"></ul>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item li_margin color_white">
+            <%= @user.kanji_last %> <%=@user.kanji_first %> 様
+          </li>
+        </ul>
         <ul class="navbar-nav mt-2 mt-lg-0">
+
           <li class="nav-item li_margin">
             <%= link_to "　ホーム　", root_path, class: "btn btn-dark nav_margin"%>
           </li>
@@ -35,6 +40,7 @@
           <li class="nav-item li_margin">
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-dark nav_margin margin_right_footer" %>
           </li>
+
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="アーティスト名等">

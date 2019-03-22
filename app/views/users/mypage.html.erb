@@ -25,7 +25,6 @@
             <div class="item">
                 <%= sh.shopping_date.strftime('%Y年%m月%d日 %H:%M') %>
                 <%= ah.postcode %> <%= ah.prefecture %> <%= ah.city %> <%= ah.street %> <%= ah.building %>
-                <%= attachment_image_tag @item, :jacket, fallback: "no_image.jpg" %>
             </div>
             <% end %>
             <% end %>
@@ -34,7 +33,6 @@
             <% sh.ordered_items.each do |ah| %>
             <div class="item">
                 <%= ah.price %>
-                <%= attachment_image_tag ah.items.jacket_id, :jacket, fallback: "no_image.jpg" %>
             </div>
             <% end %>
             <% end %>

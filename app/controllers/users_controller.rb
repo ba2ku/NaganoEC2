@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def top
+    @user = User.find(current_user.id)
   end
 
   def mypage
@@ -9,6 +10,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(current_user.id)
     @user = User.find(params[:id])
   end
 
