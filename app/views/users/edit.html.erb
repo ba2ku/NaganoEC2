@@ -23,8 +23,8 @@
 
                 <div class="addresses">
                     <%= f.fields_for :address do |a| %>
-                    <p class=""><strong>登録住所</strong></p><br>
                     <div class="">
+                    <p class=""><strong>郵便番号</strong></p>
                         <%= a.text_field :postcode %>
                     </div><br>
                     <p class=""><strong>登録都道府県</strong></p>

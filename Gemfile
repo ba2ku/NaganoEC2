@@ -69,3 +69,4 @@ gem 'number_to_yen'
 gem 'seed-fu'
 gem 'cocoon'
 gem 'nokogiri'
+gem "paranoia", "~> 2.2"

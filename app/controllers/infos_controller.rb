@@ -5,12 +5,17 @@ class InfosController < ApplicationController
   end
 
   def index
-    @user = User.find(current_user.id)
-  	@infomation = Infomation.all
+    @items = Item.all
+    if user_signed_in?
+      @user = User.find(current_user.id)
+    else
+
+    end
+  	@infomations = Infomation.all
   end
 
   def edit
-    @user = User.find(current_user.id)
+    user = User.find(current_user.id)
   end
 
   def create
