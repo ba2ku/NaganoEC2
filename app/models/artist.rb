@@ -1,3 +1,3 @@
 class Artist < ApplicationRecord
-    has_one :item, dependent: :destroy
+    has_many :items, dependent: :destroy
 end

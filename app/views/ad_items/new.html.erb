@@ -25,7 +25,7 @@
 					<%= f.collection_select :property_id, Property.all, :id, :property %><br>
 					<div class="ad_items_new_musics">
 						<div class="links">
-						<%= link_to_add_association '		曲の追加', f, :musics %>
+						<%= link_to_add_association '曲の追加', f, :musics %>
 						</div>
 						<%= f.fields_for :musics do |music| %>
 						<%= render 'music_fields', f: music %>
