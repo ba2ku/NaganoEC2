@@ -1,6 +1,6 @@
 x = 0
-y = 0
 100.times do
+	y = 0
 	x += 1
 	10.times do
 		y += 1

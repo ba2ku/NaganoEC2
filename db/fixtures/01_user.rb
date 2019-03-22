@@ -1,6 +1,7 @@
 # admin_users
-x = 0
+z = 0
 1.times do
+    x = 0
     x += 1
     User.seed do |s|
         s.email = "admin#{x}@com"
@@ -19,17 +20,17 @@ end
 
 # usres
 99.times do
-    x += 1
+    z += 1
     User.seed do |s|
-        s.email = "user#{x}@com"
+        s.email = "user#{z}@com"
         s.password = "asdasd"
-        s.phone_number = "070-0000-0000-#{x}"
+        s.phone_number = "070-0000-0000-#{z}"
         s.registration = true
         s.kanji_last = " 一般"
-        s.kanji_first = "ユーザー#{x}"
+        s.kanji_first = "ユーザー#{z}"
         s.katakana_last = "イッパン"
-        s.katakana_first = "ユーザー#{x}"
-        s.notice = "ユーザー#{x}"
+        s.katakana_first = "ユーザー#{z}"
+        s.notice = "ユーザー#{z}"
         s.admin_user = false
     end
 end
