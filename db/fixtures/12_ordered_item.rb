@@ -1,12 +1,14 @@
-OrderedItem.seed do |s|
-	s.item_id = 1
-	s.shopping_history_id = 1
-	s.price = 1300
-	quantity = 1
-end
-OrderedItem.seed do |s|
-	s.item_id = 2
-	s.shopping_history_id = 1
-	s.price = 1800
-	quantity = 1
+x = 0
+y = 0
+100.times do
+	x += 1
+	10.times do
+		y += 1
+		OrderedItem.seed do |s|
+			s.item_id = y
+			s.shopping_history_id = x
+			s.price = 1300
+			quantity = 1
+		end
+	end
 end

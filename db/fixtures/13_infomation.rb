@@ -1,11 +1,7 @@
-Infomation.seed do |s|
-    s.infomation = 'お知らせお知らせお知らせ'
-end
-
-Infomation.seed do |s|
-    s.infomation = 'お知らせお知らせお知らせ!'
-end
-
-Infomation.seed do |s|
-    s.infomation = 'お知らせお知らせお知らせ'
+x = 0
+10.times do
+    x += 1
+    Infomation.seed do |s|
+        s.infomation = "お知らせ#{x}"
+    end
 end

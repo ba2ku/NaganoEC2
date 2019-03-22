@@ -1,11 +1,7 @@
-Property.seed do |s|
-	s.property = 'シングル'
-end
-
-Property.seed do |s|
-	s.property = 'アルバム'
-end
-
-Property.seed do |s|
-	s.property = '限定盤'
+x = 0
+100.times do
+	x += 1
+	Property.seed do |s|
+		s.property = "プロパティ#{x}"
+	end
 end

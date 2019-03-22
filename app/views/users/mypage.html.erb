@@ -24,18 +24,10 @@
             <p>購入された商品の発送状況</p>
             <% @shopping_history.each do |sh| %>
             <% sh.address_histories.each do |ah| %>
-            <div class="sh_field">
+            <div class="sh_field mp_firld_margin">
                 <%= sh.shopping_date.strftime('%Y年%m月%d日 %H:%M') %><br>
                 <%= sh.updated_at.strftime('%Y年%m月%d日 %H:%M') %>　　<%= sh.status %><br>
                 <%= ah.postcode %> <%= ah.prefecture %> <%= ah.city %> <%= ah.street %> <%= ah.building %>
-            </div>
-            <% end %>
-            <% end %>
-
-            <% @shopping_history.each do |sh| %>
-            <% sh.ordered_items.each do |ah| %>
-            <div class="item">
-                <%= ah.price %>
             </div>
             <% end %>
             <% end %>
