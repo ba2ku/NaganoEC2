@@ -7,7 +7,7 @@ x += 1
             y += 1
             s.item_id = x
             s.cd_number = 1
-            s.music_name = "Still a long way to go#{x}"
+            s.music_name = "曲#{x}"
             s.music_order = y
             test_url = ''
         end
