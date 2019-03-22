@@ -10,6 +10,8 @@
             <h3> <%= @user.kanji_last %> <%= @user.kanji_first %> 様の MyPage</h3>
             <p>※パスワードは定期的に更新されることをおすすめします。</p>
             <br>
+            <%=  %>
+            <br>
             <div class="border-bottom"></div>
             <br>
             <h3>Infomation</h3>
@@ -22,8 +24,9 @@
             <p>購入された商品の発送状況</p>
             <% @shopping_history.each do |sh| %>
             <% sh.address_histories.each do |ah| %>
-            <div class="item">
-                <%= sh.shopping_date.strftime('%Y年%m月%d日 %H:%M') %>
+            <div class="sh_field">
+                <%= sh.shopping_date.strftime('%Y年%m月%d日 %H:%M') %><br>
+                <%= sh.updated_at.strftime('%Y年%m月%d日 %H:%M') %>　　<%= sh.status %><br>
                 <%= ah.postcode %> <%= ah.prefecture %> <%= ah.city %> <%= ah.street %> <%= ah.building %>
             </div>
             <% end %>
