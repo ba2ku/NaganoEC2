@@ -70,3 +70,4 @@ gem 'seed-fu'
 gem 'cocoon'
 gem 'nokogiri'
 gem "paranoia", "~> 2.2"
+gem 'kaminari'
