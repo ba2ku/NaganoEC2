@@ -1,9 +1,11 @@
 class AdShoppingHistsController < ApplicationController
   def index
+    header_name_display
   	@ad_shopping_hists = ShoppingHistory.all.includes(:ordered_items,:user)
   end
 
   def show
+    header_name_display
   	@ad_shopping_hist = ShoppingHistory.find(params[:id])
 
   before_action :authenticate_user!
@@ -23,7 +25,7 @@ class AdShoppingHistsController < ApplicationController
 
 private
 
-   def ad_shopping_hist_params
+  def ad_shopping_hist_params
     params.require(:shopping_history).permit(:status)
    end
 

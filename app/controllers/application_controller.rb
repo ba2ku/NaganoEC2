@@ -2,6 +2,13 @@ class ApplicationController < ActionController::Base
     before_action :configure_permitted_parameters, if: :devise_controller?
     before_action :search
 
+    def header_name_display
+        if user_signed_in?
+            @user = User.find(current_user.id)
+        else
+
+        end
+    end
 
     def after_sign_in_path_for(resource)
         if current_user.admin_user?

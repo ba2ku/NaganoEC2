@@ -5,16 +5,13 @@ class InfosController < ApplicationController
   end
 
   def index
+    header_name_display
     @items = Item.all
-    if user_signed_in?
-      @user = User.find(current_user.id)
-    else
-
-    end
   	@infomations = Infomation.all
   end
 
   def edit
+    header_name_display
     @infomation = Infomation.find(params[:id])
   end
 

@@ -2,10 +2,12 @@ class ItemsController < ApplicationController
   def index
     @q = Item.search(search_params)
     @items = @q.result.includes(:artist,:label,:genre,:property,:musics)
+    header_name_display
   end
 
   def show
-  	@item = Item.find(params[:id])
+    @item = Item.find(params[:id])
+    header_name_display
   end
 
 private
