@@ -4,9 +4,6 @@
 		</div>
 		<div class="col-lg-10">
 			<h2>新規商品追加画面</h2>
-			<% if flash[:notice]%>
-				<p><%= flash[:notice] %></p>
-			<% end %>
 			<%= form_for @item, url:ad_items_path, method: :post do |f| %>
 				<div class="field">
 					<%= f.label :画像 %><br>

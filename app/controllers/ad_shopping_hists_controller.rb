@@ -1,4 +1,5 @@
 class AdShoppingHistsController < ApplicationController
+
   def index
   	@ad_shopping_hists = ShoppingHistory.all.includes(:ordered_items,:user)
   end

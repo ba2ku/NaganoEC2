@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def top
   end
 
@@ -16,4 +17,5 @@ class UsersController < ApplicationController
 
   def resign_cmp
   end
+
 end

@@ -1,4 +1,5 @@
 class AdItemsController < ApplicationController
+
   def index
     @items = Item.all.includes(:artist,:property)
   end
@@ -50,4 +51,5 @@ class AdItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:jacket_id,:artist_id,:genre_id,:label_id,:property_id,:price,:details,:stock,:release_day,:display_flag,musics_attributes: [:id, :item_id,:cd_number,:music_name,:music_order,:test_url,:_destroy])
   end
+
 end

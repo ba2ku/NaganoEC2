@@ -5,6 +5,9 @@
 				<tr>
 				   <td><h1>商品管理一覧画面</h1></td>
 			    </tr>
+			    	<% if flash[:notice]%>
+						<p><%= flash[:notice] %></p>
+					<% end %>
 			    <tr>
 					<td><%= link_to "商品新規追加画面へ", new_ad_item_path %></td>
 				</tr>
