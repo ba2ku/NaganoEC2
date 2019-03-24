@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-21_
 ActiveRecord::Schema.define(version: 2019_03_22_170421) do
 
   create_table "address_histories", force: :cascade do |t|
@@ -129,6 +128,7 @@ ActiveRecord::Schema.define(version: 2019_03_22_170421) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.boolean "deleted", default: false, null: false
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "sign_in_count", default: 0, null: false

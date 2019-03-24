@@ -1,34 +1,42 @@
 <div class="container">
-            <h1>注文履歴</h1>
-
     <div class="row">
-        <% @ordered_items.each do |o| %>
-        <div class="back">
-           <table>
-               <tbody>
-                   <tr>
-                       <td>注文日:</td>
-                       <td><%= o.shopping_history.shopping_date %></td>
-                       <td><%= o.shopping_history.status %></td>
-                   </tr>
-               </tbody>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td><%= attachment_image_tag o.item, :jacket, fallback: "no_image.jpg" %></td>
-                        </tr>
-                        <tr>
-                            <td><%= o.item.property.property %></td>
-                        </tr>
-                        <tr>
-                            <td><%= o.item.artist.artist_name %></td>
-                        </tr>
-                        <tr>
-                            <td><%= o.item.details %></td>
-                        </tr>
-                    </tbody>
-                </table>
-         <% end %>
-        </div>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <h2>注文履歴</h2>
+            <div class="row">
+                <% @shopping_histories.where(:user_id => 0).find_each do |s| %>
+                <p><%= s.user_id %></p>
+                <p><%= s.id %></p>
+                   <div class="hists_item">
+                        <table>
+                            <tbody>
+                                <div class="hists_back">
+                                    <tr>
+                                        <td>購入日<%= s.shopping_date.strftime("%Y-%m-%d") %></td>
+                                    </tr>
+                                    <tr>
+                                        <td><%= link_to '詳細へ', shopping_hist_path(s.id) %></td>
+                                    </tr>
+                                    <% s.ordered_items.where(:shopping_history_id => s.id).find_each do |o| %>
+                                        <tr>
+                    	                	<td><%= attachment_image_tag o.item, :jacket, fallback: "no_image.jpg" %></td>
+                                        </tr>
+                                        <tr>
+                                            <td><%= o.item.property.property %></td>
+                                        </tr>
+                                        <tr>
+                                            <td><%= o.item.artist.artist_name %></td>
+                                        </tr>
+                                        <tr>
+                                        	<td><%= o.item.details %></td>
+                                        </tr>
+                                    <% end %>
+                                </div>
+                            </tbody>
+                        </table>
+                    </div>
+                <% end %>
+            </div>
+        <div class="col-lg-1"></div>
     </div>
 </div>
