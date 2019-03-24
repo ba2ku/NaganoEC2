@@ -5,23 +5,52 @@
   <title>Nagano</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <script type="text/javascript" src="js/footerFixed.js"></script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
 </head>
 
 <body>
   <header>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-black">
-      <a class="navbar-brand" href="#">NaganoEC</a>
+      <a class="navbar-brand" href="/">NaganoEC</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
         aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
+      <% if user_signed_in? %>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <ul class="navbar-nav mr-auto">
+        <li class="color_white">
+          <%= @user.kanji_last %> <%= @user.kanji_first %> 様
+        </li>
+        </ul>
+        <ul class="navbar-nav mt-2 mt-lg-0">
+
+          <li class="nav-item li_margin">
+            <%= link_to "　ホーム　", root_path, class: "btn btn-dark nav_margin"%>
+          </li>
+
+          <li class="nav-item li_margin">
+            <%= link_to "マイページ", user_mypage_path(current_user), class: "btn btn-dark nav_margin" %>
+          </li>
+          <li class="nav-item li_margin">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-dark nav_margin margin_right_footer" %>
+          </li>
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="アーティスト名等">
+          <button class="btn btn-dark nav_margin my-2 my-sm-0" type="submit">検索</button>
+        </form>
+      </div>
+      <% else %>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto"></ul>
+        <ul class="navbar-nav mt-2 mt-lg-0">
           <li class="nav-item li_margin">
             <%= link_to "ホーム", root_path, class: "btn btn-dark nav_margin"%>
           </li>
@@ -29,20 +58,24 @@
             <%= link_to "ログイン", new_user_session_path, class: "btn btn-dark" %>
           </li>
           <li class="nav-item li_margin">
-            <%= link_to "新規作成", new_user_registration_path, class: "btn btn-dark" %>
+            <%= link_to "新規作成", new_user_registration_path, class: "btn btn-dark margin_right_footer" %>
           </li>
+
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
+          <button class="btn btn-dark nav_margin my-2 my-sm-0" type="submit">検索</button>
         </form>
       </div>
+      <% end %>
     </nav>
   </header>
 
   <article>
     <%= yield %>
   </article>
+  <%= render 'users/footer' %>
+
 </body>
 
 </html>

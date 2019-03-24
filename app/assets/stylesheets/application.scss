@@ -16,11 +16,25 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
+// グローバル
+
+* {
+    margin:0;
+    padding:0;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
 .clearfix::after {
     content: "";
     display: block;
     clear: both;
 }
+
+// グローバル
 
 .bg-black {
     background-color: black;
@@ -30,6 +44,13 @@
     margin: 0 5px 0 5px;
 }
 
+body,
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 10vh;
+}
+
 footer {
     font-size: 14px;
     background-color: black;
@@ -37,8 +58,6 @@ footer {
     height: 100px;
     width: 100%;
     text-align: center;
-    position: absolute;
-    bottom: 0;
 }
 
 .f_margin {
@@ -46,10 +65,109 @@ footer {
 }
 
 .btn {
-    background-color: black;
     font-size: 9px;
-    border-color: black;
 }
 
-.nav_margin {
+.margin_top {
+    margin-top: 15px;
+}
+
+// テキスト配置オプション
+.text_center {
+    text-align: center;
+}
+
+.text_left {
+    text-align: left;
+}
+
+.text_right {
+    text-align: right;
+}
+
+// テキスト配置オプション
+
+.margin_0 {
+    margin: 0 auto;
+}
+
+.padding_top {
+    padding-top: 30px;
+}
+
+.padding_top5px {
+    padding-top: 5px;
+}
+
+.padding_top10px {
+    padding-top: 10px;
+}
+
+.padding_top20px {
+    padding-top: 20px;
+}
+
+.padding_left5px {
+    padding-left: 5px;
+}
+
+.padding_left10px {
+    padding-left: 10px;
+}
+
+.padding_left20px {
+    padding-top: 20px;
+}
+
+.login_field {
+    width: 100%;
+    height: auto;
+    background-color: rgb(221, 221, 221);
+}
+
+.sginup_field {
+    width: 100%;
+    height: auto;
+    background-color: rgb(221, 221, 221);
+}
+
+.mypage_field3 {
+    width: 100%;
+    height: 48px;
+    background-color: rgb(221, 221, 221);
+}
+
+.login_left_1 {
+    margin-left: 30px;
+}
+
+.height_1 {
+    height: 30px;
+}
+
+.margin_top_2 {
+    margin-top: 50px;
+}
+
+.notice_user {
+    font-size: 25px;
+    color: red;
+}
+
+.color_white {
+    color: white;
+}
+
+.margin_right_footer {
+    margin-right: 20px;
+}
+
+.sh_field {
+    height: 200px;
+    width: 100%;
+    background-color: rgb(221, 221, 221);
+}
+
+.mp_firld_margin {
+    margin-bottom: 20px;
 }

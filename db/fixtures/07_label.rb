@@ -1,14 +1,7 @@
-Label.seed do |s|
-	s.id = 0
-	s.label = 'HOGE'
-end
-
-Label.seed do |s|
-	s.id = 1
-	s.label = 'WBJ'
-end
-
-Label.seed do |s|
-	s.id = 2
-	s.label = 'SME'
+x = 0
+100.times do
+	x += 1
+	Label.seed do |s|
+		s.label = "レーベル#{x}"
+	end
 end

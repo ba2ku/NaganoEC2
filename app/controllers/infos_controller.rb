@@ -1,13 +1,21 @@
 class InfosController < ApplicationController
   def new
+    @user = User.find(current_user.id)
     @infomation = Infomation.new
   end
 
   def index
-  	@infomation = Infomation.all
+    @items = Item.all
+    if user_signed_in?
+      @user = User.find(current_user.id)
+    else
+
+    end
+  	@infomations = Infomation.all
   end
 
   def edit
+    user = User.find(current_user.id)
   end
 
   def create

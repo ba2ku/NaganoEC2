@@ -1,11 +1,21 @@
 class CartsController < ApplicationController
   def index
+    if user_signed_in?
+      @user = User.find(current_user.id)
+    else
+
+    end
   end
 
   def create
   end
 
   def show
+    if user_signed_in?
+      @user = User.find(current_user.id)
+    else
+
+    end
   end
 
   def destroy
@@ -15,5 +25,10 @@ class CartsController < ApplicationController
   end
 
   def cart_cmp
+    if user_signed_in?
+      @user = User.find(current_user.id)
+    else
+
+    end
   end
 end

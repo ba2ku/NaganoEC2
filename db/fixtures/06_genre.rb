@@ -1,14 +1,7 @@
-Genre.seed do |s|
-	s.id = 0
-	s.genre = 'ロック'
-end
-
-Genre.seed do |s|
-	s.id = 1
-	s.genre = '演歌'
-end
-
-Genre.seed do |s|
-	s.id = 2
-	s.genre = 'アニソン'
+x = 0
+100.times do
+	x += 1
+	Genre.seed do |s|
+		s.genre = "ジャンル#{x}"
+	end
 end

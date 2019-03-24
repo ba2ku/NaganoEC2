@@ -1,40 +1,36 @@
-User.seed do |s|
-    s.id = 0
-    s.email = "hoge@hoge.com"
-    s.encrypted_password = "test123"
-    s.phone_number = "080-0000-0000"
-    s.registration = true
-    s.kanji_last = "hoge"
-    s.kanji_first = "タロウ"
-    s.katakana_last = "ホゲ"
-    s.katakana_first = "タロウ"
-    s.notice = "お金払ってください"
-    s.admin_user = true
+# admin_users
+z = 0
+1.times do
+    x = 0
+    x += 1
+    User.seed do |s|
+        s.email = "admin#{x}@com"
+        s.password = "asdasd"
+        s.phone_number = "070-0000-0000-#{x}"
+        s.registration = true
+        s.kanji_last = "管理者"
+        s.kanji_first = "ユーザー#{x}"
+        s.katakana_last = "カンリシャ"
+        s.katakana_first = "ユーザー#{x}"
+        s.notice = "管理者#{x}"
+        s.admin_user = true
+    end
 end
 
-User.seed do |s|
-    s.id = 1
-    s.email = "admin@test.com"
-    s.encrypted_password = "test123"
-    s.phone_number = "080-0000-0000"
-    s.registration = true
-    s.kanji_last = "管理"
-    s.kanji_first = "使用者"
-    s.katakana_last = "カンリ"
-    s.katakana_first = "ユーザー"
-    s.admin_user = true
-end
 
-User.seed do |s|
-    s.id = 2
-    s.email = "user@test.com"
-    s.encrypted_password = "test123"
-    s.phone_number = "080-0000-0001"
-    s.registration = true
-    s.kanji_last = "一般"
-    s.kanji_first = "使用者"
-    s.katakana_last = "イッパン"
-    s.katakana_first = "ユーザー"
-    s.notice = "お金払ってください"
-    s.admin_user = false
+# usres
+99.times do
+    z += 1
+    User.seed do |s|
+        s.email = "user#{z}@com"
+        s.password = "asdasd"
+        s.phone_number = "070-0000-0000-#{z}"
+        s.registration = true
+        s.kanji_last = " 一般"
+        s.kanji_first = "ユーザー#{z}"
+        s.katakana_last = "イッパン"
+        s.katakana_first = "ユーザー#{z}"
+        s.notice = "ユーザー#{z}"
+        s.admin_user = false
+    end
 end
