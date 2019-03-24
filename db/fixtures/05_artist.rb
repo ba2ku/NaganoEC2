@@ -1,14 +1,7 @@
-Artist.seed do |s|
-	s.id = 0
-	s.artist_name = '光GENJI'
-end
-
-Artist.seed do |s|
-	s.id = 1
-	s.artist_name = '宇多田ヒカル'
-end
-
-Artist.seed do |s|
-	s.id = 2
-	s.artist_name = '初音ミク'
+x = 0
+100.times do
+	x += 1
+	Artist.seed do |s|
+		s.artist_name = "アーティスト#{x}"
+	end
 end

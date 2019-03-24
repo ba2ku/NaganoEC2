@@ -1,10 +1,22 @@
 class AdItemsController < ApplicationController
 
-  def index
+  before_action :authenticate_user!
+  before_action :authenticate_user_admin
+ def index
     @items = Item.all.includes(:artist,:property)
-  end
+    if user_signed_in?
+      @user = User.find(current_user.id)
+    else
+
+    end
+ end
 
   def new
+    if user_signed_in?
+      @user = User.find(current_user.id)
+    else
+
+    end
     @item = Item.new
     @artists = Artist.all
     @genres = Genre.all
@@ -24,6 +36,12 @@ class AdItemsController < ApplicationController
   end
 
   def show
+    if user_signed_in?
+      @user = User.find(current_user.id)
+    else
+
+    end
+    @user = User.find(current_user.id)
   end
 
   def edit

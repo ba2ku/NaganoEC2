@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <br>
+            <br>
+            <br>
+            <div class="">
+            </div>
+            <h3> <%= @user.kanji_last %> <%= @user.kanji_first %> 様の MyPage</h3>
+            <p>※パスワードは定期的に更新されることをおすすめします。</p>
+            <br>
+            <%=  %>
+            <br>
+            <div class="border-bottom"></div>
+            <br>
+            <h3>Infomation</h3>
+            <p>カスタマーデスクからのお知らせ。</p>
+            <div class="notice_user"><%= @user.notice %></div>
+            <div class="border-bottom"></div>
+            <br>
+
+            <h3>発送情報</h3>
+            <p>購入された商品の発送状況、２件まで表示されます。他をご確認したい場合は購入履歴をご確認ください。</p>
+            <% @shopping_history.last(2).each do |sh| %>
+            <% sh.address_histories.each do |ah| %>
+            <div class="sh_field mp_firld_margin">
+                <%= sh.shopping_date.strftime('%Y年%m月%d日 %H:%M') %>　　のご注文<br>
+                <%= sh.updated_at.strftime('%Y年%m月%d日 %H:%M') %>　　<%= sh.status %><br>
+                <%= ah.postcode %> <%= ah.prefecture %> <%= ah.city %> <%= ah.street %> <%= ah.building %>
+            </div>
+            <% end %>
+            <% end %>
+
+            <div class="border-bottom"></div>
+            <div class="mypage_field3 padding_top10px margin_top padding_left10px">
+                <%= link_to "購入履歴", shopping_hists_path(current_user.id) %></div>
+            <div class="mypage_field3 padding_top10px margin_top padding_left10px">
+                <%= link_to "お客様基本情報確認", user_path(current_user.id) %></div>
+            <div class="mypage_field3 padding_top10px margin_top padding_left10px">
+                <%= link_to "退会", edit_user_registration_path %></div>
+        </div>
+        <div class="col-1"></div>
+
+
+    </div>
+
+</div>

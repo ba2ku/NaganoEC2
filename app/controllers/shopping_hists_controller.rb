@@ -4,8 +4,10 @@ class ShoppingHistsController < ApplicationController
   end
 
   def create
+    @user = User.find(current_user.id)
   end
 
   def show
+    @user = User.find(current_user.id)
   end
 end

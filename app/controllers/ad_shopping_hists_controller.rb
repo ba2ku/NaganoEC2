@@ -1,11 +1,13 @@
 class AdShoppingHistsController < ApplicationController
-
   def index
   	@ad_shopping_hists = ShoppingHistory.all.includes(:ordered_items,:user)
   end
 
   def show
   	@ad_shopping_hist = ShoppingHistory.find(params[:id])
+
+  before_action :authenticate_user!
+  before_action :authenticate_user_admin
   end
 
   def update

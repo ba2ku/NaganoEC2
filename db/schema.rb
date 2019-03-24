@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_21_062450) do
+21_
+ActiveRecord::Schema.define(version: 2019_03_22_170421) do
 
   create_table "address_histories", force: :cascade do |t|
     t.integer "shopping_history_id", null: false
@@ -67,6 +68,7 @@ ActiveRecord::Schema.define(version: 2019_03_21_062450) do
     t.integer "stock", default: 0, null: false
     t.datetime "release_day"
     t.boolean "display_flag", default: true, null: false
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "genre_id"
@@ -122,6 +124,11 @@ ActiveRecord::Schema.define(version: 2019_03_21_062450) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.boolean "deleted", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "sign_in_count", default: 0, null: false
@@ -137,6 +144,8 @@ ActiveRecord::Schema.define(version: 2019_03_21_062450) do
     t.string "katakana_first", default: "", null: false
     t.boolean "admin_user", default: false, null: false
     t.string "notice"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
