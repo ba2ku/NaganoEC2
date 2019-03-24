@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+21_
 ActiveRecord::Schema.define(version: 2019_03_22_170421) do
 
   create_table "address_histories", force: :cascade do |t|
@@ -74,6 +75,7 @@ ActiveRecord::Schema.define(version: 2019_03_22_170421) do
     t.integer "property_id"
     t.integer "label_id"
     t.integer "artist_id"
+    t.string "name"
   end
 
   create_table "labels", force: :cascade do |t|

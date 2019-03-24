@@ -1,0 +1,19 @@
+<div class='nested-fields'>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>CD番号</th>
+				<th>曲順番号</th>
+				<th>曲名</th>
+				<th>視聴用URL</th>
+			</tr>
+		</thead>
+		<tbody>
+			<td><%= f.number_field :cd_number %></td>
+			<td><%= f.number_field :music_order %></td>
+			<td><%= f.text_field :music_name %></td>
+			<td><%= f.url_field :test_url %></td>
+			<td><%= link_to_remove_association "曲削除", f %></td>
+		</tbody>
+	</table>
+</div>

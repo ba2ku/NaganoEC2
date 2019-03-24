@@ -1,9 +1,17 @@
 class ItemsController < ApplicationController
   def index
-    @user = User.find(current_user.id)
+    @q = Item.search(search_params)
+    @items = @q.result.includes(:artist,:label,:genre,:property,:musics)
   end
 
   def show
-    @user = User.find(current_user.id)
+  	@item = Item.find(params[:id])
   end
+
+private
+
+def search_params
+    params.require(:q).permit(:name_cont)
+end
+
 end

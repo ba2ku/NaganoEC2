@@ -1,6 +1,6 @@
 class ShoppingHistsController < ApplicationController
   def index
-    @user = User.find(current_user.id)
+  	@ordered_items = OrderedItem.all.includes(:Item,:ShoppingHistory)
   end
 
   def create

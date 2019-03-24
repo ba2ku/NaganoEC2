@@ -1,2 +1,46 @@
-<h1>AdShoppingHists#index</h1>
-<p>Find me in app/views/ad_shopping_hists/index.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-1"></div>
+		<div class="col-lg-10">
+			<h2>購入日一覧</h2>
+			<% if flash[:notice] %>
+    			<%= flash[:notice] %>
+ 			<% end %>
+ 			<br>
+			<%=link_to "ユーザー管理画面へ", ad_users_path %>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>購入者</th>
+						<th>購入日</th>
+						<th>価格小計</th>
+						<th>配送状況</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @ad_shopping_hists.each do |s| %>
+					<tr>
+						<td><%= s.user.kanji_last %><%= s.user.kanji_first %></td>
+						<td><%= s.shopping_date.strftime("%Y-%m-%d") %></td>
+						<td><% result = 0 %>
+							<% s.ordered_items.each do |order| %>
+								<% result += order.price * order.quantity %>
+							<% end %>
+							<%= result %>
+						</td>
+						<%= form_for s, url:ad_shopping_hist_path(s.id), method: :patch do |f| %>
+							<td><%= f.select :status, [["入金待ち","入金待ち"], ["配送準備中","配送準備中"], ["配送済","発送済"]], :selected=>s.status %>
+							</td>
+							<td><%= f.submit :配送状況更新 %></td>
+							<% end %>
+						<td><%= link_to '詳細へ', ad_shopping_hist_path(s.id) %></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-lg-1"></div>
+	</div>
+</div>

@@ -1,2 +1,66 @@
-<h1>AdShoppingHists#show</h1>
-<p>Find me in app/views/ad_shopping_hists/show.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-1"></div>
+		<div class="col-lg-10">
+			<%=link_to "ユーザー管理画面へ", ad_users_path %><br>
+			<%=link_to "購入履歴一覧画面へ", ad_shopping_hists_path %>
+			<div class="card">
+				<div class="card-header user_name">購入履歴詳細</div>
+				<div class="card-body">
+					<div class="card-title user_name">
+						<span>購入者名：</span>
+					</div>
+					<div class="card-text">
+						<%= @ad_shopping_hist.user.kanji_last %><%= @ad_shopping_hist.user.kanji_first %>
+					</div>
+				</div>
+				<div class="card-body">
+					<div class="card-title shopping_date">
+						<span>購入日：</span>
+					</div>
+					<div class="card-text">
+						<%= @ad_shopping_hist.shopping_date.strftime("%Y-%m-%d") %>
+					</div>
+				</div>
+				<div class="card-body">
+					<div class="card-title order_details">
+						<span>購入内容：</span>
+					</div>
+					<% @ad_shopping_hist.ordered_items.where(:shopping_history_id => @ad_shopping_hist.id).find_each do |o|%>
+						<div class="card-text">
+							<%= o.item.name%>
+							<%= o.quantity%>個
+							<%= o.price * o.quantity %>円
+						</div>
+					<% end %>
+				</div>
+				<div class="card-body">
+					<div class="card-title address">
+						<span>送付先：</span>
+					</div>
+					<% @ad_shopping_hist.address_histories.where(:shopping_history_id => @ad_shopping_hist.id).find_each do |a|%>
+						<div class="card-text">
+							<span>郵便番号：<%= a.postcode%></span><br>
+							<%= a.prefecture%><br>
+							<%= a.city%><br>
+							<%= a.street%><br>
+							<%= a.building%><br>
+						</div>
+					<% end %>
+				</div>
+				<div class="card-body">
+					<div class="card-title status">
+						<span>配送状況：</span>
+					</div>
+					<%= form_for @ad_shopping_hist, url:ad_shopping_hist_path(@ad_shopping_hist.id), method: :patch do |f| %>
+					<div class="card-text">
+						<%= f.select :status, [["入金待ち","入金待ち"], ["配送準備中","配送準備中"], ["配送済","発送済"]], :selected=>@ad_shopping_hist.status %>
+						<%= f.submit :配送状況更新 %>
+					</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-1"></div>
+	</div>
+</div>

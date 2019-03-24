@@ -1,2 +1,37 @@
-<h1>Items#index</h1>
-<p>Find me in app/views/items/index.html.erb</p>
+<div class="container">
+	<div class="row">
+		<table>
+			<tbody>
+				<tr>
+				   <td><h1>商品検索結果画面</h1></td>
+			    </tr>
+			</tbody>
+		</table>
+	</div>
+	   <div class="row">
+	      <% @items.each do |item| %>
+	      <div class="ad_items_index_table">
+		   	<table>
+		   		<%= link_to item_path(item) do %>
+			   	<tbody class="a_item">
+			   		<tr>
+				   		<td><%= attachment_image_tag @item, :jacket, fallback: "no_image.jpg" %></td>
+			   		</tr>
+			   		<tr>
+			   			<td><%= item.property.property%></td>
+			   		</tr>
+			   		<tr>
+			   			<%= item.id %>
+			   			<td><%= item.artist.artist_name %></td>
+			   		</tr>
+			   		<tr>
+			   			<td><%= item.stock %></td>
+			   		</tr>
+			   	</tbody>
+			   	<% end %>
+			</table>
+		   </div>
+
+		   <% end %>
+	   </div>
+</div>

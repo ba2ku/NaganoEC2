@@ -1,2 +1,34 @@
-<h1>ShoppingHists#index</h1>
-<p>Find me in app/views/shopping_hists/index.html.erb</p>
+<div class="container">
+            <h1>注文履歴</h1>
+
+    <div class="row">
+        <% @ordered_items.each do |o| %>
+        <div class="back">
+           <table>
+               <tbody>
+                   <tr>
+                       <td>注文日:</td>
+                       <td><%= o.shopping_history.shopping_date %></td>
+                       <td><%= o.shopping_history.status %></td>
+                   </tr>
+               </tbody>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><%= attachment_image_tag o.item, :jacket, fallback: "no_image.jpg" %></td>
+                        </tr>
+                        <tr>
+                            <td><%= o.item.property.property %></td>
+                        </tr>
+                        <tr>
+                            <td><%= o.item.artist.artist_name %></td>
+                        </tr>
+                        <tr>
+                            <td><%= o.item.details %></td>
+                        </tr>
+                    </tbody>
+                </table>
+         <% end %>
+        </div>
+    </div>
+</div>

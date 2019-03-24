@@ -3,45 +3,43 @@
 		<table>
 			<tbody>
 				<tr>
-					<td>
-						<h1>商品管理一覧画面</h1>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<%= link_to "商品新規追加画面へ", new_ad_item_path %>
-					</td>
+				   <td><h1>商品管理一覧画面</h1></td>
+			  </tr>
+			  <% if flash[:notice]%>
+				  <p><%= flash[:notice] %></p>
+				<% end %>
+			  <tr>
+					<td><%= link_to "商品新規追加画面へ", new_ad_item_path %></td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
-	<div class="row">
-		<% @items.each do |item| %>
-		<div class="ad_items_index_table">
-			<table>
-				<%= link_to ad_item_path(item) do %>
-				<tbody class="a_item">
-					<tr>
-						<td>
-							<%= attachment_image_tag @item, :jacket, fallback: "no_image.jpg" %>
-						</td>
-					</tr>
-					<tr>
-						<td><%= item.property.property %></td>
-					</tr>
-					<tr>
-						<td><%= item.artist.artist_name %></td>
-					</tr>
-					<tr>
-						<td>
-							<%= item.stock %>
-						</td>
-					</tr>
-				</tbody>
-				<% end %>
-			</table>
-		</div>
-
+	 <div class="row">
+	    <% @items.each do |item| %>
+        <div class="ad_items_index_table">
+          <table>
+            <%= link_to ad_item_path(item) do %>
+              <tbody class="a_item">
+                <tr>
+                  <td><%= attachment_image_tag @item, :jacket, fallback: "no_image.jpg" %></td>
+                </tr>
+                <tr>
+                  <td><%= item.property.property%></td>
+                </tr>
+                <tr>
+                  <%= item.id %>
+                  <td><%= item.artist.artist_name %></td>
+                </tr>
+                <tr>
+                  <td><%= item.stock %></td>
+                </tr>
+                <tr>
+                  <td><%= link_to '編集', edit_ad_item_path(item.id) %></td>
+                </tr>
+              </tbody>
+            <% end %>
+          </table>
+      </div>
 		<% end %>
 	</div>
 </div>
