@@ -10,3 +10,4 @@ x = 0
         s.street = "1-2-3"
         s.building = "大洗女子学園 学生寮"
     end
+end

@@ -3,6 +3,7 @@ class CartsController < ApplicationController
   def index
     if user_signed_in?
       @user = User.find(current_user.id)
+
     else
 
     end
@@ -12,6 +13,7 @@ class CartsController < ApplicationController
   end
 # 決算確認画面表示
   def show
+    @cart = Cart.find(params[:id])
     if user_signed_in?
       @user = User.find(current_user.id)
     else
