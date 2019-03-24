@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 2019_03_22_170421) do
   end
 
   create_table "addresses", force: :cascade do |t|
-    t.string "postcode", null: false
-    t.string "prefecture", null: false
-    t.string "city", null: false
-    t.string "street", null: false
+    t.string "postcode"
+    t.string "prefecture"
+    t.string "city"
+    t.string "street"
     t.string "building"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -74,7 +74,6 @@ ActiveRecord::Schema.define(version: 2019_03_22_170421) do
     t.integer "property_id"
     t.integer "label_id"
     t.integer "artist_id"
-    t.string "name"
   end
 
   create_table "labels", force: :cascade do |t|
@@ -128,7 +127,6 @@ ActiveRecord::Schema.define(version: 2019_03_22_170421) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.boolean "deleted", default: false, null: false
-
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "sign_in_count", default: 0, null: false
