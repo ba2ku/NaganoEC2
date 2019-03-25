@@ -53,4 +53,3 @@ class UsersController < ApplicationController
     params.require(:user).permit(:kanji_last,:kanji_first,:katakana_last,:katakana_first,:phone_number,:email,:notice,address_attributes: [:postcode,:prefecture,:city,:street,:building])
   end
 end
-ß
