@@ -1,25 +1,31 @@
 class UsersController < ApplicationController
 
   def top
-    header_name_display
+    @items = Item.all
+    @infos = Infomation.all
+
+    if user_signed_in?
+      @user = User.find(current_user.id)
+    else
+
+    end
   end
 
   def mypage
-    header_name_display
     @shopping_histories = ShoppingHistory.all
     @shopping_history = @shopping_histories.where(:user_id => current_user)
     @shopping_hist = ShoppingHistory.find(current_user.id)
   end
 
   def show
-    header_name_display
+    if user_signed_in?
+      @user = User.find(current_user.id)
+    end
   end
 
   def update
     if user_signed_in?
       @user = User.find(current_user.id)
-    else
-
     end
     if @user.update(user_params)
         flash[:notice] = "ユーザー情報が更新されました。"
@@ -31,11 +37,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-    header_name_display
+    if user_signed_in?
+      @user = User.find(current_user.id)
+    end
   end
 
   def resign
-    header_name_display
   end
 
   def resign_cmp

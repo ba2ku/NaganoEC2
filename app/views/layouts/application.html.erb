@@ -8,10 +8,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <script type="text/javascript" src="js/footerFixed.js"></script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-
 </head>
-
 <body>
   <header>
 
@@ -24,9 +21,9 @@
       <% if user_signed_in? %>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto">
-          <li class="color_white">
-            <%= @user.kanji_last %> <%= @user.kanji_first %> 様
-          </li>
+        <li class="color_white">
+          <%= current_user.try(:kanji_last) %> <%= current_user.try(:kanji_first) %> 様
+        </li>
         </ul>
         <ul class="navbar-nav mt-2 mt-lg-0">
           <% if current_user.admin_user? %>

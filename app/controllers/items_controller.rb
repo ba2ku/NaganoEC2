@@ -7,8 +7,8 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
-    header_name_display
+  	@item = Item.find(params[:id])
+  	@cart = Cart.new
   end
 
 private
