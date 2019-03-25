@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   resources :ad_users, only: [:index, :edit, :update, :destroy]
   get 'top' => 'ad_users#top', as:'ad_top'
   resources :shopping_hists, only: [:index, :create, :show]
-  resources :carts, only: [:index, :create, :show, :destroy, :update]
+  resources :carts, only: [:index, :create, :destroy, :update]
   get 'cart_cmp' => 'carts#carts_cmp', as:'cart_cmp'
+  get 'cart_cfm' => 'carts#carts_cfm', as:'cart_cfm'
   resources :items, only: [:index, :show]
   resources :users, only: [:show, :update, :edit]
   get 'resign' => 'users#resign', as:'resign'

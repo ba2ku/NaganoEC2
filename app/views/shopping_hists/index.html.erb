@@ -4,13 +4,13 @@
         <div class="col-lg-10">
             <h2>注文履歴</h2>
             <div class="row">
-                <% @shopping_histories.where(:user_id => 0).find_each do |s| %>
+                <% @shopping_histories.where(:user_id => current_user).find_each do |s| %>
                 <p><%= s.user_id %></p>
                 <p><%= s.id %></p>
                    <div class="hists_item">
                         <table>
                             <tbody>
-                                <div class="ec_color">
+                                <div class="hists_back">
                                     <tr>
                                         <td>購入日<%= s.shopping_date.strftime("%Y-%m-%d") %></td>
                                     </tr>

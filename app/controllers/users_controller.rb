@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
 
   def top
+    @items = Item.all
+    @infos = Infomation.all
+
   if user_signed_in?
     @user = User.find(current_user.id)
   else
