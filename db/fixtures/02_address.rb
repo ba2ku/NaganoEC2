@@ -1,6 +1,6 @@
 
 x = 0
-100.times do
+200.times do
     x += 1
     Address.seed do |s|
         s.user_id = x

@@ -4,9 +4,9 @@
 		<div class="col-lg-10">
 			<h2>購入日一覧</h2>
 			<% if flash[:notice] %>
-    			<%= flash[:notice] %>
- 			<% end %>
- 			<br>
+			<%= flash[:notice] %>
+			<% end %>
+			<br>
 			<%=link_to "ユーザー管理画面へ", ad_users_path %>
 			<table class="table">
 				<thead>
@@ -20,21 +20,21 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% @ad_shopping_hists.each do |s| %>
+					<% @ad_shopping_hists.find_each do |s| %>
 					<tr>
 						<td><%= s.user.kanji_last %><%= s.user.kanji_first %></td>
 						<td><%= s.shopping_date.strftime("%Y-%m-%d") %></td>
 						<td><% result = 0 %>
 							<% s.ordered_items.each do |order| %>
-								<% result += order.price * order.quantity %>
+							<% result += order.price * order.quantity %>
 							<% end %>
 							<%= result %>
 						</td>
 						<%= form_for s, url:ad_shopping_hist_path(s.id), method: :patch do |f| %>
-							<td><%= f.select :status, [["入金待ち","入金待ち"], ["配送準備中","配送準備中"], ["配送済","発送済"]], :selected=>s.status %>
-							</td>
-							<td><%= f.submit :配送状況更新 %></td>
-							<% end %>
+						<td><%= f.select :status, [["入金待ち","入金待ち"], ["配送準備中","配送準備中"], ["配送済","発送済"]], :selected=>s.status %>
+						</td>
+						<td><%= f.submit :配送状況更新 %></td>
+						<% end %>
 						<td><%= link_to '詳細へ', ad_shopping_hist_path(s.id) %></td>
 					</tr>
 					<% end %>

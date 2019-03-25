@@ -7,7 +7,8 @@ class UsersController < ApplicationController
   def mypage
     header_name_display
     @shopping_histories = ShoppingHistory.all
-    @shopping_history = ShoppingHistory.where(user: current_user.id)
+    @shopping_history = @shopping_histories.where(:user_id => current_user)
+    @shopping_hist = ShoppingHistory.find(current_user.id)
   end
 
   def show

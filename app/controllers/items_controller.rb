@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   def index
     @q = Item.search(search_params)
     @items = @q.result.includes(:artist,:label,:genre,:property,:musics)
+    @items = @items.page(params[:page]).per(28)
     header_name_display
   end
 

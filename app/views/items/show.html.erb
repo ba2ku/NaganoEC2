@@ -3,30 +3,32 @@
 		<table>
 			<tbody>
 				<tr>
-				   <td><h1><%=@item.name%>詳細</h1></td>
-			    </tr>
+					<td>
+						<h1><%=@item.name%>詳細</h1>
+					</td>
+				</tr>
 			</tbody>
 		</table>
 	</div>
-	   <div class="row">
-	      <div class="ad_items_index_table">
-		   	<table>
-			   	<tbody class="item-details">
-			   		<div class="image">
-				   		<tr>
-					   		<td><%= attachment_image_tag @item, :jacket,:fill,100,100, fallback: "no_image.jpg" %></td>
-				   		</tr>
-			   		</div>
-			   		<tr>
-			   			<td>
-			   				<%= @item.property.property %>
-			   			</td>
-			   		</tr>
-			   		<tr>
-			   			<td><%= @item.stock %></td>
-			   		</tr>
-			   	</tbody>
+	<div class="row">
+		<div class="ad_items_index_table">
+			<table>
+				<tbody class="item-details">
+					<div class="image">
+						<tr>
+							<td><%= attachment_image_tag @item, :jacket,:fill,100,100, fallback: "no_image.jpg",size: '500x500' %></td>
+						</tr>
+					</div>
+					<tr>
+						<td>
+							<%= @item.property.property %>
+						</td>
+					</tr>
+					<tr>
+						<td><%= @item.stock %></td>
+					</tr>
+				</tbody>
 			</table>
-		   </div>
-	   </div>
+		</div>
+	</div>
 </div>

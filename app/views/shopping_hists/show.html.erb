@@ -25,13 +25,13 @@
                         <span>送付先：</span>
                     </div>
                     <% @shopping_hist.address_histories.where(:shopping_history_id => @shopping_hist.id).find_each do |a|%>
-                        <div class="card-text">
-                            <span>郵便番号：<%= a.postcode%></span><br>
-                            <%= a.prefecture%><br>
-                            <%= a.city%><br>
-                            <%= a.street%><br>
-                            <%= a.building%><br>
-                        </div>
+                    <div class="card-text">
+                        <span>郵便番号：<%= a.postcode%></span><br>
+                        <%= a.prefecture%><br>
+                        <%= a.city%><br>
+                        <%= a.street%><br>
+                        <%= a.building%><br>
+                    </div>
                     <% end %>
                 </div>
                 <div class="card-body">
@@ -39,29 +39,29 @@
                         <span>購入内容：</span>
                     </div>
                     <% @shopping_hist.ordered_items.where(:shopping_history_id => @shopping_hist.id).find_each do |o|%>
-                        <div class="card-text">
-                            <div clss="hists_item">
-                                 <table>
-                            	    <tbody>
-                            	    	<tr>
-                                            <td><%= attachment_image_tag o.item, :jacket, fallback: "no_image.jpg" %></td>
-                                        </tr>
-                                        <tr>
-                                            <td><%= o.item.property.property %></td>
-                                        </tr>
-                                        <tr>
-                                            <td><%= o.item.artist.artist_name %></td>
-                                        </tr>
-                                        <tr>
-                                            <td><%= o.quantity %>個</td>
-                                        </tr>
-                                        <tr>
-        		                            <td><%= o.price * o.quantity %>円</td>
-        		                        </tr>
-        		                    </tbody>
-        		                 </table>
-                            </div>
+                    <div class="card-text">
+                        <div clss="hists_item">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td><%= attachment_image_tag o.item, :jacket, fallback: "no_image.jpg" %></td>
+                                    </tr>
+                                    <tr>
+                                        <td><%= o.item.property.property %></td>
+                                    </tr>
+                                    <tr>
+                                        <td><%= o.item.artist.artist_name %></td>
+                                    </tr>
+                                    <tr>
+                                        <td><%= o.quantity %>個</td>
+                                    </tr>
+                                    <tr>
+                                        <td><%= o.price * o.quantity %>円</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
+                    </div>
                     <% end %>
                 </div>
             </div>
@@ -69,4 +69,3 @@
         <div class="col-lg-1"></div>
     </div>
 </div>
-

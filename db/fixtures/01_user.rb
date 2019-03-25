@@ -19,7 +19,7 @@ end
 
 
 # usres
-99.times do
+199.times do
     z += 1
     User.seed do |s|
         s.email = "user#{z}@com"
