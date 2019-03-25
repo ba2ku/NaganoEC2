@@ -4,19 +4,14 @@ class UsersController < ApplicationController
     @items = Item.all
     @infos = Infomation.all
 
-  if user_signed_in?
-    @user = User.find(current_user.id)
-  else
-
-  end
-  end
-
-  def mypage
     if user_signed_in?
       @user = User.find(current_user.id)
     else
 
     end
+  end
+
+  def mypage
     @shopping_histories = ShoppingHistory.all
     @shopping_history = ShoppingHistory.where(user: current_user.id)
   end
@@ -24,16 +19,13 @@ class UsersController < ApplicationController
   def show
     if user_signed_in?
       @user = User.find(current_user.id)
-    else
-
     end
+
   end
 
   def update
     if user_signed_in?
       @user = User.find(current_user.id)
-    else
-
     end
     if @user.update(user_params)
         flash[:notice] = "ユーザー情報が更新されました。"
@@ -47,17 +39,10 @@ class UsersController < ApplicationController
   def edit
     if user_signed_in?
       @user = User.find(current_user.id)
-    else
-
     end
   end
 
   def resign
-    if user_signed_in?
-      @user = User.find(current_user.id)
-    else
-
-    end
   end
 
   def resign_cmp
@@ -68,3 +53,4 @@ class UsersController < ApplicationController
     params.require(:user).permit(:kanji_last,:kanji_first,:katakana_last,:katakana_first,:phone_number,:email,:notice,address_attributes: [:postcode,:prefecture,:city,:street,:building])
   end
 end
+ß

@@ -1,2 +1,41 @@
-<h1>Carts#index</h1>
-<p>Find me in app/views/carts/index.html.erb</p>
+<div class="container">
+	<div class="row">
+		<h2>カート</h2>
+		<%if flash[:notice]%>
+		<%=flash[:notice]%>
+		<% end %>
+		<table class="table">
+			<% result = 0 %>
+			<%= @carts.where(:user_id => current_user).find_each do |c| %>
+			<tr>
+				<td>
+					<div class="cart_detail">
+						<%= attachment_image_tag c.item, :jacket, fallback: "garupan0.jpg" %>
+					</div>
+					<div class="cart_detail">
+						<p><%= c.item.name %></p>
+						<p><%= c.item.artist.artist_name %></p>
+						<p><%= c.item.price%>円</p>
+						<p><%= c.amount %>個</p>
+						<p>小計：<%= c.amount * c.item.price%>円</p>
+						<%= form_for c, url:cart_path(c.id), method: :patch  do | a |%>
+							<%= a.number_field :amount%>
+							<%= a.submit :個数変更 %>
+						<% end %>
+						<%= form_for c, url:cart_path(c.id), method: :delete  do | a |%>
+							<%= a.submit :削除 %>
+						<% end %>
+						<% result += c.amount * c.item.price%>
+					</div>
+					<hr>
+					<p>商品詳細:</p>
+					<p><%= c.item.details%></p>
+					<hr>
+				</td>
+			</tr>
+			<% end %>
+		</table>
+		<p>総額：<%= result %>円</p>
+		<%= link_to "決済確認画面へ",cart_cfm_path ,class:"btn btn-success btn-block"%>
+	</div>
+</div>
