@@ -8,10 +8,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <script type="text/javascript" src="js/footerFixed.js"></script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-
 </head>
-
 <body>
   <header>
 
@@ -25,7 +22,7 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto">
         <li class="color_white">
-          <%= @user.kanji_last %> <%= @user.kanji_first %> 様
+          <%= current_user.try(:kanji_last) %> <%= current_user.try(:kanji_first) %> 様
         </li>
         </ul>
         <ul class="navbar-nav mt-2 mt-lg-0">
@@ -42,10 +39,12 @@
           </li>
 
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="アーティスト名等">
-          <button class="btn btn-dark nav_margin my-2 my-sm-0" type="submit">検索</button>
-        </form>
+        <div class="">
+          <%=  search_form_for(@q, url:items_path) do |f|%>
+            <%= f.label :hoge %>
+            <%= f.search_field :name_cont,:placeholder => "商品名"%>
+            <%= f.submit :検索 %><br>
+          <% end %>
       </div>
       <% else %>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">

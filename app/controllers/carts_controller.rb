@@ -1,35 +1,47 @@
 class CartsController < ApplicationController
 # カート画面を表示する
   def index
-    if user_signed_in?
-      @user = User.find(current_user.id)
-    else
-
-    end
+    @carts = Cart.all.includes(:item,:user)
   end
 #カートテーブルに1レコード記録する(カートに入れる)
   def create
+    @cart = Cart.new(cart_params)
+    @cart.save
+    redirect_to carts_path
   end
 # 決算確認画面表示
-  def show
-    if user_signed_in?
-      @user = User.find(current_user.id)
-    else
-
-    end
+  def cart_cfm
+    @carts = Cart.all.includes(:item,:user)
   end
 #カートテーブルの特定のレコードを更新する
   def destroy
+    @cart = Cart.find(params[:id])
+    if @cart.destroy
+      flash[:notice] = "削除しました。"
+      redirect_to carts_path
+    else
+      flash[:notice] = "更新に失敗しました。"
+      redirect_to carts_path
+    end
   end
 #カートテーブルの個数を更新する
   def update
+    @cart = Cart.find(params[:id])
+    if @cart.update(cart_params)
+      flash[:notice] = "更新しました。"
+      redirect_to carts_path
+    else
+      flash[:notice] = "更新に失敗しました。"
+      redirect_to carts_path
+    end
   end
 #決算完了画面
   def cart_cmp
-    if user_signed_in?
-      @user = User.find(current_user.id)
-    else
-
-    end
   end
+
+  private
+  def cart_params
+    params.require(:cart).permit(:user_id,:item_id,:amount)
+  end
+
 end
