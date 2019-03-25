@@ -6,6 +6,8 @@
 			<h2>新規商品追加画面</h2>
 			<%= form_for @item, url:ad_items_path, method: :post do |f| %>
 				<div class="field">
+					<%= f.label :商品名 %><br>
+					<%= f.text_field :name %><br>
 					<%= f.label :画像 %><br>
 					<%= f.attachment_field :jacket%><br>
 					<%= f.label :値段 %><br>

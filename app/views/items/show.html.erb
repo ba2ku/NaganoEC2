@@ -25,6 +25,14 @@
 			   		<tr>
 			   			<td><%= @item.stock %></td>
 			   		</tr>
+			   			<td><%= form_for @cart,url: carts_path, method: :post do |f| %>
+				   				<%= f.hidden_field :user_id, :value => current_user.id %>
+				   				<%= f.hidden_field :item_id, :value => @item.id %>
+				   				<%= f.hidden_field :amount, :value => 1 %>
+				   				<%= f.submit :カートに入れる %>
+				   			<% end %>
+			   			</td>
+			   		</tr>
 			   	</tbody>
 			</table>
 		   </div>
