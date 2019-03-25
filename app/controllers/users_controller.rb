@@ -13,14 +13,14 @@ class UsersController < ApplicationController
 
   def mypage
     @shopping_histories = ShoppingHistory.all
-    @shopping_history = ShoppingHistory.where(user: current_user.id)
+    @shopping_history = @shopping_histories.where(:user_id => current_user)
+    @shopping_hist = ShoppingHistory.find(current_user.id)
   end
 
   def show
     if user_signed_in?
       @user = User.find(current_user.id)
     end
-
   end
 
   def update

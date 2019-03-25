@@ -20,7 +20,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% @users.each do |user| %>
+					<% @users.find_each do |user| %>
 					<tr>
 						<td><%= user.kanji_last %><%= user.kanji_first %></td>
 						<td><%= user.email%></td>

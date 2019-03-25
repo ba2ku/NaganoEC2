@@ -3,35 +3,33 @@
 		<table>
 			<tbody>
 				<tr>
-				   <td><h1>商品検索結果画面</h1></td>
-			    </tr>
+					<td>
+						<h1 class="margin_top">商品検索結果画面</h1>
+					</td>
+				</tr>
 			</tbody>
 		</table>
 	</div>
-	   <div class="row">
-	      <% @items.each do |item| %>
-	      <div class="ad_items_index_table">
-		   	<table>
-		   		<%= link_to item_path(item) do %>
-			   	<tbody class="a_item">
-			   		<tr>
-				   		<td><%= attachment_image_tag @item, :jacket, fallback: "no_image.jpg" %></td>
-			   		</tr>
-			   		<tr>
-			   			<td><%= item.property.property%></td>
-			   		</tr>
-			   		<tr>
-			   			<%= item.id %>
-			   			<td><%= item.artist.artist_name %></td>
-			   		</tr>
-			   		<tr>
-			   			<td><%= item.stock %></td>
-			   		</tr>
-			   	</tbody>
-			   	<% end %>
-			</table>
-		   </div>
+	<div class="row">
 
-		   <% end %>
-	   </div>
+		<% @items.each do |item| %>
+		<div class="ad_items_index_table color_black">
+			<%= link_to item_path(item), class: "item_index color_black" do %>
+			<div class="item_index_field">
+				<td><%= attachment_image_tag @item, :jacket, :fill, 200, 200 ,fallback: "no_image.jpg", size: '230x230' %>
+				</td>
+				<td><%= item.property.property %></td><br>
+				<td><%= item.artist.artist_name %></td><br>
+				<td><%= item.stock %></td><br>
+				<% end %>
+			</div>
+			<div class="border-bottom"></div>
+		</div>
+
+		<% end %>
+		<div class="block"></div>
+		<div class="margin_0">
+			<%= paginate @items %>
+		</div>
+	</div>
 </div>

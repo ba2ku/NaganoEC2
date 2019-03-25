@@ -26,7 +26,11 @@
         </li>
         </ul>
         <ul class="navbar-nav mt-2 mt-lg-0">
-
+          <% if current_user.admin_user? %>
+          <li  class="nav-item li_margin">
+            <%= link_to "管理者ページ", ad_top_path,class: "color_white btn btn-dark" %>
+          <% end %>
+          </li>
           <li class="nav-item li_margin">
             <%= link_to "　ホーム　", root_path, class: "btn btn-dark nav_margin"%>
           </li>
@@ -41,10 +45,11 @@
         </ul>
         <div class="">
           <%=  search_form_for(@q, url:items_path) do |f|%>
-            <%= f.label :hoge %>
-            <%= f.search_field :name_cont,:placeholder => "商品名"%>
-            <%= f.submit :検索 %><br>
+          <%= f.label '' %>
+          <%= f.search_field :name_cont,:placeholder => "商品名"%>
+          <%= f.submit :検索 %><br>
           <% end %>
+        </div>
       </div>
       <% else %>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
@@ -63,9 +68,9 @@
         </ul>
         <div class="">
           <%=  search_form_for(@q, url:items_path) do |f|%>
-            <%= f.label :hoge %>
-            <%= f.search_field :name_cont,:placeholder => "商品名"%>
-            <%= f.submit :検索 %><br>
+          <%= f.label '' %>
+          <%= f.search_field :name_cont,:placeholder => "商品名"%>
+          <%= f.submit :検索 %><br>
           <% end %>
         </div>
       </div>

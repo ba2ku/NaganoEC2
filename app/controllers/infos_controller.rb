@@ -5,11 +5,13 @@ class InfosController < ApplicationController
   end
 
   def index
+    header_name_display
     @items = Item.all
   	@infomations = Infomation.all
   end
 
   def edit
+    header_name_display
     @infomation = Infomation.find(params[:id])
   end
 

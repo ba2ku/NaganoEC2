@@ -1,5 +1,5 @@
 x = 0
-100.times do
+200.times do
 	y = 0
 	x += 1
 	10.times do
@@ -8,7 +8,7 @@ x = 0
 			s.item_id = y
 			s.shopping_history_id = x
 			s.price = 1300
-			quantity = 1
+			quantity = 5
 		end
 	end
 end

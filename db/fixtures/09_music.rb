@@ -1,6 +1,6 @@
 x = 0
 z = 0
-100.times do
+200.times do
 x += 1
 y = 0
     12.times do
