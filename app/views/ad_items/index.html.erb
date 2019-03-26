@@ -18,19 +18,18 @@
   </div>
   <div class="row">
     <% @items.each do |item| %>
-    <div class="ad_items_index_table">
+    <div class="ad_items_index_table item_index_field border">
       <table>
         <%= link_to ad_item_path(item) do %>
         <tbody class="a_item">
           <tr>
-            <td><%= attachment_image_tag @item, :jacket, fallback: "no_image.jpg",size:'200x200' %></td>
+            <td><%= attachment_image_tag item, :jacket, fallback: "no_image.jpg",size:'230x230' %></td>
           </tr>
           <tr>
-            <td><%= item.property.property%></td>
+            <td><%= item.name.truncate(15) %></td>
           </tr>
           <tr>
-            <%= item.id %>
-            <td><%= item.artist.artist_name %></td>
+            <td><%= item.artist.artist_name.truncate(15)  %></td>
           </tr>
           <tr>
             <td><%= item.stock %></td>

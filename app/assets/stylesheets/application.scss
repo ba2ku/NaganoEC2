@@ -182,18 +182,115 @@ footer {
 }
 
 .item_index_field {
-    height: 320px;
     width: 250px;
-    background-color: rgb(221, 221, 221);
+    background-color: rgba(221, 221, 221, 0.383);
     margin: 10px 10px 10px 10px;
     padding: 10px 10px 10px 10px;
 }
-
+// color
 .color_black {
     color: black;
 }
 
-.block {
+.color_red {
+    color: rgb(212, 0, 0);
+}
+
+.bg_red {
+    background-color: rgb(212, 0, 0);
+}
+
+.color_blue {
+    color: rgb(0, 98, 255);
+}
+
+.block_10 {
     width: 100%;
     height: 10px;
+}
+
+.block_20 {
+    width: 100%;
+    height: 20px;
+}
+
+.block_30 {
+    width: 100%;
+    height: 30px;
+}
+
+.block_40 {
+    width: 100%;
+    height: 40px;
+}
+
+.block_50 {
+    width: 100%;
+    height: 50px;
+}
+
+.block_60 {
+    width: 100%;
+    height: 60px;
+}
+
+.block_70 {
+    width: 100%;
+    height: 70em;
+}
+
+.block_80 {
+    width: 100%;
+    height: 80px;
+}
+
+.block_item_show {
+    width: 100%;
+    height: 5em;
+}
+
+
+.property {
+    margin: 5px 0 0 0;
+    width: 100px;
+    height: 20px;
+    font-size: 8px;
+    background-color: rgb(54, 54, 54);
+    color: white;
+    border-radius: 2px 2px 2px 2px;
+    text-align: center;
+    padding: 2px;
+}
+
+.amount_text {
+    font-size: 30px;
+}
+
+td {
+    margin: 0;
+    padding: 0;
+}
+
+
+.artist_size {
+    font-size: 10px;
+}
+
+.cart_btn {
+    height: 50px;
+    width: 200px;
+    font-size: 20px;
+}
+
+.margin_left {
+    margin-left: 150px;
+}
+
+.padding_0 {
+    padding: 0 0 0 0;
+}
+
+.fa-youtube {
+    font-size: 30px;
+    color: red;
 }

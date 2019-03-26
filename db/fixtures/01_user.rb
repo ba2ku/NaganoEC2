@@ -1,8 +1,9 @@
 # admin_users
 x = 0
 1.times do
+    x += 1
     User.seed do |s|
-        s.email = "admin+#{x}+@com"
+        s.email = "admin#{x}@com"
         s.password = "asdasd"
         s.phone_number = "070-0000-0000-#{x}"
         s.registration = true
@@ -17,7 +18,9 @@ end
 
 
 # usres
-99.times do |i|
+i = 1
+199.times do
+    i += 1
     User.seed do |s|
         s.email = "user#{i}@com"
         s.password = "asdasd"

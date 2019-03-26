@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-		<h2>カート</h2>
+		<h2 class="margin_top">カート</h2>
 		<%if flash[:notice]%>
 		<%=flash[:notice]%>
 		<% end %>
@@ -9,33 +9,34 @@
 			<%= @carts.where(:user_id => current_user).find_each do |c| %>
 			<tr>
 				<td>
-					<div class="cart_detail">
-						<%= attachment_image_tag c.item, :jacket, fallback: "garupan0.jpg" %>
+					<div class="cart_detail col-3">
+						<%= attachment_image_tag c.item, :jacket, fallback: "no_image.jpg", size: "320x320" %>
 					</div>
-					<div class="cart_detail">
-						<p><%= c.item.name %></p>
-						<p><%= c.item.artist.artist_name %></p>
-						<p><%= c.item.price%>円</p>
-						<p><%= c.amount %>個</p>
-						<p>小計：<%= c.amount * c.item.price%>円</p>
+				</td>
+				<td>
+					<div class="cart_detail col">
+						<div class="property">
+							<%= c.item.property.property %>
+						</div>
+						<p>商品名：<%= c.item.name %></p>
+						<p>アーティスト名：<%= c.item.artist.artist_name %></p>
+						<p>単価：<%= number_to_yen(c.item.price) %></p>
+						<p>購入個数：<%= c.amount %>個</p>
+						<p>小計：<%= number_to_yen(c.amount * c.item.price) %></p>
 						<%= form_for c, url:cart_path(c.id), method: :patch  do | a |%>
-							<%= a.number_field :amount%>
-							<%= a.submit :個数変更 %>
+						<%= a.number_field :amount%>
+						<%= a.submit :個数変更,class:"btn btn-dark" %>
 						<% end %>
 						<%= form_for c, url:cart_path(c.id), method: :delete  do | a |%>
-							<%= a.submit :削除 %>
+						<%= a.submit :削除,class:"btn btn-dark margin_top" %>
 						<% end %>
 						<% result += c.amount * c.item.price%>
 					</div>
-					<hr>
-					<p>商品詳細:</p>
-					<p><%= c.item.details%></p>
-					<hr>
 				</td>
 			</tr>
 			<% end %>
 		</table>
-		<p>総額：<%= result %>円</p>
+		<p class="color_red amount_text margin_0">総額：<%= number_to_yen(result) %></p>
 		<%= link_to "決済確認画面へ",cart_cfm_path ,class:"btn btn-success btn-block"%>
 	</div>
 </div>

@@ -24,11 +24,11 @@ ActiveRecord::Schema.define(version: 2019_03_22_170421) do
   end
 
   create_table "addresses", force: :cascade do |t|
-    t.string "postcode"
-    t.string "prefecture"
-    t.string "city"
-    t.string "street"
-    t.string "building"
+    t.string "postcode", default: "", null: false
+    t.string "prefecture", default: "", null: false
+    t.string "city", default: "", null: false
+    t.string "street", default: "", null: false
+    t.string "building", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
