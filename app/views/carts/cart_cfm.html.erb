@@ -31,5 +31,27 @@
 				<% end %>
 			</tr>
 		</table>
+		<%= form_for @shopping_hist, url:shopping_hists_path,method: :post do |s|%>
+			<%= s.hidden_field :user_id, :value => current_user.id %>
+			<%= s.hidden_field :shopping_date, :value => Time.zone.now %>
+			<%= s.hidden_field :status, :value => "配送準備中" %>
+			<% @carts.where(:user_id => current_user).find_each do |c| %>
+				<%= s.fields_for :ordered_items do |o| %>
+					<%= o.hidden_field :item_id, :value => c.item_id %>
+					<%= o.hidden_field :shopping_history_id %>
+					<%= o.hidden_field :price, :value => c.item.price %>
+					<%= o.hidden_field :quantity, :value => c.amount %>
+				<% end %>
+			<% end %>
+				<%= s.fields_for :address_history do | a | %>
+					<%= a.hidden_field :shopping_history_id %>
+					<%= a.hidden_field :postcode, :value => current_user.address.postcode %>
+					<%= a.hidden_field :prefecture, :value => current_user.address.prefecture %>
+					<%= a.hidden_field :city, :value => current_user.address.city %>
+					<%= a.hidden_field :street, :value => current_user.address.street %>
+					<%= a.hidden_field :building, :value => current_user.address.building %>
+				<% end %>
+		<%= s.submit :決算完了 %>
+		<% end %>
 	</div>
 </div>

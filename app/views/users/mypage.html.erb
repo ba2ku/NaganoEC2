@@ -24,6 +24,7 @@
             <p>購入された商品の発送状況、２件まで表示されます。他をご確認したい場合は購入履歴をご確認ください。</p>
             <% @shopping_history.last(2).each do |sh| %>
             <div class="sh_field mp_firld_margin">
+                <%= sh.id %>　　のご注文<br>
                 <%= sh.shopping_date.strftime('%Y年%m月%d日 %H:%M') %>　　のご注文<br>
                 <%= sh.updated_at.strftime('%Y年%m月%d日 %H:%M') %>　　<%= sh.status %><br>
                 <%= sh.address_history.postcode %> <%= sh.address_history.prefecture %> <%= sh.address_history.city %> <%= sh.address_history.street %> <%= sh.address_history.building %>

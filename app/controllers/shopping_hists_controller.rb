@@ -4,7 +4,14 @@ class ShoppingHistsController < ApplicationController
   end
 
   def create
-    @user = User.find(current_user.id)
+    @shopping_history = ShoppingHistory.new(shopping_history_params)
+    @carts = Cart.where(user_id: current_user.id)
+    if @shopping_history.save
+      @carts.delete_all
+      redirect_to cart_cmp_path
+    else
+      redirect_to root_path
+    end
   end
 
   def show
@@ -12,7 +19,9 @@ class ShoppingHistsController < ApplicationController
   end
 
   private
-  def ordered_item_params
-  	params.require(:shoppinghistory).permit(:user_id, :addres_history_id, :shopping_date, :status)
+  def shopping_history_params
+  	params.require(:shopping_history).permit(:user_id, :shopping_date, :status,
+     address_history_attributes:[:id,:shopping_history_id,:postcode,:prefecture,:city,:street,:building],
+     ordered_items_attributes:[:id,:item_id, :shopping_history_id, :quantity, :price])
   end
 end

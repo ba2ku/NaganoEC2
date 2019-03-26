@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'address_hists/create'
+  get 'ordered_items/create'
   devise_for :users, :controllers => {
     :registrations => 'users/registrations'
   }
@@ -11,6 +13,8 @@ Rails.application.routes.draw do
   resources :ad_users, only: [:index, :edit, :update, :destroy]
   get 'top' => 'ad_users#top', as:'ad_top'
   resources :shopping_hists, only: [:index, :create, :show]
+  resources :ordered_items, only: [:create]
+  resources :address_hists, only: [:create]
   resources :carts, only: [:index, :create, :destroy, :update]
   get 'cart_cmp' => 'carts#cart_cmp', as:'cart_cmp'
   get 'cart_cfm' => 'carts#cart_cfm', as:'cart_cfm'
