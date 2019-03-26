@@ -1,18 +1,24 @@
 <h1>usertop</h1>
 <div class="container">
 	<div class="row">
+		<% @items[0..4].each do |i| %>
+		<ul class="slider">
+           <li><%= attachment_image_tag i, :jacket, fallback: "no_image.jpg" %></li>
+		</ul>
+		<% end %>
 	</div>
 	<div class="row">
 	    <div class="sasa">
 			<h3>新規商品</h3>
 		</div>
 	      <span>NEW ARRIVAL</span>
+	      <div class="block"></div>
 		      <% @items[0..4].each do |i| %>
 		      <div class="item_index">
 				<table>
 					<tbody>
 			                <tr>
-			                	<td><br><%= attachment_image_tag i, :jacket, fallback: "no_image.jpg" %></td>
+			                	<td><br><%= attachment_image_tag i, :jacket, fallback: "no_image.jpg", size: "200x200" %></td>
 			                </tr>
 			                <tr>
 			                    <td><%= i.property.property %></td>
@@ -30,6 +36,7 @@
 	</div>
 	<div class="row">
 	</div>
+	<div class="block"></div>
 	<div class="row">
 		<div class="info_user">
 		     <h3>お知らせ</h3>

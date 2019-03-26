@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_22_170421) do
+ActiveRecord::Schema.define(version: 2019_03_26_043929) do
 
   create_table "address_histories", force: :cascade do |t|
     t.integer "shopping_history_id", null: false
@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 2019_03_22_170421) do
   end
 
   create_table "addresses", force: :cascade do |t|
-    t.string "postcode"
-    t.string "prefecture"
-    t.string "city"
-    t.string "street"
+    t.string "postcode", null: false
+    t.string "prefecture", null: false
+    t.string "city", null: false
+    t.string "street", null: false
     t.string "building"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2019_03_22_170421) do
     t.integer "stock", default: 0, null: false
     t.datetime "release_day"
     t.boolean "display_flag", default: true, null: false
-    t.string "name", null: false
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "genre_id"
@@ -109,7 +109,6 @@ ActiveRecord::Schema.define(version: 2019_03_22_170421) do
 
   create_table "shopping_histories", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "address_history_id", null: false
     t.datetime "shopping_date", null: false
     t.string "status", null: false
     t.datetime "created_at", null: false

@@ -14,7 +14,6 @@ class UsersController < ApplicationController
   def mypage
     @shopping_histories = ShoppingHistory.all
     @shopping_history = @shopping_histories.where(:user_id => current_user)
-    @shopping_hist = ShoppingHistory.find(current_user.id)
   end
 
   def show
