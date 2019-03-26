@@ -13,7 +13,8 @@
 		</div>
 		<span>NEW ARRIVAL</span>
 		<div class="block"></div>
-		<% @items[0..4].each do |i| %>
+		<!-- 古いものから５個呼び出されていたので最新のものを呼びだようにしてます , Akira Kimura -->
+		<% @items.last(5).each do |i| %>
 		<div class="item_index">
 			<table>
 				<tbody>
