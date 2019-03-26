@@ -8,6 +8,7 @@ class AdUsersController < ApplicationController
   def index
     @users = User.all
     @user = User.find(current_user.id)
+    @users = @users.page(params[:page]).per(20)
   end
 
   def edit

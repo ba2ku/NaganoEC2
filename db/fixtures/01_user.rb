@@ -1,4 +1,5 @@
 z = 0
+x = 0
 1.times do
     x += 1
     User.seed do |s|
@@ -20,6 +21,7 @@ end
 i = 1
 199.times do
     i += 1
+    z += 1
     User.seed do |s|
         s.email = "user#{z}@com"
         s.password = "asdasd"

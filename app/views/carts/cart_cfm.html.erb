@@ -1,56 +1,56 @@
 <% result = 0 %>
 <%= @carts.where(:user_id => current_user).find_each do |c| %>
-	<% result += c.amount * c.item.price%>
+<% result += c.amount * c.item.price%>
 <% end %>
 
 <div class="container">
 	<div class="row">
 		<div class="cart-cfm header">
 			<h2>ご注文確認</h2>
-			<span class="blockquote">ご注文商品 </span><span class="text-danger">総額：<%= result %>円</span>
+			<span class="blockquote">ご注文商品 </span><span class="text-danger">総額：<%= number_to_yen(result) %></span>
 		</div>
 		<table class="table bg-light">
 			<tr>
 				<%= @carts.where(:user_id => current_user).find_each do |c| %>
-					<td>
-						<div class="cart_detail">
-							<%= attachment_image_tag c.item, :jacket, fallback: "garupan0.jpg",size: "100x100" %>
-						</div>
-						<div class="cart_detail">
-							<p><%= c.item.name %></p>
-							<p><%= c.item.artist.artist_name %></p>
-							<p><%= c.item.price%>円</p>
-							<p><%= c.amount %>個</p>
-							<p>小計：<%= c.amount * c.item.price%>円</p>
-						</div>
-						<hr>
-						<p>商品詳細:</p>
-						<p><%= c.item.details%></p>
-						<hr>
-					</td>
+				<td>
+					<div class="cart_detail">
+						<%= attachment_image_tag c.item, :jacket, fallback: "garupan0.jpg",size: "100x100" %>
+					</div>
+					<div class="cart_detail">
+						<p><%= c.item.name %></p>
+						<p><%= c.item.artist.artist_name %></p>
+						<p><%= c.item.price%>円</p>
+						<p><%= c.amount %>個</p>
+						<p>小計：<%= c.amount * c.item.price%>円</p>
+					</div>
+					<hr>
+					<p>商品詳細:</p>
+					<p><%= c.item.details%></p>
+					<hr>
+				</td>
 				<% end %>
 			</tr>
 		</table>
 		<%= form_for @shopping_hist, url:shopping_hists_path,method: :post do |s|%>
-			<%= s.hidden_field :user_id, :value => current_user.id %>
-			<%= s.hidden_field :shopping_date, :value => Time.zone.now %>
-			<%= s.hidden_field :status, :value => "配送準備中" %>
-			<% @carts.where(:user_id => current_user).find_each do |c| %>
-				<%= s.fields_for :ordered_items do |o| %>
-					<%= o.hidden_field :item_id, :value => c.item_id %>
-					<%= o.hidden_field :shopping_history_id %>
-					<%= o.hidden_field :price, :value => c.item.price %>
-					<%= o.hidden_field :quantity, :value => c.amount %>
-				<% end %>
-			<% end %>
-				<%= s.fields_for :address_history do | a | %>
-					<%= a.hidden_field :shopping_history_id %>
-					<%= a.hidden_field :postcode, :value => current_user.address.postcode %>
-					<%= a.hidden_field :prefecture, :value => current_user.address.prefecture %>
-					<%= a.hidden_field :city, :value => current_user.address.city %>
-					<%= a.hidden_field :street, :value => current_user.address.street %>
-					<%= a.hidden_field :building, :value => current_user.address.building %>
-				<% end %>
+		<%= s.hidden_field :user_id, :value => current_user.id %>
+		<%= s.hidden_field :shopping_date, :value => Time.zone.now %>
+		<%= s.hidden_field :status, :value => "配送準備中" %>
+		<% @carts.where(:user_id => current_user).find_each do |c| %>
+		<%= s.fields_for :ordered_items do |o| %>
+		<%= o.hidden_field :item_id, :value => c.item_id %>
+		<%= o.hidden_field :shopping_history_id %>
+		<%= o.hidden_field :price, :value => c.item.price %>
+		<%= o.hidden_field :quantity, :value => c.amount %>
+		<% end %>
+		<% end %>
+		<%= s.fields_for :address_history do | a | %>
+		<%= a.hidden_field :shopping_history_id %>
+		<%= a.hidden_field :postcode, :value => current_user.address.postcode %>
+		<%= a.hidden_field :prefecture, :value => current_user.address.prefecture %>
+		<%= a.hidden_field :city, :value => current_user.address.city %>
+		<%= a.hidden_field :street, :value => current_user.address.street %>
+		<%= a.hidden_field :building, :value => current_user.address.building %>
+		<% end %>
 		<%= s.submit :決算完了 %>
 		<% end %>
 	</div>

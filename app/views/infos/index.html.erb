@@ -1,22 +1,24 @@
 <div class="container">
 	<div class="row">
-		  <table>
-		  	<tbody>
-		  	   <tr>
-	             <td><h1>お知らせ管理画面</h1></td>
-	           </tr>
-	           <tr>
-	           	<td><%= link_to "Homeへ", root_path %></td>
+		<table>
+			<tbody>
+				<tr>
+					<td>
+						<h1>お知らせ管理画面</h1>
+					</td>
+				</tr>
+				<tr>
+					<td><%= link_to "Homeへ", root_path %></td>
 
-	           </tr>
-	         </tbody>
-	      </table>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 	<div class="row">
 		<table class="table">
 			<thead>
 				<tr>
-				   <th>id</th>
+					<th>id</th>
 					<th>投稿日時</th>
 					<th>内容</th>
 					<th></th>
@@ -33,7 +35,8 @@
 			</tbody>
 			<% end %>
 		</table>
+		<div class="margin_0">
+			<%= paginate @infomations %>
+		</div>
 	</div>
 </div>
-
-

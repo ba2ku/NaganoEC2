@@ -42,7 +42,7 @@
                             <table>
                                 <tbody>
                                     <tr>
-                                        <td><%= attachment_image_tag o.item, :jacket, fallback: "no_image.jpg" %></td>
+                                        <td><%= attachment_image_tag o.item, :jacket, fallback: "no_image.jpg", size:"200x200" %></td>
                                     </tr>
                                     <tr>
                                         <td><%= o.item.property.property %></td>

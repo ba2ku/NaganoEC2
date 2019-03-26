@@ -5,6 +5,7 @@ class AdItemsController < ApplicationController
   def index
     header_name_display
     @items = Item.all.includes(:artist,:property)
+    @items = @items.page(params[:page]).per(24)
   end
 
   def new
