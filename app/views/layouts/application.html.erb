@@ -5,10 +5,12 @@
   <title>Nagano</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <script type="text/javascript" src="js/footerFixed.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
 </head>
+
 <body>
   <header>
 
@@ -21,15 +23,15 @@
       <% if user_signed_in? %>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto">
-        <li class="color_white">
-          <%= current_user.try(:kanji_last) %> <%= current_user.try(:kanji_first) %> 様
-        </li>
+          <li class="color_white">
+            <%= current_user.try(:kanji_last) %> <%= current_user.try(:kanji_first) %> 様
+          </li>
         </ul>
         <ul class="navbar-nav mt-2 mt-lg-0">
           <% if current_user.admin_user? %>
-          <li  class="nav-item li_margin">
+          <li class="nav-item li_margin">
             <%= link_to "管理者ページ", ad_top_path,class: "color_white btn btn-dark" %>
-          <% end %>
+            <% end %>
           </li>
           <li class="nav-item li_margin">
             <%= link_to "　ホーム　", root_path, class: "btn btn-dark nav_margin"%>

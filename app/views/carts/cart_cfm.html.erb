@@ -14,7 +14,7 @@
 				<%= @carts.where(:user_id => current_user).find_each do |c| %>
 					<td>
 						<div class="cart_detail">
-							<%= attachment_image_tag c.item, :jacket, fallback: "garupan0.jpg" %>
+							<%= attachment_image_tag c.item, :jacket, fallback: "garupan0.jpg",size: "100x100" %>
 						</div>
 						<div class="cart_detail">
 							<p><%= c.item.name %></p>

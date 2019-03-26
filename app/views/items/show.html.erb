@@ -1,42 +1,115 @@
 <div class="container">
 	<div class="row">
-		<table>
-			<tbody>
-				<tr>
-					<td>
-						<h1><%=@item.name%>詳細</h1>
-					</td>
-				</tr>
-			</tbody>
+		<div class="block_10"></div>
+		<%= link_to "戻る", :back,class: "btn btn-dark block_30" %>
+		<div class="block_10"></div>
+		<table class="table">
+			<tr>
+				<td>
+					<div class="col">
+						<%= attachment_image_tag @item, :jacket, :fill, 500, 500, fallback: "no_image.jpg",size:'400x400' %>
+					</div>
+				</td>
+				<td>
+					<div class="col">
+						<div class="item_property property">
+							<%= @item.property.property %>
+						</div>
+						<div class="block_10"></div>
+						<div class="item_name">
+							<strong><%=@item.name%></strong>
+						</div>
+						<div class="block_10"></div>
+						<div class="artist_name artist_size">
+							<%= @item.artist.artist_name %>
+						</div>
+						<div class="block_item_show"></div>
+						<div class="item_amount amount_text color_red">
+							商品価格：¥<%= number_to_yen(@item.price) %>
+						</div>
+						<div class="block_item_show"></div>
+						<div class="row">
+							<div class="col">
+								<div clas="item_release_date">
+									RELEASE DATE：<%= @item.release_day.strftime('%Y年%m月%d日') %>
+								</div>
+								<div class="item_label">
+									Label：<%= @item.label.label %>
+								</div>
+								<div class="item_genre">
+									Category：<%= @item.genre.genre %>
+								</div>
+							</div>
+							<div class="col">
+								<div class="item_stock margin_left">
+									在庫：<%= @item.stock %>個
+								</div>
+								<% if user_signed_in? %>
+								<div class="item_add_cart text_right">
+									<%= form_for @cart,url: carts_path, method: :post do |f| %>
+									<%= f.hidden_field :user_id, :value => current_user.id %>
+									<%= f.hidden_field :item_id, :value => @item.id %>
+									<%= f.hidden_field :amount, :value => 1 %>
+									<%= f.submit :カートに入れる, class:"btn bg_red color_white cart_btn rounded-pill" %>
+									<% end %>
+								</div>
+								<% else %>
+								<div class="item_add_cart text_right">
+									<%= link_to user_session_path do %>
+									<p　 class="btn bg_red color_white cart_btn rounded-pill" >カートに入れる</p>
+									<% end %>
+								</div>
+								<% end %>
+								<% if user_signed_in? %>
+								<% if current_user.admin_user? %>
+								<div class="text_right margin_top">
+									<%= link_to "商品内容編集", edit_ad_item_path,class: "color_white btn btn-dark" %>
+									<% end %>
+									<% else %>
+									<% end %>
+								</div>
+							</div>
+						</div>
+				</td>
+			</tr>
 		</table>
-	</div>
-	   <div class="row">
-	      <div class="ad_items_index_table">
-		   	<table>
-			   	<tbody class="item-details">
-			   		<div class="image">
-				   		<tr>
-					   		<td><%= attachment_image_tag @item, :jacket,:fill,100,100, fallback: "no_image.jpg" %></td>
-				   		</tr>
-			   		</div>
-			   		<tr>
-			   			<td>
-			   				<%= @item.property.property %>
-			   			</td>
-			   		</tr>
-			   		<tr>
-			   			<td><%= @item.stock %></td>
-			   		</tr>
-			   			<td><%= form_for @cart,url: carts_path, method: :post do |f| %>
-				   				<%= f.hidden_field :user_id, :value => current_user.id %>
-				   				<%= f.hidden_field :item_id, :value => @item.id %>
-				   				<%= f.hidden_field :amount, :value => 1 %>
-				   				<%= f.submit :カートに入れる %>
-				   			<% end %>
-			   			</td>
-			   		</tr>
-			   	</tbody>
-			</table>
-		</div>
+		<table class="table">
+			<td>
+				<div class="item_detail col-12">
+					<h2>商品説明</h2>
+					<%= simple_format(@item.details) %>
+				</div>
+			</td>
+		</table>
+		<table class="table">
+			<td>
+				<div class="col-12">
+					<h2>収録内容</h2>
+					<table class="table">
+						<% @item.musics.each do |m| %>
+						<tr>
+							<td>
+								<div>
+									<%= m.music_order %>.
+								</div>
+							</td>
+							<td>
+								<div class="text_left">
+									<%= m.music_name %>
+								</div>
+							</td>
+							<td>
+								<div class="text_left text_right">
+									<%= link_to m.test_url, :target=>["_blank"]  do %>
+									<%= image_tag 'youtube_icon.png',size:"40x27"%>
+									<% end %>
+								</div>
+							</td>
+						</tr>
+						<% end %>
+					</table>
+				</div>
+			</td>
+		</table>
 	</div>
 </div>

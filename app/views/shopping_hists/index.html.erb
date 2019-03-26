@@ -19,13 +19,17 @@
                                 </tr>
                                 <% s.ordered_items.where(:shopping_history_id => s.id).find_each do |o| %>
                                 <tr>
-                                    <td><%= attachment_image_tag o.item, :jacket, fallback: "no_image.jpg" %></td>
+                                    <td><%= attachment_image_tag o.item, :jacket, fallback: "no_image.jpg",size: "200x200" %>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td><%= o.item.property.property %></td>
                                 </tr>
                                 <tr>
-                                    <td><%= o.item.artist.artist_name %></td>
+                                    <td><%= o.item.name.truncate(15) %></td>
+                                </tr>
+                                <tr>
+                                    <td><%= o.item.artist.artist_name.truncate(15) %></td>
                                 </tr>
                                 <tr>
                                     <td><%= o.item.details %></td>

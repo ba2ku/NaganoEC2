@@ -3,57 +3,58 @@
 	<div class="row">
 		<% @items[0..4].each do |i| %>
 		<ul class="slider">
-           <li><%= attachment_image_tag i, :jacket, fallback: "no_image.jpg" %></li>
+			<li><%= attachment_image_tag i, :jacket, fallback: "no_image.jpg" %></li>
 		</ul>
 		<% end %>
 	</div>
 	<div class="row">
-	    <div class="sasa">
+		<div class="sasa">
 			<h3>新規商品</h3>
 		</div>
-	      <span>NEW ARRIVAL</span>
-	      <div class="block"></div>
-		      <% @items[0..4].each do |i| %>
-		      <div class="item_index">
-				<table>
-					<tbody>
-			                <tr>
-			                	<td><br><%= attachment_image_tag i, :jacket, fallback: "no_image.jpg", size: "200x200" %></td>
-			                </tr>
-			                <tr>
-			                    <td><%= i.property.property %></td>
-			                </tr>
-			                <tr>
-			                    <td><%= i.artist.artist_name %></td>
-			                </tr>
-			                <tr>
-			                	<td><%= i.details %></td>
-			                </tr>
-					</tbody>
-				</table>
-			  </div>
-			  <% end %>
+		<span>NEW ARRIVAL</span>
+		<div class="block"></div>
+		<% @items[0..4].each do |i| %>
+		<div class="item_index">
+			<table>
+				<tbody>
+					<tr>
+						<td><br><%= attachment_image_tag i, :jacket, fallback: "no_image.jpg", size: "200x200" %></td>
+					</tr>
+					<tr>
+						<td><%= i.property.property %></td>
+					</tr>
+					<tr>
+						<td><%= i.artist.artist_name %></td>
+					</tr>
+					<tr>
+						<td><%= i.details %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<% end %>
+
 	</div>
 	<div class="row">
 	</div>
 	<div class="block"></div>
 	<div class="row">
 		<div class="info_user">
-		     <h3>お知らせ</h3>
-	    </div>
-             <span>INFORMATION</span>
+			<h3>お知らせ</h3>
+		</div>
+		<span>INFORMATION</span>
 		　　<% @infos[0..4].each do |i| %>
 		<div class="infos_table">
-            <table class="table">
-            	<tbody>
-            		<tr>
-					    <td><%= i.infomation %></td>
-					    <td></td>
-					    <td class="infos_span"><%= i.created_at.strftime("%Y-%m-%d") %></td>
+			<table class="table">
+				<tbody>
+					<tr>
+						<td><%= i.infomation %></td>
+						<td></td>
+						<td class="infos_span"><%= i.created_at.strftime("%Y-%m-%d") %></td>
 					</tr>
-	            </tbody>
-	        </table>
-		   <% end %>
+				</tbody>
+			</table>
+			<% end %>
 		</div>
 	</div>
 

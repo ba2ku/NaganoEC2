@@ -56,7 +56,7 @@ class AdItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name,:jacket_id,:artist_id,:genre_id,:label_id,:property_id,:price,:details,:stock,:release_day,:display_flag,musics_attributes: [:id, :item_id,:cd_number,:music_name,:music_order,:test_url,:_destroy])
+    params.require(:item).permit(:name,:jacket,:artist_id,:genre_id,:label_id,:property_id,:price,:details,:stock,:release_day,:display_flag,musics_attributes: [:id, :item_id,:cd_number,:music_name,:music_order,:test_url,:_destroy])
   end
 
 end

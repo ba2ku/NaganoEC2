@@ -1,7 +1,10 @@
 x = 0
-200.times do
+1.times do
 	x += 1
 	Property.seed do |s|
-		s.property = "プロパティ#{x}"
+		s.property = "CD"
+	end
+	Property.seed do |s|
+		s.property = "　ALBUM"
 	end
 end
