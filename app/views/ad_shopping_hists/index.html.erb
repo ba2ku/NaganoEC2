@@ -20,7 +20,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% @ad_shopping_hists.find_each do |s| %>
+					<% @ad_shopping_hists.each do |s| %>
 					<tr>
 						<td><%= s.user.kanji_last %><%= s.user.kanji_first %></td>
 						<td><%= s.shopping_date.strftime("%Y-%m-%d") %></td>

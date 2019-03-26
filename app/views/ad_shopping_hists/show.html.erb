@@ -38,15 +38,13 @@
 					<div class="card-title address">
 						<span>送付先：</span>
 					</div>
-					<% @ad_shopping_hist.address_histories.where(:shopping_history_id => @ad_shopping_hist.id).find_each do |a|%>
-						<div class="card-text">
-							<span>郵便番号：<%= a.postcode%></span><br>
-							<%= a.prefecture%><br>
-							<%= a.city%><br>
-							<%= a.street%><br>
-							<%= a.building%><br>
-						</div>
-					<% end %>
+					<div class="card-text">
+						<span>郵便番号：<%= @ad_shopping_hist.address_history.postcode%></span><br>
+						<%=  @ad_shopping_hist.address_history.prefecture %><br>
+						<%=  @ad_shopping_hist.address_history.city %><br>
+						<%=  @ad_shopping_hist.address_history.street %><br>
+						<%=  @ad_shopping_hist.address_history.building %><br>
+					</div>
 				</div>
 				<div class="card-body">
 					<div class="card-title status">

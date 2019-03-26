@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_22_170421) do
+ActiveRecord::Schema.define(version: 2019_03_25_140524) do
 
   create_table "address_histories", force: :cascade do |t|
     t.integer "shopping_history_id", null: false
@@ -109,7 +109,6 @@ ActiveRecord::Schema.define(version: 2019_03_22_170421) do
 
   create_table "shopping_histories", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "address_history_id", null: false
     t.datetime "shopping_date", null: false
     t.string "status", null: false
     t.datetime "created_at", null: false
