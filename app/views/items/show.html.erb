@@ -44,6 +44,7 @@
 								<div class="item_stock margin_left">
 									在庫：<%= @item.stock %>個
 								</div>
+								<% if user_signed_in? %>
 								<div class="item_add_cart text_right">
 									<%= form_for @cart,url: carts_path, method: :post do |f| %>
 									<%= f.hidden_field :user_id, :value => current_user.id %>
@@ -52,9 +53,19 @@
 									<%= f.submit :カートに入れる, class:"btn bg_red color_white cart_btn rounded-pill" %>
 									<% end %>
 								</div>
+								<% else %>
+								<div class="item_add_cart text_right">
+									<%= link_to user_session_path do %>
+									<p　 class="btn bg_red color_white cart_btn rounded-pill" >カートに入れる</p>
+									<% end %>
+								</div>
+								<% end %>
+								<% if user_signed_in? %>
 								<% if current_user.admin_user? %>
 								<div class="text_right margin_top">
 									<%= link_to "商品内容編集", edit_ad_item_path,class: "color_white btn btn-dark" %>
+									<% end %>
+									<% else %>
 									<% end %>
 								</div>
 							</div>

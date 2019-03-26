@@ -23,16 +23,19 @@
 					<td><%= item.property.property %></td><br>
 				</div>
 				<div class="color_blue">
-					<td><%= item.artist.artist_name.truncate(15) %></td><br>
+					<td><%= item.artist.artist_name.truncate(10) %></td><br>
 				</div>
-				<td><%= item.name.truncate(25) %></td><br>
+				<td><%= item.name.truncate(14) %></td><br>
 				<% end %>
+				<% if user_signed_in? %>
 				<% if current_user.admin_user? %>
 				<td>
 					<div class="text_right">
 						<%= link_to "商品内容編集", edit_ad_item_path(item),class: "color_white btn btn-dark" %>
 					</div>
 				</td>
+				<% end %>
+				<% else %>
 				<% end %>
 
 			</div>
