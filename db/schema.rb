@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_25_140524) do
+ActiveRecord::Schema.define(version: 2019_03_26_043929) do
 
   create_table "address_histories", force: :cascade do |t|
     t.integer "shopping_history_id", null: false

@@ -15,7 +15,17 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require jquery
 //= require_tree .
 //= require cocoon
-//= require jquery
+
+$(function() {
+    $('.slider').slick({
+        autoplay:true,
+        autoplaySpeed:3000,
+        dots:true,
+        slidesToShow:1,
+        slidesToScroll:1
+    });
+});
 

@@ -24,11 +24,11 @@
 						<p>購入個数：<%= c.amount %>個</p>
 						<p>小計：<%= number_to_yen(c.amount * c.item.price) %></p>
 						<%= form_for c, url:cart_path(c.id), method: :patch  do | a |%>
-						<%= a.number_field :amount%>
-						<%= a.submit :個数変更,class:"btn btn-dark" %>
+							<%= a.number_field :amount%>
+							<%= a.submit :個数変更,class:"btn btn-dark" %>
 						<% end %>
 						<%= form_for c, url:cart_path(c.id), method: :delete  do | a |%>
-						<%= a.submit :削除,class:"btn btn-dark margin_top" %>
+							<%= a.submit :削除,class:"btn btn-dark margin_top" %>
 						<% end %>
 						<% result += c.amount * c.item.price%>
 					</div>

@@ -34,13 +34,19 @@
 		<%= form_for @shopping_hist, url:shopping_hists_path,method: :post do |s|%>
 			<%= s.hidden_field :user_id, :value => current_user.id %>
 			<%= s.hidden_field :shopping_date, :value => Time.zone.now %>
-			<%= s.hidden_field :status, :value => "配送準備中" %>
+			<%= s.hidden_field :status, :value => "入金待ち" %>
 			<% @carts.where(:user_id => current_user).find_each do |c| %>
 				<%= s.fields_for :ordered_items do |o| %>
 					<%= o.hidden_field :item_id, :value => c.item_id %>
 					<%= o.hidden_field :shopping_history_id %>
 					<%= o.hidden_field :price, :value => c.item.price %>
 					<%= o.hidden_field :quantity, :value => c.amount %>
+				<% end %>
+				<%= @items.where(:id => c.item_id).find_each do |ic| %>
+					<%= s.fields_for ic do |i| %>
+							<%= i.hidden_field :stock, :value => c.item.stock - c.amount %>
+							<%= i.hidden_field :id %>
+					<% end %>
 				<% end %>
 			<% end %>
 				<%= s.fields_for :address_history do | a | %>

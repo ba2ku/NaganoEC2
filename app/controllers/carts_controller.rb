@@ -12,10 +12,10 @@ class CartsController < ApplicationController
 # 決算確認画面表示
   def cart_cfm
     @carts = Cart.all.includes(:item,:user)
-    @cartscfm = Cart.where(user_id: current_user.id)
     @shopping_hist = ShoppingHistory.new
-    @shopping_hist.build_address_history
-    @shopping_hist.ordered_items.build
+      @shopping_hist.build_address_history
+      @shopping_hist.ordered_items.build
+    @items = Item.all
   end
 #カートテーブルの特定のレコードを更新する
   def destroy
