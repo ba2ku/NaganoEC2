@@ -8,6 +8,7 @@ class AdUsersController < ApplicationController
   def index
     @users = User.all
     @user = User.find(current_user.id)
+    @shopping_hists = ShoppingHistory.all
   end
 
   def edit

@@ -1,4 +1,5 @@
 z = 0
+x = 0
 1.times do
     x += 1
     User.seed do |s|
@@ -17,9 +18,8 @@ end
 
 
 # usres
-i = 1
-199.times do
-    i += 1
+30.times do
+    z += 1
     User.seed do |s|
         s.email = "user#{z}@com"
         s.password = "asdasd"

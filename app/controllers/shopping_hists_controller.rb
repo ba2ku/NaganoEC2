@@ -7,8 +7,11 @@ class ShoppingHistsController < ApplicationController
     @shopping_history = ShoppingHistory.new(shopping_history_params)
     @carts = Cart.where(user_id: current_user.id)
     if @shopping_history.save
-      @carts.delete_all
-      redirect_to cart_cmp_path
+      @carts.each do |c|
+          c.item.update(stock: c.item.stock - c.amount )
+          c.destroy
+      end
+       redirect_to cart_cmp_path
     else
       redirect_to root_path
     end
@@ -23,5 +26,8 @@ class ShoppingHistsController < ApplicationController
   	params.require(:shopping_history).permit(:user_id, :shopping_date, :status,
      address_history_attributes:[:id,:shopping_history_id,:postcode,:prefecture,:city,:street,:building],
      ordered_items_attributes:[:id,:item_id, :shopping_history_id, :quantity, :price])
+  end
+  def item_params
+    params.require(:item).permit(:id,:stock)
   end
 end
