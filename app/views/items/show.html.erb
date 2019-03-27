@@ -1,7 +1,6 @@
 <div class="container">
 	<div class="row">
 		<div class="block_10"></div>
-		<%= link_to "戻る", :back,class: "btn btn-dark block_30" %>
 		<div class="block_10"></div>
 		<table class="table">
 			<tr>
@@ -17,9 +16,8 @@
 						</div>
 						<div class="block_10"></div>
 						<div class="item_name">
-							<strong><%=@item.name%></strong>
+							<h4><strong><%=@item.name%></strong></h4>
 						</div>
-						<div class="block_10"></div>
 						<div class="artist_name artist_size">
 							<%= @item.artist.artist_name %>
 						</div>
@@ -67,7 +65,7 @@
 								<% if user_signed_in? %>
 								<% if current_user.admin_user? %>
 								<div class="text_right margin_top">
-									<%= link_to "商品内容編集", edit_ad_item_path,class: "color_white btn btn-dark" %>
+									<%= link_to "商品内容編集", edit_ad_item_path,class: "color_white btn btn-info" %>
 									<% end %>
 									<% else %>
 									<% end %>
@@ -80,7 +78,7 @@
 		<table class="table">
 			<td>
 				<div class="item_detail col-12">
-					<h2>商品説明</h2>
+					<h4><strong>商品説明</strong></h4>
 					<%= simple_format(@item.details) %>
 				</div>
 			</td>
@@ -88,12 +86,13 @@
 		<table class="table">
 			<td>
 				<div class="col-12">
-					<h2>収録内容</h2>
+					<h4><strong>収録内容</strong></h4>
 					<table class="table">
 						<% @item.musics.each do |m| %>
 						<tr>
 							<td>
-								<div>
+								<div><strong>
+									DISC <%= m.cd_number %>　</strong>
 									<%= m.music_order %>.
 								</div>
 							</td>

@@ -1,33 +1,33 @@
 <% result = 0 %>
 <%= @carts.where(:user_id => current_user).find_each do |c| %>
-	<% result += c.amount * c.item.price%>
+<% result += c.amount * c.item.price%>
 <% end %>
 
 <div class="container">
 	<div class="row">
 		<div class="cart-cfm header">
 			<h2>ご注文確認</h2>
-			<span class="blockquote">ご注文商品 </span><span class="text-danger">総額：<%= result %>円</span>
+			<span class="blockquote">ご注文商品 </span><span class="text-danger">総額：<%= number_to_yen(result) %></span>
 		</div>
 		<table class="table bg-light">
 			<tr>
 				<%= @carts.where(:user_id => current_user).find_each do |c| %>
-					<td>
-						<div class="cart_detail">
-							<%= attachment_image_tag c.item, :jacket, fallback: "garupan0.jpg",size: "100x100" %>
-						</div>
-						<div class="cart_detail">
-							<p><%= c.item.name %></p>
-							<p><%= c.item.artist.artist_name %></p>
-							<p><%= c.item.price%>円</p>
-							<p><%= c.amount %>個</p>
-							<p>小計：<%= c.amount * c.item.price%>円</p>
-						</div>
-						<hr>
-						<p>商品詳細:</p>
-						<p><%= c.item.details%></p>
-						<hr>
-					</td>
+				<td>
+					<div class="cart_detail">
+						<%= attachment_image_tag c.item, :jacket, fallback: "garupan0.jpg",size: "100x100" %>
+					</div>
+					<div class="cart_detail">
+						<p><%= c.item.name %></p>
+						<p><%= c.item.artist.artist_name %></p>
+						<p><%= c.item.price%>円</p>
+						<p><%= c.amount %>個</p>
+						<p>小計：<%= c.amount * c.item.price%>円</p>
+					</div>
+					<hr>
+					<p>商品詳細:</p>
+					<p><%= c.item.details%></p>
+					<hr>
+				</td>
 				<% end %>
 			</tr>
 		</table>

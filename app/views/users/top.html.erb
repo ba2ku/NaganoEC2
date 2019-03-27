@@ -1,12 +1,12 @@
 <div class="block_20"></div>
 <div class="container">
 	<div class="row">
-		  <div class="slider">
-				<% @items[0..4].each do |i| %>
-					<div><%= attachment_image_tag i, :jacket, fallback: "no_image.jpg" %></div>
-				<% end %>
+		<div class="slider">
+			<% @items[0..4].each do |i| %>
+			<div><%= attachment_image_tag i, :jacket, fallback: "no_image.jpg" %></div>
+			<% end %>
 
-			</div>
+		</div>
 	</div>
 	<div class="row">
 		<div class="sasa">
@@ -14,8 +14,9 @@
 		</div>
 		<span>NEW ARRIVAL</span>
 		<div class="block_20"></div>
-		<% @items[0..4].each do |i| %>
-			<%= link_to item_path(i), class: "item_index color_black" do %>
+		<% @items.last(5).each do |i| %>
+		<%= link_to item_path(i), class: "item_index color_black" do %>
+
 		<div class="item_index">
 			<table>
 				<tbody>
@@ -34,7 +35,7 @@
 				</tbody>
 			</table>
 		</div>
-		    <% end %>
+		<% end %>
 		<% end %>
 	</div>
 	<div class="row">

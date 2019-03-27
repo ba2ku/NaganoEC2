@@ -7,24 +7,23 @@
             <br>
             <div class="">
             </div>
-            <h3> <%= current_user.try(:kanji_last) %> <%= current_user.try(:kanji_first) %> 様の MyPage</h3>
+            <h2> <strong><%= current_user.try(:kanji_last) %> <%= current_user.try(:kanji_first) %> 様の MyPage</strong></h2>
             <p>※パスワードは定期的に更新されることをおすすめします。</p>
             <br>
-            <%=  %>
             <br>
             <div class="border-bottom"></div>
             <br>
-            <h3>Infomation</h3>
+            <h3><strong>Infomation</strong></h3>
             <p>カスタマーデスクからのお知らせ。</p>
             <div class="notice_user"><%= current_user.try(:notice) %></div>
+            <div class="block_30"></div>
             <div class="border-bottom"></div>
             <br>
 
-            <h3>発送情報</h3>
+            <h3><strong>発送情報</strong></h3>
             <p>購入された商品の発送状況、２件まで表示されます。他をご確認したい場合は購入履歴をご確認ください。</p>
             <% @shopping_history.last(2).each do |sh| %>
             <div class="sh_field mp_firld_margin">
-                <%= sh.id %>　　のご注文<br>
                 <%= sh.shopping_date.strftime('%Y年%m月%d日 %H:%M') %>　　のご注文<br>
                 <%= sh.updated_at.strftime('%Y年%m月%d日 %H:%M') %>　　<%= sh.status %><br>
                 <%= sh.address_history.postcode %> <%= sh.address_history.prefecture %> <%= sh.address_history.city %> <%= sh.address_history.street %> <%= sh.address_history.building %>

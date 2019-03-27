@@ -1,6 +1,7 @@
 class ShoppingHistsController < ApplicationController
   def index
-  	@shopping_histories = ShoppingHistory.all
+    @shopping_histories = ShoppingHistory.all
+    @shopping_histories = @shopping_histories.page(params[:page]).per(10)
   end
 
   def create
@@ -23,9 +24,9 @@ class ShoppingHistsController < ApplicationController
 
   private
   def shopping_history_params
-  	params.require(:shopping_history).permit(:user_id, :shopping_date, :status,
-     address_history_attributes:[:id,:shopping_history_id,:postcode,:prefecture,:city,:street,:building],
-     ordered_items_attributes:[:id,:item_id, :shopping_history_id, :quantity, :price])
+    params.require(:shopping_history).permit(:user_id, :shopping_date, :status,
+    address_history_attributes:[:id,:shopping_history_id,:postcode,:prefecture,:city,:street,:building],
+    ordered_items_attributes:[:id,:item_id, :shopping_history_id, :quantity, :price])
   end
   def item_params
     params.require(:item).permit(:id,:stock)

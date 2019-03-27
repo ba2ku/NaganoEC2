@@ -9,6 +9,7 @@
 			<% end %>
 			<%= form_for @item, url:ad_item_path(@item.id), method: :patch do |f| %>
 				<div class="field">
+					<%= attachment_image_tag @item, :jacket, :fill, 500, 500, fallback: "no_image.jpg",size:'200x200' %><br>
 					<%= f.label :画像 %><br>
 					<%= f.attachment_field :jacket%><br>
 					<%= f.label :値段 %><br>

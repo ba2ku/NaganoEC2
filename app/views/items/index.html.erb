@@ -1,14 +1,8 @@
 <div class="container">
 	<div class="row">
-		<table>
-			<tbody>
-				<tr>
-					<td>
-						<h1 class="margin_top color_red">商品検索結果画面</h1>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="block_50"></div>
+		<h2 class=""><strong>商品検索結果画面</strong></h2>
+		<div class="block_20"></div>
 	</div>
 	<div class="row">
 
@@ -31,12 +25,13 @@
 						<% if current_user.admin_user? %>
 							<td>
 								<div class="text_right">
-									<%= link_to "商品内容編集", edit_ad_item_path(item),class: "color_white btn btn-dark" %>
+									<%= link_to "商品内容編集", edit_ad_item_path(item),class: "color_white btn btn-info" %>
 								</div>
 							</td>
 						<% end %>
 					<% else %>
 					<% end %>
+
 					</div>
 				<div class="border-bottom"></div>
 			</div>

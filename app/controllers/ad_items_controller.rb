@@ -4,6 +4,7 @@ class AdItemsController < ApplicationController
   before_action :authenticate_user_admin
   def index
     @items = Item.all.includes(:artist,:property)
+    @items = @items.page(params[:page]).per(24)
   end
 
   def new
