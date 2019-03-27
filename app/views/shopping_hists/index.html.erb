@@ -10,7 +10,7 @@
                     <div class="shopping_history_field_header">
                         <div class="row">
                             <div class="col padding_top10px padding_left40px">
-                                購入日<%= s.shopping_date.strftime("%Y-%m-%d") %>
+                                購入日：<%= s.shopping_date.strftime("%Y-%m-%d") %>
                             </div>
                             <div class="col text_right padding_top10px padding_right30px">
                                 <%= link_to '詳細へ', shopping_hist_path(s.id), class: "btn btn-success" %>

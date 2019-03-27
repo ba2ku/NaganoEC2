@@ -25,15 +25,15 @@
                     <%= f.fields_for :address do |a| %>
                     <div class="">
                     <p class=""><strong>郵便番号</strong></p>
-                        <%= a.text_field :postcode, type:"text", name:"zip01", size:"10", maxlength:"8", onKeyUp: "AjaxZip3.zip2addr(this,'','pref01','addr01');" %>
+                        <%= a.text_field :postcode , name:"zip01", size:"10", maxlength:"8", onKeyUp: "AjaxZip3.zip2addr(this,'','pref01','addr01');" %>
                     </div><br>
                     <p class=""><strong>都道府県</strong></p>
                     <div class="">
-                        <%= a.text_field :prefecture, type:"text", name:"pref01", size:"20" %>
+                        <%= a.text_field :prefecture, name:"pref01", size:"20" %>
                     </div><br>
                     <p class=""><strong>市区町村</strong></p>
                     <div class="">
-                        <%= a.text_field :city, type:"text", name:"addr01", size:"60" %>
+                        <%= a.text_field :city, name:"addr01", size:"60" %>
                     </div><br>
                     <p class=""><strong>番地</strong></p>
                     <div class="">
