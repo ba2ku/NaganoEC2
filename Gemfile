@@ -73,3 +73,6 @@ gem 'ransack'
 gem "paranoia", "~> 2.2"
 gem 'kaminari'
 gem 'jp_prefecture'
+gem 'pry-rails'
+gem 'pry-byebug'
+gem 'pry-doc'
