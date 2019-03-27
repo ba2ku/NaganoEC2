@@ -14,7 +14,7 @@
 						<th>名前</th>
 						<th>メールアドレス</th>
 						<th>電話番号</th>
-						<th></th>
+						<th>総額</th>
 						<th></th>
 						<th></th>
 					</tr>
@@ -25,7 +25,15 @@
 						<td><%= user.kanji_last %><%= user.kanji_first %></td>
 						<td><%= user.email%></td>
 						<td><%= user.phone_number%></td>
-						<td><%= link_to '購入履歴詳細', ad_shopping_hist_path(user.id)%></td>
+						<td>
+							<% result = 0 %>
+							<% @shopping_hists.where(:user_id => user.id).find_each do |s| %>
+								<% s.ordered_items.each do |o| %>
+									<% result += o.price * o.quantity %>
+								<% end %>
+							<% end %>
+							<%= number_to_yen(result) %>
+						</td>
 						<td><%= link_to '編集', edit_ad_user_path(user.id)%></td>
 						<td><%= link_to '削除', ad_user_path(user.id), method: :delete, data: {confirm: '削除してよろしいですか？'} %>
 						</td>

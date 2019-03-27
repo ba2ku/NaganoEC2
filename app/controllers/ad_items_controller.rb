@@ -3,7 +3,6 @@ class AdItemsController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_user_admin
   def index
-    header_name_display
     @items = Item.all.includes(:artist,:property)
   end
 
@@ -28,12 +27,10 @@ class AdItemsController < ApplicationController
   end
 
   def show
-    header_name_display
     @user = User.find(current_user.id)
   end
 
   def edit
-    header_name_display
     @item = Item.find(params[:id])
     @artists = Artist.all
     @genres = Genre.all
