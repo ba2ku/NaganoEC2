@@ -1,5 +1,5 @@
 x = 0
-200.times do
+30.times do
 	x += 1
 		ShoppingHistory.seed do |s|
 			s.user_id = x
