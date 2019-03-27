@@ -46,7 +46,7 @@
                                                 購入数：<%= o.quantity %>個
                                             </div>
                                             <div class="text_right">
-                                                単価:<%= number_to_yen(o.item.price) %>
+                                                単価:<%= number_to_yen(o.price) %>
                                             </div>
                                             <div class="text_right amount_text color_red">
                                                 小計：<%= number_to_yen(o.price * o.quantity) %><br>
