@@ -23,7 +23,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    binding.pry
     if user_signed_in?
       @user = User.find(current_user.id)
     end

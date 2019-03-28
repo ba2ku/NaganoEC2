@@ -19,13 +19,14 @@
 //= require_tree .
 //= require cocoon
 
-$(function() {
+$(function () {
     $('.slider').slick({
-        autoplay:true,
-        autoplaySpeed:3000,
-        dots:true,
-        slidesToShow:1,
-        slidesToScroll:1
+        autoplay: true,
+        autoplaySpeed: 2500,
+        speed: 800,
+        dots: true,
+        arrows: false,
+        centerMode: true,
+        centerPadding: '10%'
     });
 });
-
