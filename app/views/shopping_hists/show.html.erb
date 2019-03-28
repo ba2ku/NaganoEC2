@@ -1,23 +1,20 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <div class="block_50"></div>
+            <div class="block_30"></div>
             <div class="col-12">
                 <div>
                     <h3><strong>配送先</strong></h3>
                 </div>
                 <div>
-                </div>
-                <div>
-                    <div>
-                        〒<%= @shopping_hist.address_history.postcode %><br>
-                        　<%= @shopping_hist.address_history.prefecture%><br>
-                        　<%= @shopping_hist.address_history.city%><br>
-                        　<%= @shopping_hist.address_history.street%><br>
-                        　<%= @shopping_hist.address_history.building%>
-                    </div>
+                    〒<%= @shopping_hist.address_history.postcode %><br>
+                    　<%= @shopping_hist.address_history.prefecture%><br>
+                    　<%= @shopping_hist.address_history.city%><br>
+                    　<%= @shopping_hist.address_history.street%><br>
+                    　<%= @shopping_hist.address_history.building%>
                 </div>
             </div>
+            <div class="block_30"></div>
             <div>
                 <div>
                     <div class="row">
@@ -26,11 +23,19 @@
                                 <div class=" col-3 padding_top10px">
                                     購入日：<%= @shopping_hist.shopping_date.strftime("%Y-%m-%d") %>
                                 </div>
-                                <div class="col-9 padding_top10px">
+                                <div class="col-5 padding_top10px text_center">
                                     購入されたお客様：<%= @shopping_hist.user.kanji_last %>
                                     <%= @shopping_hist.user.kanji_first %> 様
                                 </div>
+                                <div class="col-4 padding_top10px text_right">
+                                    <% result = 0 %>
+                                    <% @shopping_hist.ordered_items.each do |order| %>
+                                    <% result += order.price * order.quantity %>
+                                    <% end %>
+                                    総計：<%= number_to_yen(result) %>
+                                </div>
                             </div>
+
                         </div>
                     </div>
                     <% @shopping_hist.ordered_items.where(:shopping_history_id => @shopping_hist.id).find_each do |o|%>
