@@ -1,13 +1,9 @@
 <div class="container">
     <div class="row">
-        <div class="col-1"></div>
-        <div class="col-10">
-            <br>
-            <br>
-            <br>
-            <div class="">
-            </div>
-            <h2> <strong><%= current_user.try(:kanji_last) %> <%= current_user.try(:kanji_first) %> 様の MyPage</strong></h2>
+        <div class="col-12s">
+            <div class="block_30"></div>
+            <h2><strong><%= current_user.try(:kanji_last) %> <%= current_user.try(:kanji_first) %> 様の MyPage</strong>
+            </h2>
             <p>※パスワードは定期的に更新されることをおすすめします。</p>
             <br>
             <br>
@@ -25,20 +21,26 @@
             <% @shopping_history.last(2).each do |sh| %>
             <div class="sh_field mp_firld_margin">
                 <%= sh.updated_at.strftime('%Y年%m月%d日 %H:%M') %>　　<%= sh.status %><br>
+                <% sh.ordered_items.each do |oi| %>
+                <td>
+                    <%= attachment_image_tag oi.item, :jacket, size:"100x100" %>
+                </td>
             </div>
+            <% end %>
             <% end %>
 
             <div class="border-bottom"></div>
             <div class="mypage_field3 padding_top10px margin_top padding_left10px">
-                <%= link_to "購入履歴", shopping_hists_path(current_user.id) %></div>
+                <%= link_to "購入履歴", shopping_hists_path(current_user.id) %>
+            </div>
             <div class="mypage_field3 padding_top10px margin_top padding_left10px">
-                <%= link_to "お客様基本情報確認", user_path(current_user.id) %></div>
+                <%= link_to "お客様基本情報確認", user_path(current_user.id) %>
+            </div>
             <div class="mypage_field3 padding_top10px margin_top padding_left10px">
-                <%= link_to "退会", edit_user_registration_path %></div>
-        </div>
-        <div class="col-1"></div>
+                <%= link_to "退会", edit_user_registration_path %>
+            </div>
 
+
+        </div>
 
     </div>
-
-</div>
