@@ -1,27 +1,19 @@
 <div class="container">
-	<h1>ご注文ありがとうございました</h1>
 	<div class="row">
-		<div class="ec_cart">
-			<table>
-				<tbody>
-					<tr>
-						<td>
-							<h3>ご注文商品</h3>
-						</td>
-						<td>合計金額</td>
-					</tr>
-				</tbody>
-			</table>
-			<table>
-				<tbody>
-					<tr>
-					</tr>
-					<tr>
-					</tr>
-					<tr>
-					</tr>
-				</tbody>
-			</table>
+		<div class="block_30"></div>
+		<div class="col">
+			<h3><strong>購入完了</strong></h3>
+			<div class="color_red">ご購入ありがとうございました、商品ご到着までお待ち下さいませ。</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<div>
+				<%= link_to root_path do %>
+				<div class="block_60"></div>
+				<%= image_tag 'thank_you.png', :size =>'1100x482' %>
+				<% end %>
+			</div>
 		</div>
 	</div>
 </div>

@@ -1,4 +1,5 @@
 class ShoppingHistsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @shopping_histories = ShoppingHistory.all
     @shopping_histories = @shopping_histories.page(params[:page]).per(10)
@@ -12,7 +13,7 @@ class ShoppingHistsController < ApplicationController
           c.item.update(stock: c.item.stock - c.amount )
           c.destroy
       end
-       redirect_to cart_cmp_path
+      redirect_to cart_cmp_path
     else
       redirect_to root_path
     end
