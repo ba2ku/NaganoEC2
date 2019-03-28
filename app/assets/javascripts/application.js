@@ -27,6 +27,6 @@ $(function () {
         dots: true,
         arrows: false,
         centerMode: true,
-        centerPadding: '10%'
+        centerPadding: '0%'
     });
 });
