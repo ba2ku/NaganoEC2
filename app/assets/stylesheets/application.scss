@@ -152,7 +152,7 @@ footer {
     padding-right: 5px;
 }
 
-.padding_right0px {
+.padding_right10px {
     padding-right: 10px;
 }
 
@@ -212,7 +212,7 @@ footer {
 }
 
 .sh_field {
-    height: 200px;
+    height: 100%px;
     width: 100%;
     background-color: rgb(221, 221, 221);
 }
@@ -305,6 +305,10 @@ footer {
 
 .amount_text {
     font-size: 25px;
+}
+
+.margin_bottom5px {
+    margin-bottom: 5px;
 }
 
 td {

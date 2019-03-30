@@ -1,7 +1,10 @@
 <div class="container">
     <div class="row">
-        <div class="col-12s">
+        <div class="col-12">
             <div class="block_30"></div>
+                <%if flash[:notice]%>
+                    <%=flash[:notice]%>
+                <% end %>
             <h2><strong><%= current_user.try(:kanji_last) %> <%= current_user.try(:kanji_first) %> 様の MyPage</strong>
             </h2>
             <p>※パスワードは定期的に更新されることをおすすめします。</p>
@@ -19,14 +22,19 @@
             <h3><strong>発送情報</strong></h3>
             <p>購入された商品の発送状況、２件まで表示されます。他をご確認したい場合は購入履歴をご確認ください。</p>
             <% @shopping_history.last(2).each do |sh| %>
-            <div class="sh_field mp_firld_margin">
-                <%= sh.updated_at.strftime('%Y年%m月%d日 %H:%M') %>　　<%= sh.status %><br>
+            <div class="sh_field mp_firld_margin padding_left10px padding_bottom10px">
+                <div class="row">
+                    <div class="col-6">
+                        購入日：<%= sh.shopping_date.strftime('%Y年%m月%d日') %>　<%= sh.status %>
+                    </div>
+                    <div class="col-6 text_right padding_right30px">
+                    </div>
+                </div>
+                <div class="block_10"></div>
                 <% sh.ordered_items.each do |oi| %>
-                <td>
-                    <%= attachment_image_tag oi.item, :jacket, size:"100x100" %>
-                </td>
+                <%= attachment_image_tag oi.item, :jacket, size:"100x100",class:"margin_bottom5px" %>
+                <% end %>
             </div>
-            <% end %>
             <% end %>
 
             <div class="border-bottom"></div>

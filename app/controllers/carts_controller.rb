@@ -31,11 +31,12 @@ class CartsController < ApplicationController
 #カートテーブルの個数を更新する
   def update
     @cart = Cart.find(params[:id])
-    if @cart.update(cart_params)
+    if  params[:cart][:amount].to_i <= @cart.item.stock
+      @cart.update(cart_params)
       flash[:notice] = "更新しました。"
       redirect_to carts_path
     else
-      flash[:notice] = "更新に失敗しました。"
+      flash[:notice] = "購入希望数の在庫が確保できなかったため更新に失敗しました。"
       redirect_to carts_path
     end
   end
