@@ -9,6 +9,7 @@ class AdUsersController < ApplicationController
     @users = User.all
     @user = User.find(current_user.id)
     @shopping_hists = ShoppingHistory.all
+    @users = @users.page(params[:page]).per(20)
   end
 
   def edit

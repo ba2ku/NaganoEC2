@@ -1,47 +1,54 @@
 <div class="container">
     <div class="row">
-        <div class="col-1"></div>
-        <div class="col-10">
-            <br>
-            <br>
-            <br>
-            <div class="">
-            </div>
-            <h3> <%= current_user.try(:kanji_last) %> <%= current_user.try(:kanji_first) %> 様の MyPage</h3>
+        <div class="col-12">
+            <%if flash[:notice]%>
+        <%=flash[:notice]%>
+        <% end %>
+            <div class="block_30"></div>
+            <h2><strong><%= current_user.try(:kanji_last) %> <%= current_user.try(:kanji_first) %> 様の MyPage</strong>
+            </h2>
             <p>※パスワードは定期的に更新されることをおすすめします。</p>
             <br>
-            <%=  %>
             <br>
             <div class="border-bottom"></div>
             <br>
-            <h3>Infomation</h3>
+            <h3><strong>Infomation</strong></h3>
             <p>カスタマーデスクからのお知らせ。</p>
             <div class="notice_user"><%= current_user.try(:notice) %></div>
+            <div class="block_30"></div>
             <div class="border-bottom"></div>
             <br>
 
-            <h3>発送情報</h3>
+            <h3><strong>発送情報</strong></h3>
             <p>購入された商品の発送状況、２件まで表示されます。他をご確認したい場合は購入履歴をご確認ください。</p>
             <% @shopping_history.last(2).each do |sh| %>
-            <div class="sh_field mp_firld_margin">
-                <%= sh.id %>　　のご注文<br>
-                <%= sh.shopping_date.strftime('%Y年%m月%d日 %H:%M') %>　　のご注文<br>
-                <%= sh.updated_at.strftime('%Y年%m月%d日 %H:%M') %>　　<%= sh.status %><br>
-                <%= sh.address_history.postcode %> <%= sh.address_history.prefecture %> <%= sh.address_history.city %> <%= sh.address_history.street %> <%= sh.address_history.building %>
+            <div class="sh_field mp_firld_margin padding_left10px padding_bottom10px">
+                <div class="row">
+                    <div class="col-6">
+                        購入日：<%= sh.shopping_date.strftime('%Y年%m月%d日') %>　<%= sh.status %>
+                    </div>
+                    <div class="col-6 text_right padding_right30px">
+                    </div>
+                </div>
+                <div class="block_10"></div>
+                <% sh.ordered_items.each do |oi| %>
+                <%= attachment_image_tag oi.item, :jacket, size:"100x100",class:"margin_bottom5px" %>
+                <% end %>
             </div>
             <% end %>
 
             <div class="border-bottom"></div>
             <div class="mypage_field3 padding_top10px margin_top padding_left10px">
-                <%= link_to "購入履歴", shopping_hists_path(current_user.id) %></div>
+                <%= link_to "購入履歴", shopping_hists_path(current_user.id) %>
+            </div>
             <div class="mypage_field3 padding_top10px margin_top padding_left10px">
-                <%= link_to "お客様基本情報確認", user_path(current_user.id) %></div>
+                <%= link_to "お客様基本情報確認", user_path(current_user.id) %>
+            </div>
             <div class="mypage_field3 padding_top10px margin_top padding_left10px">
-                <%= link_to "退会", edit_user_registration_path %></div>
-        </div>
-        <div class="col-1"></div>
+                <%= link_to "退会", edit_user_registration_path %>
+            </div>
 
+
+        </div>
 
     </div>
-
-</div>

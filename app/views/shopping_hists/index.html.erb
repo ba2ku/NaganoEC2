@@ -1,44 +1,70 @@
 <div class="container">
     <div class="row">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-10">
-            <h2>注文履歴</h2>
-            <div class="row">
-                <% @shopping_histories.where(:user_id => current_user).find_each do |s| %>
-                <div class="hists_item">
-                    <table>
-                        <tbody>
-                            <div class="hists_back">
-                                <tr>
-                                    <td>購入日<%= s.shopping_date.strftime("%Y-%m-%d") %></td>
-                                </tr>
-                                <tr>
-                                    <td><%= link_to '詳細へ', shopping_hist_path(s.id) %></td>
-                                </tr>
-                                <% s.ordered_items.where(:shopping_history_id => s.id).find_each do |o| %>
-                                <tr>
-                                    <td><%= attachment_image_tag o.item, :jacket, fallback: "no_image.jpg",size: "200x200" %>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><%= o.item.property.property %></td>
-                                </tr>
-                                <tr>
-                                    <td><%= o.item.name.truncate(15) %></td>
-                                </tr>
-                                <tr>
-                                    <td><%= o.item.artist.artist_name.truncate(15) %></td>
-                                </tr>
-                                <tr>
-                                    <td><%= o.item.details %></td>
-                                </tr>
-                                <% end %>
+        <div class="col-lg-12">
+            <div class="block_40"></div>
+            <h2><strong>注文履歴</strong></h2>
+            <div class="">
+                <div class="width">
+                    <% @shopping_histories.where(:user_id => current_user).find_each do |s| %>
+                    <div class="block_40"></div>
+                    <div class="shopping_history_field_header">
+                        <div class="row">
+                            <div class="col padding_top10px padding_left40px">
+                                購入日：<%= s.shopping_date.strftime("%Y-%m-%d") %>
                             </div>
-                        </tbody>
-                    </table>
+                            <div class="col text_right padding_top10px padding_right30px">
+                                <%= link_to '詳細へ', shopping_hist_path(s.id), class: "btn btn-success" %>
+                            </div>
+                        </div>
+                    </div>
+                    <% s.ordered_items.where(:shopping_history_id => s.id).find_each do |o| %>
+                    <div clss="hists_item row">
+                        <div class="shopping_histry_field padding_top10px padding_bottom10px">
+                            <table class="" style="table-layout:fixed;">
+                                <tbody>
+                                    <td>
+                                        <div class="col-3">
+                                            <%= attachment_image_tag o.item, :jacket, fallback: "no_image.jpg", size:"180x180" %>
+                                        </div>
+                                    </td>
+                                    <div class="col-9">
+                                        <td style="width:870px;">
+                                            <div class="property">
+                                                <%= o.item.property.property %>
+                                            </div>
+                                            <div class="block_10"></div>
+                                            <div class="artist_size">
+                                                <%= o.item.artist.artist_name %>
+                                            </div>
+                                            <div>
+                                                <strong>
+                                                    <%= o.item.name %>
+                                                </strong>
+                                            </div>
+                                            <div class="block_20"></div>
+                                            <div class="text_right">
+                                                購入数：<%= o.quantity %>個
+                                            </div>
+                                            <div class="text_right">
+                                                単価:<%= number_to_yen(o.price) %>
+                                            </div>
+                                            <div class="text_right amount_text color_red">
+                                                小計：<%= number_to_yen(o.price * o.quantity) %><br>
+                                            </div>
+                                        </td>
+                                    </div>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <% end %>
+                    <% end %>
                 </div>
-                <% end %>
             </div>
-            <div class="col-lg-1"></div>
+        </div>
+        <div class="block_30"></div>
+        <div class="margin_0">
+            <%= paginate @shopping_histories %>
         </div>
     </div>
+</div>

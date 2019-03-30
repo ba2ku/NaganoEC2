@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
     protected
 
     def configure_permitted_parameters
-        devise_parameter_sanitizer.permit(:sign_up, keys: [:kanji_last, :kanji_first, :katakana_first, :katakana_last, :phone_number,addresses_attributes: [:id,:user_id, :postcode,:_destroy]])
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:kanji_last, :kanji_first, :katakana_first, :katakana_last, :phone_number])
         devise_parameter_sanitizer.permit(:sign_up,  keys: [:admin_user])
         devise_parameter_sanitizer.permit(:account_update, keys: [:admin_user])
     end

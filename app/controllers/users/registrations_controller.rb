@@ -64,10 +64,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  private
-  def user_params
-    params.require(:user).permit(:kanji_last,:kanji_first,:password, :katakana_last,:katakana_first,:phone_number,:notice,address_attributes: [:postcode,:prefecture,:city,:street,:building])
-  end
-
-
 end
