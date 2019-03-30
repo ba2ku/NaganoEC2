@@ -24,8 +24,8 @@
 				<div class="addresses">
 					<%= f.fields_for :address do |a| %>
 						<p>住所</p>
-						<%=a.label :郵便番号%>
-						<%=a.text_field :postcode%>
+						<%=a.label :郵便番号%><br>
+						<%=a.text_field :postcode%><br>
 						<%=a.label :県%><br>
 						<%=a.text_field :prefecture%><br>
 						<%=a.label :市区町村%><br>

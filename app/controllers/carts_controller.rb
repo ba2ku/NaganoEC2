@@ -40,6 +40,7 @@ class CartsController < ApplicationController
       redirect_to carts_path
     end
   end
+end
 #決算完了画面
   def cart_cmp
   end

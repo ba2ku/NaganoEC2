@@ -290,7 +290,6 @@ footer {
     height: 5em;
 }
 
-
 .property {
     margin: 5px 0 0 0;
     width: 100px;
@@ -331,6 +330,10 @@ td {
     margin-left: 150px;
 }
 
+.margin_left20 {
+    margin-left: 10px;
+}
+
 .padding_0 {
     padding: 0 0 0 0;
 }
@@ -341,12 +344,14 @@ td {
 }
 
 .slider div {
-    width: 1200px;
+    width: 300px;
     height: 300px;
+    margin: 0 auto;
 }
+
 .slider img {
-    width: 100%;
-    height: 100%;
+    width: 300px;
+    height: 300px;
 }
 
 
@@ -412,4 +417,117 @@ td {
 .page-item {
     font-size: 20px;
     text-align: center;
+}
+
+.background_img {
+    height: 400px;
+    padding-top: 40px;
+    padding-left: 50px;
+    border: double 10px #ffffff;
+    z-index: 0;
+    overflow: hidden;
+    background-color: rgba(55, 87, 126, 0.767);
+    /*半透明カラーの色*/
+}
+
+.background_img::before {
+    content: '';
+    background-image: url("mainVisual.jpg");
+    background-position: center;
+    background-image: repeat;
+    opacity: 0.5;
+    /*半透明カラーの透明度*/
+    filter: blur(8px);
+    /*ぼかし度*/
+    position: absolute;
+    /* 参考: http://designcolor-web.com/2016/09/14/css-blur-effects-background/*/
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    z-index: -1;
+}
+
+.re_text {
+    font-size: 80px;
+    padding-left: 115px;
+    padding-top: 120px;
+    font-family: 'Playfair Display', serif;
+
+}
+
+.box {
+    width: 300px;
+    height: 300px;
+    border-radius: 5px;
+    box-shadow: 0 2px 30px rgba(black, .2);
+    background: lighten(#f0f4c3, 10%);
+    position: relative;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+}
+
+.wave {
+    opacity: .4;
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    background: rgba(0, 136, 255, 0.592);
+    width: 600px;
+    height: 700px;
+    margin-left: 0px;
+    margin-top: -100px;
+    transform-origin: 50% 48%;
+    border-radius: 43%;
+    animation: drift 3000ms infinite linear;
+}
+
+.wave.-three {
+    animation: drift 5000ms infinite linear;
+}
+
+.wave.-two {
+    animation: drift 7000ms infinite linear;
+    opacity: .1;
+    background: yellow;
+}
+
+.box:after {
+    content: '';
+    display: block;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(#e8a, 1), rgba(#def, 0) 80%, rgba(white, .5));
+    z-index: 11;
+    transform: translate3d(0, 0, 0);
+}
+
+.title {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    line-height: 300px;
+    text-align: center;
+    transform: translate3d(0, 0, 0);
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: .4em;
+    font-size: 24px;
+    text-shadow: 0 1px 0 rgba(black, .1);
+    text-indent: .3em;
+}
+
+@keyframes drift {
+    from {
+        transform: rotate(0deg);
+    }
+
+    from {
+        transform: rotate(360deg);
+    }
 }
