@@ -1,5 +1,5 @@
 x = 0
-31.times do
+100.times do
 	y = 0
 	x += 1
 	10.times do

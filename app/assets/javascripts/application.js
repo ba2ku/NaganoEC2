@@ -20,13 +20,12 @@
 //= require cocoon
 
 $(function () {
-    $('.slider').slick({
-        autoplay: true,
-        autoplaySpeed: 2500,
-        speed: 800,
-        dots: true,
-        arrows: false,
-        centerMode: true,
-        centerPadding: '0%'
-    });
+	$('.slider').slick({
+		autoplay: true,
+		autoplaySpeed: 2000,
+		speed: 800,
+		arrows: false,
+		centerMode: true,
+		centerPadding: '0%'
+	});
 });

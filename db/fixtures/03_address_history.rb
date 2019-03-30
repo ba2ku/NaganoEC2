@@ -1,5 +1,5 @@
 x = 0
-31.times do
+100.times do
     x += 1
         AddressHistory.seed do |s|
         s.shopping_history_id = x
