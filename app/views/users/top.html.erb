@@ -1,11 +1,23 @@
 <div class="block_20"></div>
 <div class="container">
 	<div class="row">
-		<div class="slider">
-			<% @items[0..4].each do |i| %>
-			<div><%= attachment_image_tag i, :jacket, fallback: "no_image.jpg" %></div>
-			<% end %>
-
+		<div class="col-12 background_img">
+			<div class='wave -one'></div>
+			<div class='wave -two'></div>
+			<div class='wave -three'></div>
+			<div class='title'>NaganoEC</div>
+			<div class="row">
+				<div class="col-3">
+					<div class="slider">
+						<% @items[0..100].each do |i| %>
+						<div><%= attachment_image_tag i, :jacket, fallback: "no_image.jpg" %></div>
+						<% end %>
+					</div>
+				</div>
+				<div class="col-9">
+					<h2 class="color_white re_text">HOT ITEM</h2>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="row">
