@@ -36,6 +36,9 @@
           <li class="nav-item li_margin">
             <%= link_to "　ホーム　", root_path, class: "btn btn-dark nav_margin"%>
           </li>
+          <li class="nav-item li_margin">
+            <%= link_to "　カート　", carts_path, class: "btn btn-dark nav_margin"%>
+          </li>
 
           <li class="nav-item li_margin">
             <%= link_to "マイページ", user_mypage_path(current_user), class: "btn btn-dark nav_margin" %>
@@ -45,9 +48,6 @@
           </li>
           <li class="nav-item li_margin">
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-dark nav_margin margin_right_footer" %>
-          </li>
-          <li class="nav-item li_margin">
-            <%= link_to "カート", carts_path, class: "btn btn-dark nav_margin", class:"fas fa-shopping-cart" %>
           </li>
 
         </ul>
